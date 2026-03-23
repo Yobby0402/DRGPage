@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  虫蛋收集
+  
+  - 加点推荐
+</title>
+    <style>
+        :root {
+            --bg-dark: #736951;
+            --bg-card: #252930;
+            --accent: #c9a227;
+            --text: #e8e6e3;
+            --text-muted: #9a9a9a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #736951;
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+        body.page-weapon-detail { overflow: hidden; height: 100vh; }
+        body.page-weapon-detail main { overflow: hidden; height: calc(100vh - 120px); padding: 0; max-width: none; }
+        .container { max-width: 960px; margin: 0 auto; padding: 1rem; background: transparent; }
+        header {
+            background: #736951;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .site-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 0.32rem 0.78rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .site-nav a:hover {
+            text-decoration: none;
+            background: rgba(201, 162, 39, 0.14);
+            border-color: rgba(201, 162, 39, 0.35);
+        }
+        .site-nav a.is-active {
+            background: rgba(201, 162, 39, 0.2);
+            border-color: rgba(201, 162, 39, 0.58);
+            color: #f4dca0;
+        }
+        h1, h2 { color: var(--accent); }
+        .card {
+            background: rgba(40, 42, 48, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        a.card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+        a.card-link:hover { background: rgba(201, 162, 39, 0.15); }
+        .tag { display: inline-block; background: rgba(201, 162, 39, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.25rem; font-size: 0.85rem; }
+        .weapon-tier-icon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 6px; background: rgba(40, 42, 48, 0.65); padding: 3px; }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 1rem; background: #736951; }
+        body.has-disclaimer-open { overflow: hidden; }
+        .site-disclaimer-modal[hidden] { display: none; }
+        .site-disclaimer-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .site-disclaimer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(2px);
+        }
+        .site-disclaimer-card {
+            position: relative;
+            width: min(760px, 96vw);
+            max-height: 90vh;
+            overflow: auto;
+            background: #1f2127;
+            border: 1px solid rgba(201, 162, 39, 0.45);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 1.3rem;
+        }
+        .site-disclaimer-card h2 {
+            margin: 0 0 0.7rem;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .site-disclaimer-card p {
+            margin: 0.45rem 0;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .site-disclaimer-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .site-disclaimer-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .site-disclaimer-btn.accept {
+            background: var(--accent);
+            color: #121212;
+            border-color: transparent;
+            font-weight: bold;
+        }
+        .site-disclaimer-btn.decline {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+        }
+        @media (min-width: 2560px) {
+            body { font-size: 18px; }
+            header { padding: 1rem 1.5rem; font-size: 1.1rem; }
+        }
+        @media (min-width: 3200px) {
+            body { font-size: 20px; }
+            header { padding: 1.2rem 2rem; font-size: 1.2rem; }
+        }
+        
+    </style>
+</head>
+<body class="">
+    <header>
+        <div class="container">
+            
+            <nav class="site-nav" aria-label="主导航">
+                <a href="/DRGPage/" class="">武器加点</a>
+                
+                <a href="/DRGPage/task-combo/" class="">任务搭配</a>
+                <a href="/DRGPage/diy-peripherals/" class="">自制外设</a>
+                
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        
+<p>
+    <a href="/DRGPage/mission/">← 任务/标签</a>
+     · 虫蛋收集
+    
+</p>
+<h1>虫蛋收集 推荐加点</h1>
+<p>以下按兵种列出多种推荐，每种武器可能有多套方案供选择。</p>
+
+<section class="card" style="margin-bottom: 1.5rem;">
+    <h2>侦察兵</h2>
+    
+    
+    <div style="margin-bottom: 1rem;">
+        <strong>深核GK突击步枪</strong>
+        <ul style="margin: 0.25rem 0 0 1rem;">
+            
+            <li>
+                <a href="/DRGPage/weapon/1/recommendation/1/">仁慈超度</a>
+                — 需要配合队友或者副手装备弩箭
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/1/recommendation/2/">智能稳定</a>
+                — 单体伤害较高，无需其他队友的配合
+                <span class="tag">日常通勤</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/1/recommendation/3/">超频撞针</a>
+                — 让我用超频撞针试试你的鸿沟绝岭吧
+                <span class="tag">日常通勤</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/1/recommendation/5/">电击装填</a>
+                — 电击装填加上爆破装填我愿称之为手忙脚乱组合。
+                <span class="tag">日常通勤</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/1/recommendation/4/">点射扳机</a>
+                — 在官方看来这玩意是独特超频
+                <span class="tag">日常通勤</span>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+        <strong>M1000经典型步枪</strong>
+        <ul style="margin: 0.25rem 0 0 1rem;">
+            
+            <li>
+                <a href="/DRGPage/weapon/2/recommendation/6/">腰射潮人</a>
+                — 我管你这那的，跟我的鼠标宏说去吧
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/2/recommendation/7/">过冷枪膛</a>
+                — 当你看到致命弱点的时候，你就知道该拿这个模组了
+                <span class="tag">日常通勤</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/2/recommendation/9/">死亡标记</a>
+                — T1辅助模组，为什么是T1，因为不是T0
+                <span class="tag">辅助</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/2/recommendation/8/">专注悬停</a>
+                — 建议在队友很菜的时候玩这个💩
+                <span class="tag">日常通勤</span>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+        <strong>DARK-25 电浆卡宾枪</strong>
+        <ul style="margin: 0.25rem 0 0 1rem;">
+            
+            <li>
+                <a href="/DRGPage/weapon/3/recommendation/10/">废热回导</a>
+                — 侦察最强的模组
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/3/recommendation/11/">护盾协能</a>
+                — 高玩必备
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+        <strong>应急霰弹枪</strong>
+        <ul style="margin: 0.25rem 0 0 1rem;">
+            
+            <li>
+                <a href="/DRGPage/weapon/4/recommendation/14/">特殊火药</a>
+                — 喷子跳
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span><span class="tag">娱乐玩法</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/4/recommendation/15/">双管齐下</a>
+                — 真~应急霰弹枪
+                <span class="tag">日常通勤</span>
+            </li>
+            
+            <li>
+                <a href="/DRGPage/weapon/4/recommendation/16/">超大弹壳</a>
+                — 见到有人用这个清炮台还挺好用的
+                <span class="tag">娱乐玩法</span>
+            </li>
+            
+        </ul>
+    </div>
+    
+    
+</section>
+
+<section class="card" style="margin-bottom: 1.5rem;">
+    <h2>工程师</h2>
+    
+    <p style="color: var(--text-muted);">该兵种暂无符合条件的推荐</p>
+    
+</section>
+
+<section class="card" style="margin-bottom: 1.5rem;">
+    <h2>枪手</h2>
+    
+    <p style="color: var(--text-muted);">该兵种暂无符合条件的推荐</p>
+    
+</section>
+
+<section class="card" style="margin-bottom: 1.5rem;">
+    <h2>钻机手</h2>
+    
+    <p style="color: var(--text-muted);">该兵种暂无符合条件的推荐</p>
+    
+</section>
+
+
+    </main>
+    <div class="site-disclaimer-modal" id="site-disclaimer-modal" hidden>
+        <div class="site-disclaimer-backdrop"></div>
+        <div class="site-disclaimer-card" role="dialog" aria-modal="true" aria-labelledby="site-disclaimer-title">
+            <h2 id="site-disclaimer-title">使用提醒与版权声明</h2>
+            <p>本页面为《深岩银河》（Deep Rock Galactic）玩家社区整理的非官方参考工具，主要用于展示武器改装与加点思路。内容仅供学习、交流与参考，不构成唯一、强制或标准玩法建议。</p>
+            <p>站点展示中涉及的游戏名称、角色设定、图片素材、图标素材、文本描述与相关数据等，其著作权及相关权利均归原权利人所有。我们仅做资料搬运与整理，不主张对原始素材拥有任何版权。</p>
+            <p>基于公开信息与玩家实践经验整理的内容可能存在时效性差异、版本偏差或理解误差，请以游戏实际版本与官方说明为准。</p>
+            <p>本服务目前为免费提供，不向玩家收取费用，也不以此限制玩家玩法选择。</p>
+            <p>《深岩银河》是一款自由度高且社区氛围友好的合作游戏。鼓励玩家按照自己喜欢的方式游玩，本页面旨在速查与灵感，而非限制玩家“只能这样玩”。</p>
+            <p>若你同意以上说明，请点击“我知道了，继续访问”；若不同意，请点击“我不同意并退出界面”。</p>
+            <div class="site-disclaimer-actions">
+                <button type="button" class="site-disclaimer-btn accept" id="site-disclaimer-accept">我知道了，继续访问</button>
+                <button type="button" class="site-disclaimer-btn decline" id="site-disclaimer-decline">我不同意并退出界面</button>
+            </div>
+        </div>
+    </div>
+    <footer>DRG Builds</footer>
+    <script>
+        (function () {
+            var modal = document.getElementById('site-disclaimer-modal');
+            var acceptBtn = document.getElementById('site-disclaimer-accept');
+            var declineBtn = document.getElementById('site-disclaimer-decline');
+            if (!modal || !acceptBtn || !declineBtn) return;
+            var KEY = 'drg_disclaimer_ack_v1';
+            var hasAccepted = false;
+            try {
+                hasAccepted = localStorage.getItem(KEY) === 'accepted';
+            } catch (e) {
+                hasAccepted = false;
+            }
+            if (hasAccepted) return;
+            modal.hidden = false;
+            document.body.classList.add('has-disclaimer-open');
+            acceptBtn.addEventListener('click', function () {
+                try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
+                modal.hidden = true;
+                document.body.classList.remove('has-disclaimer-open');
+            });
+            declineBtn.addEventListener('click', function () {
+                try { localStorage.removeItem(KEY); } catch (e) {}
+                try { window.close(); } catch (e) {}
+                window.location.replace('about:blank');
+            });
+        })();
+    </script>
+    
+</body>
+</html>

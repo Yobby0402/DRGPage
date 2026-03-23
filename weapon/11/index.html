@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>“疣猪”2I0自动霰弹枪 - 加点与推荐</title>
+    <style>
+        :root {
+            --bg-dark: #736951;
+            --bg-card: #252930;
+            --accent: #c9a227;
+            --text: #e8e6e3;
+            --text-muted: #9a9a9a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #736951;
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+        body.page-weapon-detail { overflow: hidden; height: 100vh; }
+        body.page-weapon-detail main { overflow: hidden; height: calc(100vh - 120px); padding: 0; max-width: none; }
+        .container { max-width: 960px; margin: 0 auto; padding: 1rem; background: transparent; }
+        header {
+            background: #736951;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .site-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 0.32rem 0.78rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .site-nav a:hover {
+            text-decoration: none;
+            background: rgba(201, 162, 39, 0.14);
+            border-color: rgba(201, 162, 39, 0.35);
+        }
+        .site-nav a.is-active {
+            background: rgba(201, 162, 39, 0.2);
+            border-color: rgba(201, 162, 39, 0.58);
+            color: #f4dca0;
+        }
+        h1, h2 { color: var(--accent); }
+        .card {
+            background: rgba(40, 42, 48, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        a.card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+        a.card-link:hover { background: rgba(201, 162, 39, 0.15); }
+        .tag { display: inline-block; background: rgba(201, 162, 39, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.25rem; font-size: 0.85rem; }
+        .weapon-tier-icon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 6px; background: rgba(40, 42, 48, 0.65); padding: 3px; }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 1rem; background: #736951; }
+        body.has-disclaimer-open { overflow: hidden; }
+        .site-disclaimer-modal[hidden] { display: none; }
+        .site-disclaimer-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .site-disclaimer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(2px);
+        }
+        .site-disclaimer-card {
+            position: relative;
+            width: min(760px, 96vw);
+            max-height: 90vh;
+            overflow: auto;
+            background: #1f2127;
+            border: 1px solid rgba(201, 162, 39, 0.45);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 1.3rem;
+        }
+        .site-disclaimer-card h2 {
+            margin: 0 0 0.7rem;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .site-disclaimer-card p {
+            margin: 0.45rem 0;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .site-disclaimer-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .site-disclaimer-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .site-disclaimer-btn.accept {
+            background: var(--accent);
+            color: #121212;
+            border-color: transparent;
+            font-weight: bold;
+        }
+        .site-disclaimer-btn.decline {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+        }
+        @media (min-width: 2560px) {
+            body { font-size: 18px; }
+            header { padding: 1rem 1.5rem; font-size: 1.1rem; }
+        }
+        @media (min-width: 3200px) {
+            body { font-size: 20px; }
+            header { padding: 1.2rem 2rem; font-size: 1.2rem; }
+        }
+        
+<style>
+    body.page-weapon-detail main {
+        display: flex;
+        flex-direction: column;
+        background: #736951;
+        position: relative;
+    }
+
+    body.page-weapon-detail main .wd-layout {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .wd-layout {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .wd-left {
+        position: relative;
+        flex: 0 0 50%;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .wd-right {
+        flex: 0 0 50%;
+        min-width: 200px;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .wd-right-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .wd-tier-section {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem 0.5rem;
+    }
+
+    .wd-tier-header {
+        background: var(--accent);
+        color: #000;
+        padding: 0.35rem 0.6rem;
+        font-weight: bold;
+        text-align: left;
+        flex-shrink: 0;
+        margin-bottom: 0.4rem;
+    }
+
+    .wd-tier-grid {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.52rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    #wd-tier-grid-wrap {
+        position: relative;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .wd-tier-first-col-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(25, 27, 32, 0.85);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .wd-tier-grid-inner {
+        position: relative;
+        z-index: 1;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.52rem;
+    }
+
+    .wd-tier-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2.4%;
+        flex: 0 0 auto;
+        height: min(64px, 7.4vh);
+        position: relative;
+        z-index: 1;
+    }
+
+    .wd-tier-row .wd-hex-wrap {
+        position: relative;
+        display: flex;
+        flex-shrink: 0;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        aspect-ratio: 72/50;
+    }
+
+    .wd-tier-row .wd-hex-wrap .wd-hex {
+        height: 100%;
+        width: 100%;
+        max-height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .wd-tier-row .wd-hex-wrap.wd-hex-slot-selected .wd-hex {
+        background: rgba(25, 27, 32, 0.9);
+    }
+
+    .wd-tier-row .wd-hex-wrap.wd-hex-slot-selected .wd-hex-placeholder {
+        background: rgba(25, 27, 32, 0.9);
+    }
+
+    .wd-tier-row .wd-hex-wrap.wd-hex-slot-option .wd-hex {
+        background: rgba(50, 52, 58, 0.35);
+        filter: brightness(0.7);
+    }
+
+    .wd-tier-row .wd-hex-wrap.wd-hex-slot-option .wd-hex-placeholder {
+        background: rgba(50, 52, 58, 0.35);
+        filter: brightness(0.7);
+    }
+
+    .wd-tier-row .wd-hex-wrap.selected::before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        right: -5px;
+        top: -5px;
+        bottom: -5px;
+        background: var(--accent);
+        clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        z-index: 0;
+        box-shadow: 0 0 12px rgba(201, 162, 39, 0.9);
+    }
+
+    .wd-tier-row .wd-hex-wrap.selected .wd-hex {
+        box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.95) inset;
+        filter: brightness(1);
+    }
+
+    .wd-overclock-section {
+        flex: 0 0 auto;
+        min-height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0.6rem 0.75rem;
+        gap: 1.2rem;
+    }
+
+    .wd-mode-switch {
+        width: fit-content;
+        max-width: 100%;
+        margin: 0 auto 0.35rem;
+        background: rgba(18, 19, 24, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        padding: 4px;
+        display: flex;
+        position: relative;
+        gap: 2px;
+        z-index: 20;
+    }
+
+    .wd-mode-indicator {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 4px;
+        width: calc(50% - 5px);
+        border-radius: 999px;
+        background: var(--accent);
+        transition: transform 0.22s ease;
+        z-index: 0;
+    }
+
+    .wd-mode-switch.mode-recommend .wd-mode-indicator {
+        transform: translateX(calc(100% + 2px));
+    }
+
+    .wd-mode-btn {
+        position: relative;
+        z-index: 1;
+        border: 0;
+        background: transparent;
+        color: var(--text);
+        min-width: 108px;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .wd-mode-btn.is-active {
+        color: #1a1d23;
+    }
+
+    .wd-mode-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    .wd-mode-panels {
+        flex: 1;
+        height: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wd-mode-panel {
+        display: none;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .wd-mode-panel.is-active {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    .wd-mode-panel > .wd-layout {
+        flex: 1;
+        min-height: 0;
+    }
+
+    .wd-overclock-hex-wrap {
+        flex-shrink: 0;
+        position: relative;
+        width: 110px;
+        height: 110px;
+        --oc-color: #6bcf7b;
+        cursor: pointer;
+        transition: transform 0.15s;
+    }
+
+    .wd-overclock-hex-wrap:hover {
+        transform: scale(1.05);
+    }
+
+    .wd-overclock-hex-wrap::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--oc-color);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 0;
+        opacity: 0.92;
+    }
+
+    .wd-overclock-hex-wrap.oc-selected::before {
+        inset: -4px;
+        filter: drop-shadow(0 0 8px var(--oc-color));
+    }
+
+    .wd-overclock-hex {
+        position: relative;
+        z-index: 1;
+        width: calc(100% - 12px);
+        height: calc(100% - 12px);
+        margin: 6px;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .wd-overclock-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-overclock-desc {
+        flex: 1;
+        min-width: 0;
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+    }
+
+    .wd-oc-drawer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: transparent;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .wd-oc-drawer.open {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .wd-oc-drawer-inner {
+        padding: 0.5rem 0.75rem 0.6rem;
+    }
+
+    .wd-oc-type-row {
+        margin-bottom: 0.45rem;
+    }
+
+    .wd-oc-type-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.25rem;
+        padding-left: 2px;
+    }
+
+    .wd-oc-type-label.oc-type-clean { color: #6bcf7b; }
+    .wd-oc-type-label.oc-type-balanced { color: #d4a843; }
+    .wd-oc-type-label.oc-type-unstable { color: #e06c75; }
+
+    .wd-oc-type-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .wd-oc-drawer-wrap {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        --oc-color: #6bcf7b;
+        cursor: pointer;
+        transition: transform 0.12s;
+    }
+
+    .wd-oc-drawer-wrap:hover {
+        transform: scale(1.1);
+    }
+
+    .wd-oc-drawer-wrap::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--oc-color);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 0;
+        opacity: 0.92;
+    }
+
+    .wd-oc-drawer-wrap.selected::before {
+        inset: -3px;
+        filter: drop-shadow(0 0 6px var(--oc-color));
+    }
+
+    .wd-oc-drawer-hex {
+        position: relative;
+        z-index: 1;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        margin: 5px;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .wd-oc-drawer-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-overclock-hex-wrap.oc-type-clean,
+    .wd-oc-drawer-wrap.oc-type-clean { --oc-color: #6bcf7b; }
+    .wd-overclock-hex-wrap.oc-type-balanced,
+    .wd-oc-drawer-wrap.oc-type-balanced { --oc-color: #d4a843; }
+    .wd-overclock-hex-wrap.oc-type-unstable,
+    .wd-oc-drawer-wrap.oc-type-unstable { --oc-color: #e06c75; }
+
+    .wd-attr .wd-attr-textonly {
+        padding: 0.2rem 0.4rem 0.25rem 0;
+        font-size: 0.9rem;
+    }
+
+    .wd-attr .wd-attr-textonly.textonly-positive {
+        color: #6bcf7b;
+    }
+
+    .wd-attr .wd-attr-textonly.textonly-negative {
+        color: #e06c75;
+    }
+
+    .wd-name {
+        text-align: center;
+        font-size: 1.35rem;
+        margin: 0 0 0.5rem;
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .wd-pic-wrap {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        margin: 0.1rem 0 0.55rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wd-pic-wrap img {
+        max-width: 100%;
+        max-height: min(58vh, 620px);
+        object-fit: contain;
+    }
+
+    .wd-info-btn {
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #1a1d23;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wd-info-btn:hover {
+        filter: brightness(1.1);
+    }
+
+    .wd-desc {
+        position: absolute;
+        left: 4px;
+        bottom: 40px;
+        max-width: 320px;
+        padding: 0.6rem 0.85rem;
+        background: rgba(50, 50, 55, 0.3);
+        border-radius: 6px;
+        font-size: 1rem;
+        color: var(--text);
+        display: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        line-height: 1.5;
+    }
+
+    .wd-desc.visible {
+        display: block;
+    }
+
+    .wd-attr {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: auto;
+        align-self: flex-end;
+        min-width: 280px;
+        max-width: 420px;
+        padding: 0.6rem 0.9rem;
+        background: rgba(0, 0, 0, 0.85);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        z-index: 10;
+    }
+
+    .wd-attr table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .wd-attr td {
+        padding: 0.25rem 0.4rem;
+        vertical-align: middle;
+    }
+
+    .wd-attr .wd-attr-name {
+        color: var(--text-muted);
+        text-align: left;
+    }
+
+    .wd-attr .wd-attr-delta {
+        text-align: center;
+        min-width: 3em;
+    }
+
+    .wd-attr .wd-attr-delta.delta-positive {
+        color: #6bcf7b;
+    }
+
+    .wd-attr .wd-attr-delta.delta-negative {
+        color: #e06c75;
+    }
+
+    .wd-attr .wd-attr-val {
+        color: var(--text);
+        text-align: right;
+    }
+
+    .wd-attr tr.highlight {
+        background: rgba(201, 162, 39, 0.25);
+    }
+
+    .wd-hex {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        aspect-ratio: 72/50;
+        clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.15s;
+    }
+
+    .wd-hex:hover {
+        transform: scale(1.1);
+    }
+
+    .wd-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-hex-placeholder-inner {
+        display: block;
+        width: 100%;
+        padding-bottom: 69.44%;
+    }
+
+    .wd-tooltip {
+        position: fixed;
+        z-index: 400;
+        max-width: 320px;
+        padding: 0.6rem 0.8rem;
+        background: #000;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        pointer-events: none;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        color: var(--text);
+    }
+
+    .wd-tt-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .wd-tt-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border-radius: 6px;
+        background: #fff;
+        padding: 0;
+    }
+
+    .wd-tt-titles {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .wd-tt-name {
+        font-size: 1.1rem;
+        line-height: 1.25;
+        color: #f3d34a;
+        font-weight: 700;
+    }
+
+    .wd-tt-prop {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        color: var(--text-muted);
+        margin-top: 2px;
+    }
+
+    .wd-tt-oc-block {
+        display: inline-block;
+        margin-top: 2px;
+        padding: 4px 8px 6px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .wd-tt-oc-block .wd-tt-name {
+        color: #f8f1d8;
+    }
+
+    .wd-tt-oc-block .wd-tt-prop {
+        color: #f8f1d8;
+        margin-top: 2px;
+    }
+
+    .wd-tt-oc-block-clean {
+        background: rgba(49, 126, 54, 0.92);
+    }
+
+    .wd-tt-oc-block-balanced {
+        background: rgba(128, 98, 33, 0.92);
+    }
+
+    .wd-tt-oc-block-unstable {
+        background: rgba(129, 46, 46, 0.92);
+    }
+
+    .wd-tt-desc {
+        font-size: 0.9rem;
+        color: var(--text);
+        margin-top: 6px;
+        line-height: 1.35;
+    }
+
+    .wd-tt-entry {
+        font-size: 0.8rem;
+        color: #f3ddbf;
+        margin-top: 6px;
+        line-height: 1.3;
+        background: rgba(90, 58, 24, 0.9);
+        padding: 4px 8px;
+        border-radius: 6px;
+    }
+
+    .wd-tt-effects {
+        margin-top: 6px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 6px;
+    }
+
+    .wd-tt-effect-line {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.45;
+    }
+
+    .wd-tt-traits {
+        margin-top: 6px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 6px;
+    }
+
+    .wd-tt-trait {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .wd-tt-trait-positive {
+        color: #6bcf7b;
+    }
+
+    .wd-tt-trait-negative {
+        color: #e06c75;
+    }
+
+    .wd-rec-layout {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+        border: 0;
+        background: transparent;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .wd-rec-tabs {
+        flex: 0 0 250px;
+        min-width: 210px;
+        max-width: 280px;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        background: transparent;
+        overflow-y: auto;
+        padding: 0.4rem;
+    }
+
+    .wd-rec-search-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: rgba(24, 26, 31, 0.82);
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+        padding: 0.25rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .wd-rec-search-input {
+        width: 100%;
+        max-width: none;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        color: var(--text);
+        padding: 0.42rem 0.52rem;
+        font-size: 0.85rem;
+    }
+
+    .wd-rec-search-input:focus {
+        outline: 0;
+        border-color: rgba(201, 162, 39, 0.75);
+    }
+
+    .wd-rec-search-empty {
+        display: none;
+        margin: 0.35rem 0.2rem;
+        color: var(--text-muted);
+        font-size: 0.84rem;
+    }
+
+    .wd-rec-tab {
+        width: 100%;
+        border: 0;
+        text-align: left;
+        background: transparent;
+        color: var(--text);
+        border-radius: 8px;
+        padding: 0.45rem;
+        margin-bottom: 0.35rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        border: 1px solid transparent;
+    }
+
+    .wd-rec-tab:hover {
+        background: rgba(201, 162, 39, 0.14);
+        border-color: rgba(201, 162, 39, 0.35);
+    }
+
+    .wd-rec-tab.is-active {
+        background: rgba(201, 162, 39, 0.2);
+        border-color: rgba(201, 162, 39, 0.58);
+    }
+
+    .wd-rec-tab-icon-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wd-rec-tab-icon-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-tab-meta {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .wd-rec-tab-title {
+        font-size: 0.9rem;
+        line-height: 1.28;
+        font-weight: 700;
+        color: var(--text);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .wd-rec-tab-code {
+        font-family: "Consolas", "Courier New", monospace;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        font-size: 0.8rem;
+    }
+
+    .wd-rec-detail-wrap {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .wd-rec-detail {
+        display: none;
+        height: 100%;
+    }
+
+    .wd-rec-detail.is-active {
+        display: block;
+    }
+
+    .wd-rec-showcase {
+        display: flex;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .wd-rec-showcase-left {
+        flex: 0 0 42%;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        padding: 0.65rem 0.7rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(22, 23, 30, 0.68);
+        overflow-y: auto;
+    }
+
+    .wd-rec-weapon-name {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--accent);
+        text-align: center;
+    }
+
+    .wd-rec-weapon-row {
+        display: flex;
+        gap: 0.45rem;
+        align-items: stretch;
+        min-height: 130px;
+    }
+
+    .wd-rec-pic-wrap {
+        flex: 1;
+        min-width: 0;
+        border-radius: 8px;
+        background: rgba(10, 10, 12, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem;
+    }
+
+    .wd-rec-pic-wrap img {
+        width: 100%;
+        height: 100%;
+        max-height: 210px;
+        object-fit: contain;
+    }
+
+    .wd-rec-attr {
+        flex: 0 0 44%;
+        min-width: 138px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.62);
+        padding: 0.25rem 0.45rem;
+        overflow-y: auto;
+    }
+
+    .wd-rec-attr table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.78rem;
+    }
+
+    .wd-rec-attr td {
+        padding: 0.14rem 0.18rem;
+    }
+
+    .wd-rec-attr .name {
+        color: var(--text-muted);
+        text-align: left;
+    }
+
+    .wd-rec-attr .val {
+        color: var(--text);
+        text-align: right;
+    }
+
+    .wd-rec-tier-section {
+        margin-top: 0.2rem;
+    }
+
+    .wd-rec-tier-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(201, 162, 39, 0.9);
+        color: #161616;
+        border-radius: 6px;
+        padding: 0.22rem 0.45rem;
+        font-size: 0.82rem;
+        font-weight: bold;
+    }
+
+    .wd-rec-tier-code {
+        font-family: "Consolas", "Courier New", monospace;
+        letter-spacing: 0.08em;
+    }
+
+    .wd-rec-tier-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-top: 0.3rem;
+    }
+
+    .wd-rec-tier-row {
+        display: flex;
+        align-items: center;
+        gap: 0.28rem;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 6px;
+        padding: 0.22rem;
+    }
+
+    .wd-rec-slot {
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.35);
+        flex-shrink: 0;
+    }
+
+    .wd-rec-slot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-slot.is-selected {
+        border-color: rgba(201, 162, 39, 0.95);
+        box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.65);
+    }
+
+    .wd-rec-slot.selected-main {
+        width: 38px;
+        height: 38px;
+        border-color: rgba(201, 162, 39, 0.95);
+        box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.65);
+    }
+
+    .wd-rec-slot-empty {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .wd-rec-overclock {
+        margin-top: 0.32rem;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.36);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.42rem 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    .wd-rec-overclock-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
+    }
+
+    .wd-rec-overclock-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-overclock-name {
+        font-weight: 700;
+        color: var(--text);
+        font-size: 0.9rem;
+        line-height: 1.25;
+    }
+
+    .wd-rec-overclock-type {
+        color: var(--text-muted);
+        font-size: 0.78rem;
+    }
+
+    .wd-rec-showcase-right {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 0.85rem 0.95rem;
+    }
+
+    .wd-rec-detail h2 {
+        margin: 0;
+        color: var(--accent);
+        font-size: 1.2rem;
+    }
+
+    .wd-rec-sub {
+        margin: 0.35rem 0 0.6rem;
+        color: var(--text-muted);
+    }
+
+    .wd-rec-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 0.55rem;
+    }
+
+    .wd-rec-badge {
+        padding: 0.15rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .wd-rec-section {
+        margin-top: 0.7rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wd-rec-section-title {
+        margin: 0 0 0.45rem;
+        color: var(--accent);
+        font-size: 0.98rem;
+    }
+
+    .wd-rec-build-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 0.35rem 0.55rem;
+    }
+
+    .wd-rec-build-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        padding: 0.35rem 0.45rem;
+        font-size: 0.88rem;
+    }
+
+    .wd-rec-empty {
+        color: var(--text-muted);
+        padding: 0.75rem 0;
+    }
+
+    .wd-rec-markdown {
+        line-height: 1.58;
+        font-size: 0.95rem;
+    }
+
+    .wd-rec-markdown p {
+        margin: 0.42rem 0;
+    }
+
+    .wd-rec-markdown ul,
+    .wd-rec-markdown ol {
+        margin: 0.4rem 0;
+        padding-left: 1.2rem;
+    }
+
+    .wd-rec-detail-wrap {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .wd-rec-detail-layout {
+        display: flex;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .wd-rec-detail-left {
+        flex: 0 0 40%;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+        padding: 0.6rem;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        background: transparent;
+    }
+
+    .wd-rec-detail-weapon-name {
+        text-align: center;
+        font-size: 1.05rem;
+        margin: 0 0 0.45rem;
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .wd-rec-detail-weapon-row {
+        display: block;
+        flex: 0 0 auto;
+        max-height: 42%;
+        min-height: 180px;
+        margin-bottom: 0.6rem;
+    }
+
+    .wd-rec-detail-pic {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem;
+    }
+
+    .wd-rec-detail-pic img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 280px;
+        object-fit: contain;
+    }
+
+    .wd-rec-detail-attrs table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.78rem;
+    }
+
+    .wd-rec-detail-attrs td {
+        padding: 0.14rem 0.2rem;
+        vertical-align: middle;
+    }
+
+    .wd-rec-detail-attr-name {
+        color: var(--text-muted);
+        text-align: left;
+    }
+
+    .wd-rec-detail-attr-val {
+        color: var(--text);
+        text-align: right;
+    }
+
+    .wd-rec-detail-tier-section {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        margin: 0.45rem 0 0.55rem;
+    }
+
+    .wd-rec-detail-tier-header {
+        background: var(--accent);
+        color: #000;
+        padding: 0.25rem 0.45rem;
+        font-weight: bold;
+        text-align: left;
+        flex-shrink: 0;
+        margin-bottom: 0.25rem;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 4px;
+    }
+
+    .wd-rec-detail-build-code {
+        font-size: 0.82rem;
+        letter-spacing: 0.11em;
+        font-family: "Consolas", "Courier New", monospace;
+    }
+
+    .wd-rec-detail-tier-grid {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.48rem;
+        padding: 0.18rem 0.05rem;
+        position: relative;
+    }
+
+    .wd-rec-detail-tier-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.4rem;
+        height: min(56px, 6.8vh);
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 0.12rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .wd-rec-detail-tier-row:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .wd-rec-detail-selected-col-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background: rgba(0, 0, 0, 0.72);
+        border-radius: 8px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .wd-rec-detail-selected-col {
+        flex: 0 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.12rem 0.22rem;
+        margin-right: 0.62rem;
+    }
+
+    .wd-rec-detail-hex-wrap {
+        position: relative;
+        display: flex;
+        flex-shrink: 0;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 72/50;
+    }
+
+    .wd-rec-detail-hex-wrap[data-option-id] {
+        cursor: pointer;
+    }
+
+    .wd-rec-detail-hex {
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        background: rgba(50, 52, 58, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .wd-rec-detail-hex-wrap.selected-main .wd-rec-detail-hex {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .wd-rec-detail-hex-wrap.is-selected::before,
+    .wd-rec-detail-hex-wrap.selected-main::before {
+        content: '';
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        top: -3px;
+        bottom: -3px;
+        background: var(--accent);
+        clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+        z-index: 0;
+    }
+
+    .wd-rec-detail-hex-wrap.is-selected .wd-rec-detail-hex,
+    .wd-rec-detail-hex-wrap.selected-main .wd-rec-detail-hex {
+        position: relative;
+        z-index: 1;
+    }
+
+    .wd-rec-detail-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-detail-overclock {
+        flex: 0 0 auto;
+        min-height: 88px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0.52rem 0.55rem;
+        gap: 0.78rem;
+        margin-bottom: 0.32rem;
+    }
+
+    .wd-rec-detail-overclock-hex-wrap {
+        flex-shrink: 0;
+        position: relative;
+        width: 70px;
+        height: 70px;
+        --oc-color: #6bcf7b;
+    }
+
+    .wd-rec-detail-overclock-hex-wrap::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--oc-color);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        opacity: 0.92;
+    }
+
+    .wd-rec-detail-overclock-hex-wrap.oc-type-clean { --oc-color: #6bcf7b; }
+    .wd-rec-detail-overclock-hex-wrap.oc-type-balanced { --oc-color: #d4a843; }
+    .wd-rec-detail-overclock-hex-wrap.oc-type-unstable { --oc-color: #e06c75; }
+
+    .wd-rec-detail-overclock-hex {
+        position: relative;
+        z-index: 1;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        margin: 5px;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        background: #fff;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wd-rec-detail-overclock-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-detail-overclock-desc {
+        flex: 1;
+        min-width: 0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.42;
+    }
+
+    .wd-rec-detail-overclock-name {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: bold;
+    }
+
+    .wd-rec-detail-overclock-type {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+    }
+
+    .wd-rec-detail-overclock-text {
+        margin-top: 0.1rem;
+    }
+
+    .wd-rec-detail-attrs {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        max-height: 30%;
+        margin-top: 0.6rem;
+        padding: 0.35rem 0.5rem;
+        overflow-y: auto;
+    }
+
+    .wd-rec-detail-right {
+        flex: 0 0 60%;
+        min-width: 300px;
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wd-rec-article-body {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 1rem 1.4rem;
+    }
+
+    .wd-rec-article-body h1.rec-title {
+        font-size: 1.2rem;
+        color: var(--accent);
+        margin: 0 0 0.45rem;
+        line-height: 1.35;
+    }
+
+    .wd-rec-article-body .rec-subtitle {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin: 0 0 0.55rem;
+        line-height: 1.38;
+    }
+
+    .wd-rec-article-body .rec-tags {
+        margin-bottom: 0.6rem;
+    }
+
+    .wd-rec-article-body .rec-tags .tag {
+        margin-right: 0.3rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .wd-rec-article-body .rec-missions {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin: 0.25rem 0 0.6rem;
+    }
+
+    .wd-rec-article-body .rec-divider {
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin: 0.6rem 0;
+    }
+
+    .wd-rec-article-body .rec-overclock-detail {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0.6rem;
+        background: rgba(25, 27, 32, 0.5);
+        border-radius: 6px;
+        margin-bottom: 0.6rem;
+    }
+
+    .wd-rec-article-body .rec-oc-hex {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        overflow: hidden;
+        background: rgba(30, 32, 38, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wd-rec-article-body .rec-oc-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .wd-rec-article-body .rec-oc-name {
+        font-size: 0.95rem;
+        color: var(--text);
+        font-weight: bold;
+    }
+
+    .wd-rec-article-body .rec-oc-type {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .wd-rec-article-body .rec-oc-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+        margin-top: 0.15rem;
+    }
+
+    .wd-rec-article-body .rec-oc-traits {
+        margin-top: 0.3rem;
+    }
+
+    .wd-rec-article-body .rec-oc-trait {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .wd-rec-article-body .rec-oc-trait.trait-positive { color: #6bcf7b; }
+    .wd-rec-article-body .rec-oc-trait.trait-negative { color: #e06c75; }
+
+    .wd-rec-article-body .rec-tier-block {
+        padding: 0.5rem 0.75rem;
+        margin: 0.3rem 0;
+        border-left: 3px solid transparent;
+        border-radius: 4px;
+        transition: border-color 0.25s, background 0.25s;
+    }
+
+    .wd-rec-article-body .rec-tier-block.highlight {
+        border-left-color: var(--accent);
+        background: rgba(201, 162, 39, 0.12);
+    }
+
+    .wd-rec-article-body .rec-tier-block strong {
+        color: var(--accent);
+    }
+
+    .wd-rec-article-body .markdown-body {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .wd-rec-article-body .markdown-body p {
+        margin: 0.35rem 0;
+    }
+
+    .wd-rec-article-body .markdown-body ul,
+    .wd-rec-article-body .markdown-body ol {
+        margin: 0.35rem 0;
+        padding-left: 1.25rem;
+    }
+
+    .wd-rec-article-body .markdown-body h2 {
+        font-size: 1.05rem;
+        color: var(--accent);
+        margin: 0.75rem 0 0.35rem;
+    }
+
+    .wd-rec-article-body .markdown-body h2:first-child {
+        margin-top: 0;
+    }
+
+    .wd-rec-article-body .rec-section-title {
+        font-size: 1.05rem;
+        color: var(--accent);
+        font-weight: bold;
+        margin: 0.4rem 0 0.3rem;
+    }
+
+    /* ===== 响应式适配 ===== */
+    /* 高分辨率 / 4K 大屏 */
+    @media (min-width: 2560px) {
+        .wd-tier-row {
+            height: min(90px, 9vh);
+        }
+
+        .wd-tier-header {
+            padding: 0.55rem 1rem;
+            font-size: 1.3rem;
+        }
+
+        .wd-overclock-hex-wrap {
+            width: 110px;
+            height: 110px;
+        }
+
+        .wd-overclock-desc {
+            font-size: 1.5rem;
+        }
+
+        .wd-name {
+            font-size: 2rem;
+        }
+
+        .wd-attr {
+            min-width: 380px;
+            max-width: 560px;
+        }
+
+        .wd-attr table {
+            font-size: 1.15rem;
+        }
+
+        .wd-attr td {
+            padding: 0.4rem 0.55rem;
+        }
+
+        .wd-tooltip {
+            max-width: 440px;
+            font-size: 1.1rem;
+        }
+
+        .wd-tt-icon {
+            width: 54px;
+            height: 54px;
+        }
+
+        .wd-info-btn {
+            width: 42px;
+            height: 42px;
+            font-size: 1.3rem;
+        }
+
+        .wd-desc {
+            font-size: 1.2rem;
+            max-width: 440px;
+        }
+
+        .wd-oc-drawer-wrap {
+            width: 84px;
+            height: 84px;
+        }
+
+        .wd-oc-type-label {
+            font-size: 1rem;
+        }
+    }
+
+    @media (min-width: 3200px) {
+        .wd-tier-row {
+            height: min(110px, 10vh);
+        }
+
+        .wd-tier-header {
+            padding: 0.7rem 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        .wd-overclock-hex-wrap {
+            width: 130px;
+            height: 130px;
+        }
+
+        .wd-overclock-desc {
+            font-size: 1.7rem;
+        }
+
+        .wd-name {
+            font-size: 2.4rem;
+        }
+
+        .wd-attr {
+            min-width: 440px;
+            max-width: 660px;
+        }
+
+        .wd-attr table {
+            font-size: 1.3rem;
+        }
+
+        .wd-tooltip {
+            max-width: 520px;
+            font-size: 1.25rem;
+        }
+
+        .wd-rec-btn {
+            font-size: 1.35rem;
+        }
+    }
+
+    /* 中等屏幕 (平板横屏 / 小桌面) */
+    @media (max-width: 1024px) {
+        .wd-left {
+            flex: 1 1 50%;
+            min-width: 260px;
+            padding: 0.75rem;
+        }
+
+        .wd-right {
+            flex: 0 0 50%;
+            max-width: none;
+        }
+
+        .wd-attr {
+            min-width: 220px;
+            max-width: 320px;
+            font-size: 0.85rem;
+        }
+
+        .wd-attr table {
+            font-size: 0.85rem;
+        }
+
+        .wd-overclock-hex-wrap {
+            width: 64px;
+            height: 64px;
+        }
+
+        .wd-overclock-desc {
+            font-size: 0.95rem;
+        }
+
+        .wd-rec-tabs {
+            flex-basis: 220px;
+            min-width: 190px;
+        }
+    }
+
+    /* 小屏幕 (平板竖屏 / 大手机横屏) */
+    @media (max-width: 768px) {
+        body.page-weapon-detail {
+            overflow: auto;
+            height: auto;
+        }
+
+        body.page-weapon-detail main {
+            overflow: auto;
+            height: auto;
+        }
+
+        .wd-layout {
+            flex-direction: column;
+            height: auto;
+            overflow: visible;
+        }
+
+        .wd-left {
+            flex: 0 0 auto;
+            min-width: 0;
+            min-height: 300px;
+            max-height: 45vh;
+        }
+
+        .wd-right {
+            flex: 0 0 auto;
+            max-width: none;
+            min-width: 0;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .wd-right-inner {
+            height: auto;
+        }
+
+        .wd-tier-section {
+            flex: 0 0 auto;
+            min-height: 200px;
+        }
+
+        .wd-tier-grid {
+            min-height: 180px;
+        }
+
+        .wd-overclock-section {
+            min-height: 60px;
+            padding: 0.5rem;
+        }
+
+        .wd-overclock-hex-wrap {
+            width: 56px;
+            height: 56px;
+        }
+
+        .wd-overclock-desc {
+            font-size: 0.9rem;
+        }
+
+        .wd-attr {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            min-width: 0;
+            max-width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .wd-desc {
+            max-width: 90%;
+        }
+
+        .wd-mode-btn {
+            min-width: 92px;
+        }
+
+        .wd-rec-layout {
+            flex-direction: column;
+            min-height: 420px;
+        }
+
+        .wd-rec-tabs {
+            flex: 0 0 auto;
+            min-width: 0;
+            max-width: none;
+            max-height: 44vh;
+            border-right: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .wd-rec-tab-title {
+            white-space: normal;
+            font-size: 0.86rem;
+        }
+
+        .wd-rec-detail-layout {
+            flex-direction: column;
+        }
+
+        .wd-rec-detail-left {
+            flex: 0 0 auto;
+            min-width: 0;
+            border-right: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            max-height: none;
+            min-height: 300px;
+        }
+
+        .wd-rec-detail-weapon-row {
+            min-height: 150px;
+            max-height: none;
+        }
+
+        .wd-rec-detail-pic {
+            min-height: 150px;
+        }
+
+        .wd-rec-detail-attrs {
+            max-height: none;
+        }
+
+        .wd-rec-detail-right {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .wd-rec-article-body {
+            padding: 0.75rem 0.8rem;
+        }
+    }
+
+    /* 手机竖屏 */
+    @media (max-width: 480px) {
+        .wd-name {
+            font-size: 1.15rem;
+        }
+
+        .wd-left {
+            padding: 0.5rem;
+            min-height: 220px;
+            max-height: 35vh;
+        }
+
+        .wd-overclock-section {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .wd-overclock-hex-wrap {
+            width: 48px;
+            height: 48px;
+        }
+
+        .wd-overclock-desc {
+            font-size: 0.85rem;
+        }
+
+        .wd-desc {
+            font-size: 0.9rem;
+        }
+
+        .wd-attr table {
+            font-size: 0.8rem;
+        }
+
+        .wd-rec-detail-tier-row {
+            height: auto;
+            min-height: 42px;
+        }
+
+        .wd-rec-detail-hex-wrap {
+            height: 38px;
+        }
+
+        .wd-rec-detail-weapon-row {
+            min-height: 130px;
+        }
+
+        .wd-rec-detail-pic {
+            min-height: 130px;
+        }
+
+        .wd-rec-detail-overclock-hex-wrap {
+            width: 52px;
+            height: 52px;
+        }
+
+        .wd-rec-article-body {
+            padding: 0.7rem;
+        }
+    }
+</style>
+
+    </style>
+</head>
+<body class="page-weapon-detail">
+    <header>
+        <div class="container">
+            
+            <nav class="site-nav" aria-label="主导航">
+                <a href="/DRGPage/" class="is-active">武器加点</a>
+                
+                <a href="/DRGPage/task-combo/" class="">任务搭配</a>
+                <a href="/DRGPage/diy-peripherals/" class="">自制外设</a>
+                
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        
+<div class="wd-mode-switch" id="wd-mode-switch">
+    <span class="wd-mode-indicator" aria-hidden="true"></span>
+    <button type="button" class="wd-mode-btn is-active" data-mode="simulate">模拟界面</button>
+    <button type="button" class="wd-mode-btn" data-mode="recommend" disabled>推荐界面</button>
+</div>
+
+<div class="wd-mode-panels" id="wd-mode-panels">
+    <div class="wd-mode-panel is-active" data-mode-panel="simulate">
+        <div class="wd-layout">
+            <div class="wd-left">
+                <h1 class="wd-name">“疣猪”2I0自动霰弹枪</h1>
+                <div class="wd-pic-wrap">
+                    
+                    <img src="/DRGPage/assets/weapons/wpimg_13.png" alt="“疣猪”2I0自动霰弹枪" id="wd-weapon-pic">
+                    
+                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述">ℹ</button>
+                    <div class="wd-desc" id="wd-desc">这把枪中猛兽正如其名，绝对不会让你失望。容纳六发霞弹，其连珠炮般的射击可造成大面积致命性伤害。</div>
+                </div>
+                <div class="wd-attr" id="wd-attr">
+                    <table>
+                        <tbody id="wd-attr-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="wd-right">
+                <div class="wd-right-inner">
+                    <div class="wd-tier-section">
+                        <div class="wd-tier-header">改装项目</div>
+                        <div class="wd-tier-grid" id="wd-tier-grid-wrap">
+                            <div class="wd-tier-first-col-bg" id="wd-tier-first-col-bg" aria-hidden="true"></div>
+                            <div class="wd-tier-grid-inner" id="wd-tier-grid"></div>
+                        </div>
+                    </div>
+                    <div class="wd-overclock-section">
+                        <div class="wd-overclock-hex-wrap" id="wd-overclock-trigger">
+                            <div class="wd-overclock-hex" id="wd-overclock-hex"></div>
+                        </div>
+                        <div class="wd-overclock-desc" id="wd-overclock-desc"></div>
+                    </div>
+                    <div class="wd-oc-drawer" id="wd-oc-drawer">
+                        <div class="wd-oc-drawer-inner" id="wd-oc-drawer-inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wd-mode-panel" data-mode-panel="recommend">
+        <div class="wd-rec-layout">
+            
+            <section class="wd-rec-detail-wrap">
+                <div class="wd-rec-empty">该武器暂无推荐内容。</div>
+            </section>
+            
+        </div>
+    </div>
+</div>
+
+<div class="wd-tooltip" id="wd-tooltip" style="display:none;"></div>
+
+
+<script>
+    (function () {
+        var ICONS_BASE = "/DRGPage/assets/icons-mod/";
+    var OVERCLOCKS_BASE = "/DRGPage/assets/icons-mod/";
+    var baseAttributes = {"\u4f24\u5bb3": {"type": "float", "value": 7.0}, "\u5c04\u901f": {"type": "float", "value": 2.0}, "\u5f31\u70b9\u51fb\u6655\u65f6\u957f": {"type": "float", "value": 3.0}, "\u5f39\u4e38": {"type": "float", "value": 8.0}, "\u5f39\u5323\u5bb9\u91cf": {"type": "float", "value": 6.0}, "\u6362\u5f39\u65f6\u95f4": {"lowerIsBetter": true, "type": "float", "value": 2.0}, "\u6700\u5927\u5907\u5f39\u91cf": {"type": "float", "value": 90.0}, "\u6bcf\u53d1\u5f39\u4e38\u5f31\u70b9\u51fb\u6655\u51e0\u7387": {"type": "percent", "value": 10.0}};
+    var tiersData = {"1": [{"description": "\u6211\u4eec\u8d85\u9891\u4e86\u4f60\u7684\u67aa\uff0c\u73b0\u5728\u5b83\u5c04\u7684\u66f4\u5feb\u4e86\u3002\u522b\u591a\u95ee\uff0c\u8fd9\u79cd\u4e1c\u897f\u5c0f\u8303\u56f4\u4eab\u53d7\u5c31\u53ef\u4ee5\u4e86\u3002\u4e5f\u522b\u8ba9\u7ba1\u7406\u5c42\u77e5\u9053\u3002", "display_description": "\u6b64\u5c5e\u6027\u51b3\u5b9a\u4e86\u6b66\u5668\u6bcf\u79d2\u53ef\u5c04\u51fb\u591a\u5c11\u6b21", "effect": [{"attr": "\u5c04\u901f", "change": "increase", "dataType": "float", "op": "modify", "value": 1}], "entry_description": "\u6b64\u5c5e\u6027\u51b3\u5b9a\u4e86\u6b66\u5668\u6bcf\u79d2\u53ef\u5c04\u51fb\u591a\u5c11\u6b21", "icon_stem": "\u5c04\u901f", "icon_url": "\u5c04\u901f.png", "id": 76, "name_cn": "\u8d85\u8f7d\u4f9b\u5f39\u7ed3\u6784"}, {"description": "\u8981\u8bf4\u5f39\u5939\u3001\u5f39\u5323\u3001\u5f39\u9f13\u3001\u71c3\u6599\u7bb1\u7684\u5171\u540c\u4f18\u70b9\u4f60\u603b\u80fd\u627e\u5230\u6bd4\u5b83\u4eec\u5927\u4e00\u70b9\u70b9\u7684\u578b\u53f7\u3002", "display_description": "\u5f39\u5939\u3001\u5f39\u5323\u6216\u50a8\u7f50\u7684\u5c3a\u5bf8\u4f1a\u5f71\u54cd\u6b66\u5668\u91cd\u65b0\u88c5\u586b\u524d\u53ef\u53d1\u5c04\u7684\u5f39\u836f\u6570\u91cf\u3002", "effect": [{"attr": "\u5f39\u5323\u5bb9\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 2}], "entry_description": "\u5f39\u5939\u3001\u5f39\u5323\u6216\u50a8\u7f50\u7684\u5c3a\u5bf8\u4f1a\u5f71\u54cd\u6b66\u5668\u91cd\u65b0\u88c5\u586b\u524d\u53ef\u53d1\u5c04\u7684\u5f39\u836f\u6570\u91cf\u3002", "icon_stem": "\u5f39\u5323\u5bb9\u91cf", "icon_url": "\u5f39\u5323\u5bb9\u91cf.png", "id": 77, "name_cn": "\u201c\u8fc7\u201d\u5bb9\u5f39\u5323"}], "2": [{"description": "\u4f60\u4e0d\u5f97\u4e0d\u5c11\u5e26\u51e0\u4e2a\u4e09\u660e\u6cbb\uff0c\u4f46\u4f60\u7684\u603b\u5907\u5f39\u91cf\u589e\u52a0\u4e86!", "display_description": "\u6700\u5927\u5907\u5f39\u4e0a\u9650\u51b3\u5b9a\u4e86\u4f60\u5728\u4efb\u52a1\u5f00\u59cb\u65f6\u643a\u5e26\u7684\u5f39\u836f\u603b\u91cf\u4ee5\u53ca\u4f60\u53ef\u4ee5\u518d\u8865\u7ed9\u7684\u6700\u5927\u5f39\u836f\u6570\u91cf\u3002", "effect": [{"attr": "\u6700\u5927\u5907\u5f39\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 42}], "entry_description": "\u6700\u5927\u5907\u5f39\u4e0a\u9650\u51b3\u5b9a\u4e86\u4f60\u5728\u4efb\u52a1\u5f00\u59cb\u65f6\u643a\u5e26\u7684\u5f39\u836f\u603b\u91cf\u4ee5\u53ca\u4f60\u53ef\u4ee5\u518d\u8865\u7ed9\u7684\u6700\u5927\u5f39\u836f\u6570\u91cf\u3002", "icon_stem": "\u603b\u5f39\u836f\u91cf", "icon_url": "\u603b\u5f39\u836f\u91cf.png", "id": 78, "name_cn": "\u6269\u5bb9\u5f39\u888b"}, {"description": "\u589e\u52a0\u6bcf\u53d1\u9730\u5f39\u5185\u7684\u5f39\u4e38\u91cf\u3002", "display_description": "\u9730\u5f39\u67aa\u7684\u6bcf\u53d1\u9730\u5f39\u4e2d\u90fd\u5305\u542b\u5f88\u591a\u5c0f\u5f39\u4e38\u3002\u589e\u52a0\u5f39\u4e38\u6570\u91cf\u80fd\u63d0\u5347\u6b66\u5668\u53ef\u9020\u6210\u7684\u4f24\u5bb3\u4ee5\u53ca\u51fb\u4e2d\u76ee\u6807\u7684\u51e0\u7387\u3002", "effect": [{"attr": "\u5f39\u4e38", "change": "increase", "dataType": "float", "op": "modify", "value": 2}], "entry_description": "\u9730\u5f39\u67aa\u7684\u6bcf\u53d1\u9730\u5f39\u4e2d\u90fd\u5305\u542b\u5f88\u591a\u5c0f\u5f39\u4e38\u3002\u589e\u52a0\u5f39\u4e38\u6570\u91cf\u80fd\u63d0\u5347\u6b66\u5668\u53ef\u9020\u6210\u7684\u4f24\u5bb3\u4ee5\u53ca\u51fb\u4e2d\u76ee\u6807\u7684\u51e0\u7387\u3002", "icon_stem": "\u5f39\u4e38\u6570\u91cf", "icon_url": "\u5f39\u4e38\u6570\u91cf.png", "id": 79, "name_cn": "\u8fc7\u9971\u548c\u9730\u5f39"}, {"description": "\u7f29\u5c0f\u5f39\u4e38\u6563\u5e03\u3002", "display_description": "\u5bf9\u4e8e\u5927\u591a\u6570\u6b66\u5668\uff0c\u6bcf\u6b21\u5c04\u51fb\u90fd\u4f1a\u589e\u52a0\u51c6\u661f\u79bb\u6563\u5ea6\uff0c\u56e0\u6b64\u5982\u679c\u4f60\u4e00\u76f4\u5f00\u706b\uff0c\u5c04\u51fb\u5c31\u4f1a\u53d8\u5f97\u4e0d\u90a3\u4e48\u7cbe\u51c6\u3002\u8fd9\u70b9\u53ef\u4ee5\u901a\u8fc7\u51c6\u661f\u770b\u51fa\u6765\u3002", "effect": [{"attr": "\u57fa\u7840\u6563\u5e03", "dataType": "percent", "fromValue": 100, "lowerIsBetter": true, "op": "add", "value": 50}], "entry_description": "\u5bf9\u4e8e\u5927\u591a\u6570\u6b66\u5668\uff0c\u6bcf\u6b21\u5c04\u51fb\u90fd\u4f1a\u589e\u52a0\u51c6\u661f\u79bb\u6563\u5ea6\uff0c\u56e0\u6b64\u5982\u679c\u4f60\u4e00\u76f4\u5f00\u706b\uff0c\u5c04\u51fb\u5c31\u4f1a\u53d8\u5f97\u4e0d\u90a3\u4e48\u7cbe\u51c6\u3002\u8fd9\u70b9\u53ef\u4ee5\u901a\u8fc7\u51c6\u661f\u770b\u51fa\u6765\u3002", "icon_stem": "\u7cbe\u51c6\u5ea6", "icon_url": "\u7cbe\u51c6\u5ea6.png", "id": 80, "name_cn": "\u6536\u675f\u5668"}], "3": [{"description": "\u4f18\u79c0\u5de5\u7a0b\u8bbe\u8ba1\u3001\u7cbe\u5bc6\u6fc0\u5149\u5207\u5272\uff0c\u548c\u6765\u81ea\u7814\u53d1\u90e8\u7cbe\u5fc3\u8c03\u6574\u7684\u76f8\u8f85\u76f8\u6210\u4e4b\u4e0b\uff0c\u6b66\u5668\u7684\u540e\u5750\u529b\u5927\u5927\u51cf\u5c11\u3002", "display_description": "\u4f7f\u7528\u8f83\u4e3a\u5f3a\u529b\u7684\u6b66\u5668\u5c04\u51fb\u65f6\u4f1a\u5bfc\u81f4\u89c6\u91ce\u79fb\u52a8\u3002\u6539\u8fdb\u540e\u5750\u529b\u5c06\u964d\u4f4e\u89c6\u91ce\u79fb\u52a8\u5e45\u5ea6\uff0c\u63d0\u5347\u6301\u7eed\u5c04\u51fb\u65f6\u7684\u547d\u4e2d\u7387\u3002", "effect": [{"attr": "\u540e\u5750\u529b", "dataType": "percent", "fromValue": 100, "lowerIsBetter": true, "op": "add", "value": 40}], "entry_description": "\u4f7f\u7528\u8f83\u4e3a\u5f3a\u529b\u7684\u6b66\u5668\u5c04\u51fb\u65f6\u4f1a\u5bfc\u81f4\u89c6\u91ce\u79fb\u52a8\u3002\u6539\u8fdb\u540e\u5750\u529b\u5c06\u964d\u4f4e\u89c6\u91ce\u79fb\u52a8\u5e45\u5ea6\uff0c\u63d0\u5347\u6301\u7eed\u5c04\u51fb\u65f6\u7684\u547d\u4e2d\u7387\u3002", "icon_stem": "\u540e\u5750\u529b", "icon_url": "\u540e\u5750\u529b.png", "id": 81, "name_cn": "\u540e\u5750\u7f13\u51b2\u5668"}, {"description": "\u957f\u671f\u7ecf\u9a8c\u3001\u523b\u82e6\u8bad\u7ec3\uff0c\u5916\u52a0\u90a3\u4e48\u4ebf\u4e22\u4e22\u7684\u79c1\u4e0b\"\u6539\u52a8\u201d\u4f7f\u5f97\u6b66\u5668\u7684\u6362\u5f39\u66f4\u52a0\u8fc5\u901f\u3002", "display_description": "\u6362\u5f39\u65f6\u95f4\u8d8a\u77ed\u610f\u5473\u7740\u4f60\u5728\u6253\u7a7a\u5f39\u5323\u6216\u624b\u52a8\u6362\u5f39\u540e\u80fd\u66f4\u5feb\u5730\u4f7f\u7528\u6b66\u5668\u3002", "effect": [{"attr": "\u6362\u5f39\u65f6\u95f4", "change": "decrease", "dataType": "float", "op": "modify", "value": 0.5}], "entry_description": "\u6362\u5f39\u65f6\u95f4\u8d8a\u77ed\u610f\u5473\u7740\u4f60\u5728\u6253\u7a7a\u5f39\u5323\u6216\u624b\u52a8\u6362\u5f39\u540e\u80fd\u66f4\u5feb\u5730\u4f7f\u7528\u6b66\u5668\u3002", "icon_stem": "\u6362\u5f39\u901f\u5ea6", "icon_url": "\u6362\u5f39\u901f\u5ea6.png", "id": 82, "name_cn": "\u5feb\u901f\u9000\u5f39\u5668"}, {"description": "\u8981\u8bf4\u5f39\u5939\u3001\u5f39\u5323\u3001\u5f39\u9f13\u3001\u71c3\u6599\u7bb1\u7684\u5171\u540c\u4f18\u70b9\u4f60\u603b\u80fd\u627e\u5230\u6bd4\u5b83\u4eec\u5927\u4e00\u70b9\u70b9\u7684\u578b\u53f7\u3002", "display_description": "\u5f39\u5939\u3001\u5f39\u5323\u6216\u50a8\u7f50\u7684\u5c3a\u5bf8\u4f1a\u5f71\u54cd\u6b66\u5668\u91cd\u65b0\u88c5\u586b\u524d\u53ef\u53d1\u5c04\u7684\u5f39\u836f\u6570\u91cf\u3002", "effect": [{"attr": "\u5f39\u5323\u5bb9\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 2}], "entry_description": "\u5f39\u5939\u3001\u5f39\u5323\u6216\u50a8\u7f50\u7684\u5c3a\u5bf8\u4f1a\u5f71\u54cd\u6b66\u5668\u91cd\u65b0\u88c5\u586b\u524d\u53ef\u53d1\u5c04\u7684\u5f39\u836f\u6570\u91cf\u3002", "icon_stem": "\u5f39\u5323\u5bb9\u91cf", "icon_url": "\u5f39\u5323\u5bb9\u91cf.png", "id": 83, "name_cn": "\u5927\u5bb9\u91cf\u5f39\u5323"}], "4": [{"description": "\u62a4\u7532\u7834\u574f--\u6211\u4eec\u7684\u81ea\u8c6a\u4e4b\u4f5c\u3002\u6495\u88c2\u90a3\u4e9b\u5927\u53f7\u866b\u5b50\u7684\u9ad8\u5bc6\u5ea6\u5916\u9aa8\u9abc\u7684\u4f53\u9a8c\u5c31\u8ddf\u62bf\u9ec4\u6cb9\u4e00\u6837\uff0c\u7eb5\u4eab\u4e1d\u6ed1\u3002\u8fd8\u6709\u6bd4\u8fd9\u66f4\u68d2\u7684\u4e1c\u897f\u5417?", "display_description": "\u8bb8\u591a\u654c\u4eba\u90fd\u6709\u786c\u58f3\u62a4\u7532\uff0c\u53ef\u51cf\u5c11\u53d7\u5230\u7684\u4f24\u5bb3\u751a\u81f3\u5b8c\u5168\u9632\u5f39\u3002\u62a4\u7532\u90e8\u4f4d\u90fd\u6709\u4e00\u5b9a\u751f\u547d\u503c\u5e76\u53ef\u88ab\u4efb\u610f\u79cd\u7c7b\u7684\u4f24\u5bb3\u7834\u574f\u3002\u7136\u800c\uff0c\u5177\u6709\u7834\u7532\u80fd\u529b\u7684\u5f39\u836f\u5728\u51fb\u7834\u62a4\u7532\u65b9\u9762\u8868\u73b0\u5c24\u4e3a\u51fa\u8272\u3002", "effect": [{"attr": "\u62a4\u7532\u7834\u574f", "dataType": "percent", "fromValue": 100, "op": "add", "value": 500}], "entry_description": "\u8bb8\u591a\u654c\u4eba\u90fd\u6709\u786c\u58f3\u62a4\u7532\uff0c\u53ef\u51cf\u5c11\u53d7\u5230\u7684\u4f24\u5bb3\u751a\u81f3\u5b8c\u5168\u9632\u5f39\u3002\u62a4\u7532\u90e8\u4f4d\u90fd\u6709\u4e00\u5b9a\u751f\u547d\u503c\u5e76\u53ef\u88ab\u4efb\u610f\u79cd\u7c7b\u7684\u4f24\u5bb3\u7834\u574f\u3002\u7136\u800c\uff0c\u5177\u6709\u7834\u7532\u80fd\u529b\u7684\u5f39\u836f\u5728\u51fb\u7834\u62a4\u7532\u65b9\u9762\u8868\u73b0\u5c24\u4e3a\u51fa\u8272\u3002", "icon_stem": "\u62a4\u7532\u7834\u574f", "icon_url": "\u62a4\u7532\u7834\u574f.png", "id": 84, "name_cn": "\u9540\u94a8\u5f39\u4e38"}, {"description": "\u7814\u53d1\u90e8\u52a0\u73ed\u9020\u6210\u7684\u8eab\u4f53\u4e0e\u7cbe\u795e\u4e0a\u7684\u4f24\u5bb3\uff0c\u6362\u53d6\u4e86\u6b66\u5668\u7684\u6574\u4f53\u4f24\u5bb3\u63d0\u5347\u3002", "display_description": "\u7531\u6b66\u5668\u5bf9\u654c\u4eba\u9020\u6210\u7684\u76f4\u63a5\u4f24\u5bb3\u3002\u4f24\u5bb3\u7c7b\u578b\u6709\u5404\u79cd\u5404\u6837(\u8fd1\u6218\u3001\u52a8\u80fd\u3001\u706b\u7130\u3001\u51b0\u51bb.....)\uff0c\u4e0d\u540c\u7684\u4f24\u5bb3\u7c7b\u578b\u4f1a\u56e0\u4e3a\u5404\u79cd\u654c\u4eba\u4e0d\u540c\u7684\u5f31\u70b9\u800c\u9020\u6210\u4e0d\u4e00\u6837\u7684\u5b9e\u9645\u4f24\u5bb3\u6570\u503c\u3002", "effect": [{"attr": "\u4f24\u5bb3", "change": "increase", "dataType": "float", "op": "modify", "value": 1}], "entry_description": "\u7531\u6b66\u5668\u5bf9\u654c\u4eba\u9020\u6210\u7684\u76f4\u63a5\u4f24\u5bb3\u3002\u4f24\u5bb3\u7c7b\u578b\u6709\u5404\u79cd\u5404\u6837(\u8fd1\u6218\u3001\u52a8\u80fd\u3001\u706b\u7130\u3001\u51b0\u51bb.....)\uff0c\u4e0d\u540c\u7684\u4f24\u5bb3\u7c7b\u578b\u4f1a\u56e0\u4e3a\u5404\u79cd\u654c\u4eba\u4e0d\u540c\u7684\u5f31\u70b9\u800c\u9020\u6210\u4e0d\u4e00\u6837\u7684\u5b9e\u9645\u4f24\u5bb3\u6570\u503c\u3002", "icon_stem": "\u4f24\u5bb3", "icon_url": "\u4f24\u5bb3.png", "id": 85, "name_cn": "\u5927\u53f7\u5f39\u4e38"}], "5": [{"description": "\u5c04\u51fb\u4f60\u7684\u70ae\u53f0\u5c06\u4f7f\u5176\u8fdb\u884c\u8fc7\u8f7d\u5c04\u51fb\u3002", "display_description": "\u5c04\u51fb\u4f60\u7684\u70ae\u53f0\u5c06\u4f7f\u5176\u8fdb\u884c\u8fc7\u8f7d\u5c04\u51fb\u3002", "effect": [{"op": "add", "text": "\u70ae\u53f0\u97ad\u7b56", "textOnly": true}], "entry_description": "", "icon_stem": "\u7279\u6b8a", "icon_url": "\u7279\u6b8a.png", "id": 86, "name_cn": "\u70ae\u53f0\u97ad\u7b56"}, {"description": "\u5c04\u51fb\u6a21\u5f0f\u53d8\u4e3a\u5168\u81ea\u52a8\uff0c\u540c\u65f6\u5c04\u901f\u63d0\u5347\u3002", "display_description": "\u6b64\u5c5e\u6027\u51b3\u5b9a\u4e86\u6b66\u5668\u6bcf\u79d2\u53ef\u5c04\u51fb\u591a\u5c11\u6b21", "effect": [{"op": "add", "text": "\u77ff\u5de5\u5fae\u8c03", "textOnly": true}, {"attr": "\u5c04\u901f", "change": "increase", "dataType": "float", "op": "modify", "value": 0.5}], "entry_description": "\u6b64\u5c5e\u6027\u51b3\u5b9a\u4e86\u6b66\u5668\u6bcf\u79d2\u53ef\u5c04\u51fb\u591a\u5c11\u6b21", "icon_stem": "\u5c04\u901f", "icon_url": "\u5c04\u901f.png", "id": 87, "name_cn": "\u77ff\u5de5\u5fae\u8c03"}]};
+    var overclocksData = [{"description": "\u80fd\u4ece\u5f39\u5323\u4e0a\u62c6\u51fa\u8fd9\u4e48\u591a\u7684\u65e0\u7528\u6750\u6599\u65e2\u53ef\u79f0\u4e4b\u4e3a\u5947\u8ff9\u53c8\u4ee4\u4eba\u53d1\u6307\uff0c\u800c\u66f4\u8f7b\u7684\u5f39\u5323\u610f\u5473\u7740\u5e26\u5f97\u66f4\u591a\u3001\u6362\u5f97\u66f4\u5feb\u3002", "effect": [{"attr": "\u6700\u5927\u5907\u5f39\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 18}, {"attr": "\u6362\u5f39\u65f6\u95f4", "change": "decrease", "dataType": "float", "op": "modify", "value": 0.6}], "icon_url": "\u603b\u5f39\u836f\u91cf.png", "id": 41, "name_cn": "\u8f7b\u91cf\u5f39\u5323", "overclock_type": "clean", "traits": [{"positive": true, "text": "\u66f4\u591a\u5f39\u836f"}, {"positive": true, "text": "\u66f4\u5feb\u7684\u6362\u5f39\u901f\u5ea6"}]}, {"description": "\u8d28\u91cf\u66f4\u91cd\u7684\u5f39\u4e38\u4f7f\u5f97\u5728\u51fb\u4e2d\u5f31\u70b9\u4ee5\u5916\u7684\u8eab\u4f53\u90e8\u4f4d\u65f6\u4e5f\u6709\u51e0\u7387\u51fb\u6655\u654c\u4eba\uff0c\u540c\u65f6\u5b83\u8fd8\u80fd\u5bf9\u5df2\u88ab\u51fb\u6655\u7684\u654c\u4eba\u9020\u6210\u989d\u5916\u4f24\u5bb3\u3002", "effect": [], "icon_url": "\u51fb\u6655.png", "id": 42, "name_cn": "\u7729\u6655\u6253\u51fb", "overclock_type": "clean", "traits": [{"positive": true, "text": "\u547d\u4e2d\u4efb\u4f55\u90e8\u4f4d\u90fd\u53ef\u51fb\u6655\u654c\u4eba"}, {"positive": true, "text": "\u88ab\u51fb\u6655\u76ee\u6807\u9020\u6210\u989d\u5916\u4f24\u5bb3"}]}, {"description": "\u67aa\u819b\u5185\u52a0\u88c5\u7684\u7535\u78c1\u94c1\u867d\u7136\u9650\u5236\u4e86\u6b66\u5668\u5c04\u901f\uff0c\u4f46\u5f39\u4e38\u7684\u6269\u6563\u88ab\u5927\u5e45\u7f29\u5c0f\uff0c\u5e76\u63d0\u4f9b\u989d\u5916\u7684\u5f31\u70b9\u4f24\u5bb3\u3002", "effect": [{"attr": "\u5c04\u901f", "change": "decrease", "dataType": "float", "op": "modify", "value": 0.5}, {"attr": "\u57fa\u7840\u6563\u5e03", "dataType": "percent", "fromValue": 100, "lowerIsBetter": true, "op": "add", "value": 50}, {"attr": "\u5f31\u70b9\u4f24\u5bb3\u52a0\u6210", "dataType": "percent", "fromValue": 0, "op": "add", "value": 30}], "icon_url": "\u7cbe\u51c6\u5ea6.png", "id": 43, "name_cn": "\u78c1\u529b\u52bf\u9631", "overclock_type": "balanced", "traits": [{"positive": true, "text": "\u663e\u8457\u7f29\u5c0f\u57fa\u7840\u6563\u5e03"}, {"positive": true, "text": "\u63d0\u5347\u5f31\u70b9\u4f24\u5bb3\u52a0\u6210"}, {"positive": false, "text": "\u964d\u4f4e\u5c04\u901f"}]}, {"description": "\u4e00\u79cd\u57fa\u4e8e\u65b0\u578b\u706b\u836f\u6240\u8bbe\u8ba1\u7684\u5c0f\u5c3a\u5bf8\u9730\u5f39\u3002\u867d\u7136\u540e\u5750\u529b\u5c0f\u4e86\u4e0d\u5c11\uff0c\u6b66\u5668\u8f7d\u5f39\u91cf\u548c\u5907\u5f39\u4e5f\u63d0\u5347\u4e86\uff0c\u4f46\u6bcf\u53d1\u9730\u5f39\u7684\u4f24\u5bb3\u4e5f\u53d8\u4f4e\u4e86\u3002", "effect": [{"attr": "\u4f24\u5bb3", "change": "decrease", "dataType": "float", "op": "modify", "value": 2}, {"attr": "\u6700\u5927\u5907\u5f39\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 78}, {"attr": "\u5f39\u5323\u5bb9\u91cf", "change": "increase", "dataType": "float", "op": "modify", "value": 6}, {"attr": "\u6bcf\u53d1\u5f39\u4e38\u5f31\u70b9\u51fb\u6655\u51e0\u7387", "change": "decrease", "dataType": "percent", "op": "modify", "value": 10}, {"attr": "\u5f31\u70b9\u51fb\u6655\u65f6\u957f", "change": "decrease", "dataType": "float", "op": "modify", "value": 3}, {"attr": "\u540e\u5750\u529b", "dataType": "percent", "fromValue": 100, "lowerIsBetter": true, "op": "add", "value": 50}], "icon_url": "\u8ff7\u4f60\u9730\u5f39.png", "id": 44, "name_cn": "\u8ff7\u4f60\u9730\u5f39", "overclock_type": "unstable", "traits": [{"positive": true, "text": "\u5927\u5e45\u63d0\u5347\u5f39\u5323\u5bb9\u91cf\u548c\u5907\u5f39\u91cf"}, {"positive": true, "text": "\u66f4\u5c0f\u7684\u540e\u5750\u529b"}, {"positive": false, "text": "\u65e0\u6cd5\u51fb\u6655\u76ee\u6807"}, {"positive": false, "text": "\u964d\u4f4e\u9020\u6210\u7684\u4f24\u5bb3"}]}, {"description": "\u5bf9\u67aa\u819b\u7684\u5927\u578b\u6539\u9020\u5927\u5927\u63d0\u9ad8\u4e86\u6700\u9ad8\u5c04\u901f\u548c\u57fa\u7840\u4f24\u5bb3\uff0c\u4f46\u964d\u4f4e\u4e86\u6b66\u5668\u7684\u7cbe\u5ea6\u548c\u6362\u5f39\u901f\u5ea6\u3002", "effect": [{"attr": "\u4f24\u5bb3", "change": "increase", "dataType": "float", "op": "modify", "value": 1}, {"attr": "\u5c04\u901f", "change": "increase", "dataType": "float", "op": "modify", "value": 2}, {"attr": "\u6362\u5f39\u65f6\u95f4", "change": "increase", "dataType": "float", "op": "modify", "value": 0.5}, {"attr": "\u57fa\u7840\u6563\u5e03", "dataType": "percent", "fromValue": 100, "lowerIsBetter": true, "op": "add", "value": 150}], "icon_url": "\u5c04\u901f.png", "id": 45, "name_cn": "\u5faa\u73af\u8fc7\u8f7d", "overclock_type": "unstable", "traits": [{"positive": true, "text": "\u663e\u8457\u63d0\u9ad8\u5c04\u901f"}, {"positive": true, "text": "\u66f4\u5927\u7684\u4f24\u5bb3"}, {"positive": false, "text": "\u6269\u5927\u57fa\u7840\u6563\u5e03"}, {"positive": false, "text": "\u66f4\u957f\u7684\u6362\u5f39\u65f6\u95f4"}]}, {"description": "\u5c06\u6b66\u5668\u6539\u88c5\u6210\u80fd\u591f\u7a7f\u900f\u591a\u4e2a\u654c\u4eba\u5e76\u9020\u6210\u5de8\u989d\u4f24\u5bb3\u76846\u53f7\u8d85\u5927\u53e3\u5f84\u6cf5\u52a8\u5f0f\u971e\u5f39\u67aa\u3002\u4e3a\u4e86\u9002\u5e94\u8fd9\"\u7ecf\u5178\u201d\u7684\u6cf5\u52a8\u7ed3\u6784\uff0c\u5f39\u5323\u88ab\u66f4\u6362\u4e3a\u8f83\u5c0f\u7684\u578b\u53f7\u6240\u80fd\u643a\u5e26\u7684\u5927\u53e3\u5f84\u971e\u5f39\u76f8\u5bf9\u8f83\u5c11\u3002", "effect": [{"attr": "\u4f24\u5bb3", "change": "increase", "dataType": "float", "op": "modify", "value": 5}, {"attr": "\u5f39\u4e38", "change": "increase", "dataType": "float", "op": "modify", "value": 2}, {"attr": "\u6700\u5927\u7a7f\u900f\u6570", "dataType": "float", "fromValue": 0, "op": "add", "value": 1}, {"attr": "\u6700\u5927\u5907\u5f39\u91cf", "change": "decrease", "dataType": "float", "op": "modify", "value": 30}, {"attr": "\u5f39\u5323\u5bb9\u91cf", "change": "decrease", "dataType": "float", "op": "modify", "value": 1}, {"attr": "\u5c04\u901f", "change": "decrease", "dataType": "float", "op": "modify", "value": 1.1}], "icon_url": "\u7a7f\u900f.png", "id": 46, "name_cn": "\u6cf5\u52a8\u6539\u9020", "overclock_type": "unstable", "traits": [{"positive": true, "text": "\u5927\u5e45\u589e\u52a0\u5f39\u4e38\u6570\u91cf\u53ca\u4f24\u5bb3"}, {"positive": true, "text": "\u5f39\u4e38\u7a7f\u900f\u529b\u63d0\u5347"}, {"positive": false, "text": "\u964d\u4f4e\u5f39\u5323\u5bb9\u91cf\u548c\u5907\u5f39\u91cf"}, {"positive": false, "text": "\u964d\u4f4e\u5c04\u901f"}]}];
+
+    var state = { selected: {}, overclockId: null };
+    var tooltipEl = document.getElementById('wd-tooltip');
+    var tierGridEl = document.getElementById('wd-tier-grid');
+    var attrTbody = document.getElementById('wd-attr-tbody');
+    var overclockHexEl = document.getElementById('wd-overclock-hex');
+    var overclockDescEl = document.getElementById('wd-overclock-desc');
+    var overclockTrigger = document.getElementById('wd-overclock-trigger');
+    var ocDrawer = document.getElementById('wd-oc-drawer');
+    var ocDrawerInner = document.getElementById('wd-oc-drawer-inner');
+    var hoverOptionEffects = null;
+
+    function isLowerBetter(attrName) {
+        var base = baseAttributes[attrName];
+        if (base && typeof base === 'object' && base.lowerIsBetter) return true;
+        for (var tier = 1; tier <= 5; tier++) {
+            var opts = tiersData[String(tier)] || [];
+            for (var j = 0; j < opts.length; j++) {
+                var effs = opts[j].effect || [];
+                for (var e = 0; e < effs.length; e++) {
+                    if ((effs[e].attr || effs[e].attribute) === attrName && effs[e].lowerIsBetter) return true;
+                }
+            }
+        }
+        for (var k = 0; k < overclocksData.length; k++) {
+            var effs = overclocksData[k].effect || [];
+            for (var e = 0; e < effs.length; e++) {
+                if ((effs[e].attr || effs[e].attribute) === attrName && effs[e].lowerIsBetter) return true;
+            }
+        }
+        return false;
+    }
+
+    function applyEffects(baseAttrs, effects) {
+        var attrs = {};
+        if (baseAttrs && typeof baseAttrs === 'object') {
+            for (var k in baseAttrs) {
+                var v = baseAttrs[k];
+                if (v && typeof v === 'object' && ('value' in v)) attrs[k] = { type: v.type || 'float', value: Number(v.value) };
+                else attrs[k] = { type: 'float', value: Number(v) || 0 };
+            }
+        }
+        if (!effects || !Array.isArray(effects)) return attrs;
+        for (var i = 0; i < effects.length; i++) {
+            var e = effects[i];
+            if (!e || e.textOnly) continue;
+            var attrName = e.attr || e.attribute;
+            if (e.op === 'add') {
+                if (!attrName) continue;
+                var fromVal = (e.fromValue !== undefined) ? Number(e.fromValue) : undefined;
+                var toVal = (e.value !== undefined) ? Number(e.value) : undefined;
+                if (fromVal === undefined && toVal === undefined) continue;
+                if (!attrs[attrName]) {
+                    var initVal = (fromVal !== undefined) ? fromVal : 0;
+                    attrs[attrName] = { type: e.dataType || 'float', value: initVal, baseValue: initVal };
+                }
+                if (fromVal !== undefined && toVal !== undefined) {
+                    attrs[attrName].value = (Number(attrs[attrName].value) || 0) + (toVal - fromVal);
+                } else if (toVal !== undefined) {
+                    attrs[attrName].value = toVal;
+                }
+            } else if (e.op === 'modify' && attrName && attrs[attrName]) {
+                var delta = Number(e.value) || 0;
+                if (e.change === 'decrease') delta = -delta;
+                attrs[attrName].value = (Number(attrs[attrName].value) || 0) + delta;
+            }
+        }
+        return attrs;
+    }
+
+    function collectEffects() {
+        var effects = [];
+        for (var tier = 1; tier <= 5; tier++) {
+            var optId = state.selected[tier];
+            if (!optId) continue;
+            var opts = tiersData[String(tier)];
+            if (!opts) continue;
+            for (var j = 0; j < opts.length; j++) {
+                if (opts[j].id === optId) { effects = effects.concat(opts[j].effect || []); break; }
+            }
+        }
+        if (state.overclockId) {
+            for (var k = 0; k < overclocksData.length; k++) {
+                if (overclocksData[k].id === state.overclockId) {
+                    effects = effects.concat(overclocksData[k].effect || []);
+                    break;
+                }
+            }
+        }
+        return effects;
+    }
+    function collectEffectsExcludingTier(excludeTier) {
+        var effects = [];
+        for (var tier = 1; tier <= 5; tier++) {
+            if (tier === excludeTier) continue;
+            var optId = state.selected[tier];
+            if (!optId) continue;
+            var opts = tiersData[String(tier)];
+            if (!opts) continue;
+            for (var j = 0; j < opts.length; j++) {
+                if (opts[j].id === optId) { effects = effects.concat(opts[j].effect || []); break; }
+            }
+        }
+        if (state.overclockId) {
+            for (var k = 0; k < overclocksData.length; k++) {
+                if (overclocksData[k].id === state.overclockId) {
+                    effects = effects.concat(overclocksData[k].effect || []);
+                    break;
+                }
+            }
+        }
+        return effects;
+    }
+    function collectEffectsExcludingOc() {
+        var effects = [];
+        for (var tier = 1; tier <= 5; tier++) {
+            var optId = state.selected[tier];
+            if (!optId) continue;
+            var opts = tiersData[String(tier)];
+            if (!opts) continue;
+            for (var j = 0; j < opts.length; j++) {
+                if (opts[j].id === optId) { effects = effects.concat(opts[j].effect || []); break; }
+            }
+        }
+        return effects;
+    }
+    function getSelectedOverclock() {
+        if (!state.overclockId) return null;
+        for (var k = 0; k < overclocksData.length; k++) {
+            if (overclocksData[k].id === state.overclockId) return overclocksData[k];
+        }
+        return null;
+    }
+
+    function setOverclockTypeClass(el, type) {
+        if (!el) return;
+        el.classList.remove('oc-type-clean', 'oc-type-balanced', 'oc-type-unstable');
+        var t = (type || 'clean');
+        if (t !== 'clean' && t !== 'balanced' && t !== 'unstable') t = 'clean';
+        el.classList.add('oc-type-' + t);
+    }
+    function getSelectedOptionForTier(tier) {
+        var optId = state.selected[tier];
+        if (!optId) return null;
+        var opts = tiersData[String(tier)];
+        if (!opts) return null;
+        for (var j = 0; j < opts.length; j++) {
+            if (opts[j].id === optId) return opts[j];
+        }
+        return null;
+    }
+    function collectTextOnlyLabels(effects) {
+        var labels = [];
+        if (!effects || !Array.isArray(effects)) return labels;
+        for (var i = 0; i < effects.length; i++) {
+            var e = effects[i];
+            if (e && e.textOnly) {
+                var t = (e.text != null && e.text !== '') ? e.text : (e.attr || '');
+                if (t) labels.push(t);
+            }
+        }
+        return labels;
+    }
+
+    function formatNum(v) {
+        if (v == null) return '0';
+        var n = Number(v);
+        return n === Math.floor(n) ? String(Math.round(n)) : String(Math.round(n * 100) / 100);
+    }
+    function formatAttrValue(attrs, key) {
+        if (!attrs[key]) return '';
+        var type = attrs[key].type || 'float';
+        var v = attrs[key].value;
+        return type === 'percent' ? formatNum(v) + '%' : formatNum(v);
+    }
+    function getAttrNum(attrs, key) {
+        if (!attrs[key]) return 0;
+        var v = attrs[key].value;
+        return v != null ? Number(v) : 0;
+    }
+    var _hoverOcData = null;
+    function renderAttrs(hoverOpt, hoverTier, hoverOc) {
+        if (!attrTbody) return;
+        if (hoverOpt && (hoverTier == null || hoverTier === undefined)) {
+            for (var r = 1; r <= 5; r++) {
+                var arr = tiersData[String(r)] || [];
+                for (var j = 0; j < arr.length; j++) {
+                    if (arr[j].id === hoverOpt.id) { hoverTier = r; break; }
+                }
+                if (hoverTier != null) break;
+            }
+        }
+        _hoverOcData = hoverOc || null;
+        var effects = collectEffects();
+        var attrs = applyEffects(baseAttributes, effects);
+        if (hoverOc) {
+            var effectsNoOc = collectEffectsExcludingOc();
+            var selOc = getSelectedOverclock();
+            var currentEffects = effectsNoOc.concat(selOc ? selOc.effect || [] : []);
+            var previewEffects = effectsNoOc.concat(hoverOc.effect || []);
+            var currentAttrs = applyEffects(baseAttributes, currentEffects);
+            var previewAttrs = applyEffects(baseAttributes, previewEffects);
+            var isSameOc = selOc && selOc.id === hoverOc.id;
+            var attrsNoOc = applyEffects(baseAttributes, effectsNoOc);
+            var displayAttrs = isSameOc ? currentAttrs : previewAttrs;
+            var compareAttrs = isSameOc ? attrsNoOc : currentAttrs;
+            var allKeys = {};
+            for (var k in displayAttrs) allKeys[k] = true;
+            for (var k in compareAttrs) allKeys[k] = true;
+            var keys = Object.keys(allKeys);
+            attrTbody.innerHTML = '';
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                var displayVal = formatAttrValue(displayAttrs, key);
+                if (!displayAttrs[key] && compareAttrs[key]) displayVal = '\u2014';
+                var numDisplay = getAttrNum(displayAttrs, key);
+                var numCompare;
+                if (compareAttrs[key]) {
+                    numCompare = getAttrNum(compareAttrs, key);
+                } else if (displayAttrs[key] && displayAttrs[key].baseValue !== undefined) {
+                    numCompare = displayAttrs[key].baseValue;
+                } else {
+                    numCompare = getAttrNum(compareAttrs, key);
+                }
+                var deltaNum = numDisplay - numCompare;
+                var deltaCellClass = '';
+                var deltaText = '';
+                var highlight = false;
+                if (deltaNum > 0) {
+                    deltaText = '+' + formatNum(deltaNum);
+                    deltaCellClass = isLowerBetter(key) ? 'delta-negative' : 'delta-positive';
+                    highlight = true;
+                } else if (deltaNum < 0) {
+                    deltaText = formatNum(deltaNum);
+                    deltaCellClass = isLowerBetter(key) ? 'delta-positive' : 'delta-negative';
+                    highlight = true;
+                }
+                var row = document.createElement('tr');
+                if (highlight) row.classList.add('highlight');
+                row.innerHTML = '<td class="wd-attr-name">' + esc(key) + '</td><td class="wd-attr-delta ' + deltaCellClass + '">' + esc(deltaText) + '</td><td class="wd-attr-val">' + esc(displayVal) + '</td>';
+                attrTbody.appendChild(row);
+            }
+            var textOnlyPreview = collectTextOnlyLabels(previewEffects);
+            var textOnlyCurrent = collectTextOnlyLabels(currentEffects);
+            for (var n = 0; n < textOnlyPreview.length; n++) {
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td colspan="3" class="wd-attr-textonly textonly-positive">+' + esc(textOnlyPreview[n]) + '</td>';
+                attrTbody.appendChild(tr);
+            }
+            if (!isSameOc) {
+                for (var n = 0; n < textOnlyCurrent.length; n++) {
+                    if (textOnlyPreview.indexOf(textOnlyCurrent[n]) >= 0) continue;
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td colspan="3" class="wd-attr-textonly textonly-negative">-' + esc(textOnlyCurrent[n]) + '</td>';
+                    attrTbody.appendChild(tr);
+                }
+            }
+            return;
+        }
+        if (!hoverOpt || hoverTier == null) {
+            attrTbody.innerHTML = '';
+            var keys = Object.keys(attrs);
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                var row = document.createElement('tr');
+                row.innerHTML = '<td class="wd-attr-name">' + esc(key) + '</td><td class="wd-attr-delta"></td><td class="wd-attr-val">' + esc(formatAttrValue(attrs, key)) + '</td>';
+                attrTbody.appendChild(row);
+            }
+            var textOnlyLabels = collectTextOnlyLabels(effects);
+            for (var n = 0; n < textOnlyLabels.length; n++) {
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td colspan="3" class="wd-attr-textonly textonly-positive">+' + esc(textOnlyLabels[n]) + '</td>';
+                attrTbody.appendChild(tr);
+            }
+            return;
+        }
+        var effectsExcl = collectEffectsExcludingTier(hoverTier);
+        var selectedOpt = getSelectedOptionForTier(hoverTier);
+        var currentEffects = effectsExcl.concat(selectedOpt && selectedOpt.effect ? selectedOpt.effect : []);
+        var previewEffects = effectsExcl.concat(hoverOpt.effect || []);
+        var attrsWithoutTier = applyEffects(baseAttributes, effectsExcl);
+        var currentAttrs = applyEffects(baseAttributes, currentEffects);
+        var previewAttrs = applyEffects(baseAttributes, previewEffects);
+        var isSameOption = selectedOpt && selectedOpt.id === hoverOpt.id;
+        var displayAttrs = isSameOption ? currentAttrs : previewAttrs;
+        var compareAttrs = isSameOption ? attrsWithoutTier : currentAttrs;
+        var allKeys = {};
+        var keys = Object.keys(attrs);
+        for (var k in displayAttrs) allKeys[k] = true;
+        for (var k in compareAttrs) allKeys[k] = true;
+        var keys = Object.keys(allKeys);
+        attrTbody.innerHTML = '';
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var displayVal = formatAttrValue(displayAttrs, key);
+            if (!displayAttrs[key] && compareAttrs[key]) displayVal = '—';
+            var numDisplay = getAttrNum(displayAttrs, key);
+            var numCompare;
+            if (compareAttrs[key]) {
+                numCompare = getAttrNum(compareAttrs, key);
+            } else if (displayAttrs[key] && displayAttrs[key].baseValue !== undefined) {
+                numCompare = displayAttrs[key].baseValue;
+            } else {
+                numCompare = getAttrNum(compareAttrs, key);
+            }
+            var deltaNum = numDisplay - numCompare;
+            var deltaCellClass = '';
+            var deltaText = '';
+            var highlight = false;
+            if (deltaNum > 0) {
+                deltaText = '+' + formatNum(deltaNum);
+                deltaCellClass = isLowerBetter(key) ? 'delta-negative' : 'delta-positive';
+                highlight = true;
+            } else if (deltaNum < 0) {
+                deltaText = formatNum(deltaNum);
+                deltaCellClass = isLowerBetter(key) ? 'delta-positive' : 'delta-negative';
+                highlight = true;
+            }
+            var row = document.createElement('tr');
+            if (highlight) row.classList.add('highlight');
+            row.innerHTML = '<td class="wd-attr-name">' + esc(key) + '</td><td class="wd-attr-delta ' + deltaCellClass + '">' + esc(deltaText) + '</td><td class="wd-attr-val">' + esc(displayVal) + '</td>';
+            attrTbody.appendChild(row);
+        }
+        var textOnlyPreview = collectTextOnlyLabels(previewEffects);
+        var textOnlyCurrent = collectTextOnlyLabels(currentEffects);
+        for (var n = 0; n < textOnlyPreview.length; n++) {
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td colspan="3" class="wd-attr-textonly textonly-positive">+' + esc(textOnlyPreview[n]) + '</td>';
+            attrTbody.appendChild(tr);
+        }
+        for (var n = 0; n < textOnlyCurrent.length; n++) {
+            if (textOnlyPreview.indexOf(textOnlyCurrent[n]) >= 0) continue;
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td colspan="3" class="wd-attr-textonly textonly-negative">-' + esc(textOnlyCurrent[n]) + '</td>';
+            attrTbody.appendChild(tr);
+        }
+    }
+
+    function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+    function moveTooltip(x, y) {
+        tooltipEl.style.left = (x + 12) + 'px';
+        tooltipEl.style.top = y + 'px';
+    }
+    function showTierTooltip(opt, x, y) {
+        var name = (opt.name_cn || '').trim();
+        var iconStem = (opt.icon_stem || '').trim();
+        var desc = (opt.description || '').trim();
+        var entryDesc = (opt.entry_description || '').trim();
+        var iconSrc = ICONS_BASE + (opt.icon_url || '');
+        tooltipEl.innerHTML =
+            '<div class="wd-tt-head">' +
+            '<img class="wd-tt-icon" src="' + esc(iconSrc) + '" alt="">' +
+            '<div class="wd-tt-titles">' +
+            '<div class="wd-tt-name">' + esc(name) + '</div>' +
+            (iconStem ? '<div class="wd-tt-prop">' + esc(iconStem) + '</div>' : '') +
+            '</div></div>' +
+            (desc ? '<div class="wd-tt-desc">' + esc(desc) + '</div>' : '') +
+            (entryDesc ? '<div class="wd-tt-entry">' + esc(entryDesc) + '</div>' : '');
+        tooltipEl.style.display = 'block';
+        moveTooltip(x, y);
+    }
+    function showOverclockTooltip(name, description, x, y) {
+        tooltipEl.innerHTML =
+            '<div class="wd-tt-head">' +
+            '<div class="wd-tt-titles"><div class="wd-tt-name">' + esc(name) + '</div></div></div>' +
+            (description ? '<div class="wd-tt-desc">' + esc(description) + '</div>' : '');
+        tooltipEl.style.display = 'block';
+        moveTooltip(x, y);
+    }
+    function showTooltip(text, x, y) {
+        tooltipEl.innerHTML = (text + '').split('\n').map(function (line) { return esc(line); }).join('<br>');
+        tooltipEl.style.display = 'block';
+        moveTooltip(x, y);
+    }
+    function hideTooltip() { tooltipEl.style.display = 'none'; }
+
+    function buildTierGrid() {
+        if (!tierGridEl) return;
+        tierGridEl.innerHTML = '';
+        for (var row = 1; row <= 5; row++) {
+            var opts = tiersData[String(row)] || [];
+            var selectedId = state.selected[row];
+            var selectedOpt = null;
+            for (var s = 0; s < opts.length; s++) { if (opts[s].id === selectedId) { selectedOpt = opts[s]; break; } }
+            var rowDiv = document.createElement('div');
+            rowDiv.className = 'wd-tier-row';
+            var selWrap = document.createElement('div');
+            selWrap.className = 'wd-hex-wrap wd-hex-slot-selected' + (selectedOpt ? ' selected' : '');
+            selWrap.dataset.tier = row;
+            selWrap.dataset.slot = 'selected';
+            var selCell = document.createElement('div');
+            selCell.className = 'wd-hex' + (selectedOpt ? '' : ' wd-hex-placeholder');
+            if (selectedOpt) {
+                var img = document.createElement('img');
+                img.src = ICONS_BASE + (selectedOpt.icon_url || '');
+                img.alt = selectedOpt.name_cn || '';
+                selCell.appendChild(img);
+            } else {
+                var inner = document.createElement('span');
+                inner.className = 'wd-hex-placeholder-inner';
+                selCell.appendChild(inner);
+            }
+            selWrap.appendChild(selCell);
+            selWrap.addEventListener('click', (function (tier) {
+                return function () {
+                    state.selected[tier] = null;
+                    buildTierGrid();
+                    renderAttrs();
+                };
+            })(row));
+            rowDiv.appendChild(selWrap);
+            for (var col = 0; col < opts.length; col++) {
+                var opt = opts[col];
+                var wrap = document.createElement('div');
+                wrap.className = 'wd-hex-wrap wd-hex-slot-option' + (selectedId === opt.id ? ' selected' : '');
+                wrap.dataset.tier = row;
+                wrap.dataset.optionId = opt.id;
+                var cell = document.createElement('div');
+                cell.className = 'wd-hex';
+                var im = document.createElement('img');
+                im.src = ICONS_BASE + (opt.icon_url || '');
+                im.alt = opt.name_cn || '';
+                cell.appendChild(im);
+                wrap.appendChild(cell);
+                wrap.addEventListener('mouseenter', (function (o, tier) {
+                    return function (e) {
+                        showTierTooltip(o, e.clientX, e.clientY);
+                        renderAttrs(o, tier);
+                    };
+                })(opt, row));
+                wrap.addEventListener('mouseleave', function () { hideTooltip(); renderAttrs(); });
+                wrap.addEventListener('click', (function (tier, optId) {
+                    return function () {
+                        state.selected[tier] = state.selected[tier] === optId ? null : optId;
+                        buildTierGrid();
+                        renderAttrs();
+                    };
+                })(row, opt.id));
+                rowDiv.appendChild(wrap);
+            }
+            tierGridEl.appendChild(rowDiv);
+        }
+        var firstColBg = document.getElementById('wd-tier-first-col-bg');
+        if (firstColBg && tierGridEl.firstElementChild) {
+            var firstWrap = tierGridEl.firstElementChild.firstElementChild;
+            if (firstWrap && firstWrap.classList.contains('wd-hex-wrap')) {
+                var gridWrap = document.getElementById('wd-tier-grid-wrap');
+                var setBgWidth = function () {
+                    if (firstWrap.offsetWidth) {
+                        var wrapRect = firstWrap.getBoundingClientRect();
+                        var parentRect = gridWrap.getBoundingClientRect();
+                        var rightEdge = wrapRect.right - parentRect.left;
+                        firstColBg.style.width = (rightEdge + 2) + 'px';
+                    }
+                };
+                setBgWidth();
+                requestAnimationFrame(setBgWidth);
+            }
+        }
+    }
+
+    function formatEffectValueByType(value, dataType) {
+        var n = Number(value);
+        if (!isFinite(n)) n = 0;
+        return formatNum(n) + (dataType === 'percent' ? '%' : '');
+    }
+    function normalizeOverclockType(type) {
+        var t = (type || 'clean');
+        if (t !== 'clean' && t !== 'balanced' && t !== 'unstable') t = 'clean';
+        return t;
+    }
+    function formatOverclockEffectLines(oc) {
+        var eff = oc.effect || [];
+        if (eff.length === 0) return [];
+        var lines = [];
+        for (var i = 0; i < eff.length; i++) {
+            var e = eff[i];
+            if (!e || e.textOnly) continue;
+            var name = e.attr || e.attribute || '?';
+            var dataType = e.dataType === 'percent' ? 'percent' : 'float';
+            if (e.op === 'modify') {
+                var d = Number(e.value) || 0;
+                if (e.change === 'decrease') d = -d;
+                lines.push(name + ' ' + (d >= 0 ? '+' : '') + formatEffectValueByType(d, dataType));
+            } else if (e.op === 'add') {
+                var hasToValue = e.value !== undefined && e.value !== null && e.value !== '';
+                if (!hasToValue) continue;
+                var fromVal = (e.fromValue !== undefined && e.fromValue !== null && e.fromValue !== '') ? e.fromValue : 0;
+                lines.push(name + ' ' + formatEffectValueByType(fromVal, dataType) + '-->' + formatEffectValueByType(e.value, dataType));
+            } else {
+                if (e.value === undefined || e.value === null || e.value === '') continue;
+                lines.push(name + ' ' + formatEffectValueByType(e.value, dataType));
+            }
+        }
+        return lines;
+    }
+    var overclockTypeLabels = { 'clean': '无暇超频模组', 'balanced': '均衡超频模组', 'unstable': '不稳定超频模组' };
+    function showOverclockTooltipFull(oc, x, y) {
+        var name = oc.name_cn || '';
+        var ocType = normalizeOverclockType(oc.overclock_type);
+        var typeLabel = overclockTypeLabels[ocType] || '';
+        var desc = oc.description || '';
+        var effectLines = formatOverclockEffectLines(oc);
+        var traits = oc.traits || [];
+        var blockClass = 'wd-tt-oc-block wd-tt-oc-block-' + ocType;
+        var titleBlock = '';
+        if (name || typeLabel) {
+            titleBlock = '<div class="' + blockClass + '">' + (name ? '<div class="wd-tt-name">' + esc(name) + '</div>' : '') + (typeLabel ? '<div class="wd-tt-prop">' + esc(typeLabel) + '</div>' : '') + '</div>';
+        }
+        var html = '<div class="wd-tt-head"><div class="wd-tt-titles">' + titleBlock + '</div></div>';
+        if (desc) html += '<div class="wd-tt-desc">' + esc(desc) + '</div>';
+        if (traits.length > 0) {
+            html += '<div class="wd-tt-traits">';
+            for (var t = 0; t < traits.length; t++) {
+                var cls = traits[t].positive ? 'wd-tt-trait-positive' : 'wd-tt-trait-negative';
+                var arrow = traits[t].positive ? '▲' : '▼';
+                html += '<div class="wd-tt-trait ' + cls + '">' + arrow + ' ' + esc(traits[t].text || '') + '</div>';
+            }
+            html += '</div>';
+        }
+        if (effectLines.length > 0) {
+            html += '<div class="wd-tt-effects">';
+            for (var li = 0; li < effectLines.length; li++) {
+                html += '<div class="wd-tt-effect-line">' + esc(effectLines[li]) + '</div>';
+            }
+            html += '</div>';
+        }
+        tooltipEl.innerHTML = html;
+        tooltipEl.style.display = 'block';
+        moveTooltip(x, y);
+    }
+    function updateOverclockUI() {
+        var selOc = null;
+        if (state.overclockId) {
+            for (var i = 0; i < overclocksData.length; i++) {
+                if (overclocksData[i].id === state.overclockId) { selOc = overclocksData[i]; break; }
+            }
+        }
+        overclockHexEl.innerHTML = '';
+        var wrapEl = document.getElementById('wd-overclock-trigger');
+        if (selOc) {
+            setOverclockTypeClass(wrapEl, selOc.overclock_type);
+            var si = document.createElement('img');
+            si.src = OVERCLOCKS_BASE + (selOc.icon_url || '');
+            si.alt = selOc.name_cn || '';
+            overclockHexEl.appendChild(si);
+            wrapEl.classList.add('oc-selected');
+        } else {
+            setOverclockTypeClass(wrapEl, 'clean');
+            wrapEl.classList.remove('oc-selected');
+        }
+        if (overclocksData.length === 0) {
+            overclockDescEl.innerHTML = '无超频';
+        } else if (selOc) {
+            var descHtml = '<div style="font-weight:bold;color:var(--text);">' + esc(selOc.name_cn || '') + '</div>';
+            if (selOc.description) descHtml += '<div style="margin-top:2px;">' + esc(selOc.description) + '</div>';
+            var tr = selOc.traits || [];
+            if (tr.length > 0) {
+                descHtml += '<div style="margin-top:4px;">';
+                for (var ti = 0; ti < tr.length; ti++) {
+                    var tcls = tr[ti].positive ? 'color:#6bcf7b' : 'color:#e06c75';
+                    var tarr = tr[ti].positive ? '▲' : '▼';
+                    descHtml += '<div style="' + tcls + ';font-size:0.9em;">' + tarr + ' ' + esc(tr[ti].text || '') + '</div>';
+                }
+                descHtml += '</div>';
+            }
+            overclockDescEl.innerHTML = descHtml;
+        } else {
+            overclockDescEl.innerHTML = '点击左侧六边形选择超频模组';
+        }
+    }
+    var ocTypeOrder = ['clean', 'balanced', 'unstable'];
+    var ocTypeNames = { clean: '无暇超频模组', balanced: '均衡超频模组', unstable: '不稳定超频模组' };
+
+    function buildOcDrawer() {
+        if (overclocksData.length === 0) return;
+        ocDrawerInner.innerHTML = '';
+        var groups = {};
+        for (var j = 0; j < overclocksData.length; j++) {
+            var t = overclocksData[j].overclock_type || 'clean';
+            if (!groups[t]) groups[t] = [];
+            groups[t].push(overclocksData[j]);
+        }
+        for (var ti = 0; ti < ocTypeOrder.length; ti++) {
+            var type = ocTypeOrder[ti];
+            var list = groups[type];
+            if (!list || list.length === 0) continue;
+            var section = document.createElement('div');
+            section.className = 'wd-oc-type-row';
+            var label = document.createElement('div');
+            label.className = 'wd-oc-type-label oc-type-' + type;
+            label.textContent = ocTypeNames[type] || type;
+            section.appendChild(label);
+            var grid = document.createElement('div');
+            grid.className = 'wd-oc-type-grid';
+            for (var k = 0; k < list.length; k++) {
+                var oc = list[k];
+                var wrap = document.createElement('div');
+                wrap.className = 'wd-oc-drawer-wrap' + (state.overclockId === oc.id ? ' selected' : '');
+                setOverclockTypeClass(wrap, oc.overclock_type);
+                wrap.dataset.overclockId = oc.id;
+                var hex = document.createElement('div');
+                hex.className = 'wd-oc-drawer-hex';
+                var img = document.createElement('img');
+                img.src = OVERCLOCKS_BASE + (oc.icon_url || '');
+                img.alt = oc.name_cn || '';
+                hex.appendChild(img);
+                wrap.appendChild(hex);
+                wrap.addEventListener('mouseenter', (function (o) {
+                    return function (e) {
+                        showOverclockTooltipFull(o, e.clientX, e.clientY);
+                        renderAttrs(null, null, o);
+                    };
+                })(oc));
+                wrap.addEventListener('mouseleave', function () {
+                    hideTooltip();
+                    renderAttrs();
+                });
+                wrap.addEventListener('click', (function (id) {
+                    return function () {
+                        state.overclockId = (state.overclockId === id) ? null : id;
+                        updateOverclockUI();
+                        renderAttrs();
+                        ocDrawer.classList.remove('open');
+                        buildOcDrawer();
+                    };
+                })(oc.id));
+                grid.appendChild(wrap);
+            }
+            section.appendChild(grid);
+            ocDrawerInner.appendChild(section);
+        }
+    }
+
+    function toggleOcDrawer() {
+        if (overclocksData.length === 0) return;
+        var isOpen = ocDrawer.classList.contains('open');
+        if (isOpen) {
+            ocDrawer.classList.remove('open');
+        } else {
+            buildOcDrawer();
+            ocDrawer.classList.add('open');
+        }
+    }
+
+    var infoBtn = document.getElementById('wd-info-btn');
+    if (infoBtn) {
+        infoBtn.addEventListener('click', function () {
+            var desc = document.getElementById('wd-desc');
+            if (desc) desc.classList.toggle('visible');
+        });
+    }
+
+    if (overclockTrigger) {
+        overclockTrigger.addEventListener('click', function () { toggleOcDrawer(); });
+    }
+
+    var modeSwitchEl = document.getElementById('wd-mode-switch');
+    var modeButtons = modeSwitchEl ? modeSwitchEl.querySelectorAll('[data-mode]') : [];
+    var modePanels = document.querySelectorAll('[data-mode-panel]');
+    function updateRecommendationSelectedColumnBg(detail) {
+        if (!detail) return;
+        var grid = detail.querySelector('.wd-rec-detail-tier-grid');
+        if (!grid) return;
+        var bg = grid.querySelector('.wd-rec-detail-selected-col-bg');
+        var selectedCol = grid.querySelector('.wd-rec-detail-selected-col');
+        if (!bg || !selectedCol) return;
+        var width = selectedCol.offsetWidth;
+        if (width > 0) {
+            bg.style.width = width + 'px';
+        }
+    }
+    function updateActiveRecommendationSelectedColumnBg() {
+        var activeDetail = document.querySelector('.wd-rec-detail.is-active');
+        if (!activeDetail) return;
+        updateRecommendationSelectedColumnBg(activeDetail);
+    }
+    function setMode(mode) {
+        var nextMode = (mode === 'recommend') ? 'recommend' : 'simulate';
+        for (var i = 0; i < modePanels.length; i++) {
+            var panel = modePanels[i];
+            panel.classList.toggle('is-active', panel.getAttribute('data-mode-panel') === nextMode);
+        }
+        for (var j = 0; j < modeButtons.length; j++) {
+            var btn = modeButtons[j];
+            var active = btn.getAttribute('data-mode') === nextMode;
+            btn.classList.toggle('is-active', active);
+        }
+        if (modeSwitchEl) {
+            modeSwitchEl.classList.toggle('mode-recommend', nextMode === 'recommend');
+        }
+        if (nextMode === 'recommend') {
+            requestAnimationFrame(updateActiveRecommendationSelectedColumnBg);
+        }
+        hideTooltip();
+        if (ocDrawer) ocDrawer.classList.remove('open');
+    }
+    for (var i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener('click', function () {
+            if (this.disabled) return;
+            setMode(this.getAttribute('data-mode'));
+        });
+    }
+
+    var recTabs = document.querySelectorAll('.wd-rec-tab');
+    var recDetails = document.querySelectorAll('.wd-rec-detail');
+    var recSearchInput = document.getElementById('wd-rec-search');
+    var recSearchEmpty = document.getElementById('wd-rec-search-empty');
+    function isRecTabVisible(tabBtn) {
+        return !!tabBtn && tabBtn.style.display !== 'none';
+    }
+    function getFirstVisibleRecTab() {
+        for (var ti = 0; ti < recTabs.length; ti++) {
+            if (isRecTabVisible(recTabs[ti])) return recTabs[ti];
+        }
+        return null;
+    }
+    function getActiveVisibleRecTab() {
+        for (var ti = 0; ti < recTabs.length; ti++) {
+            if (recTabs[ti].classList.contains('is-active') && isRecTabVisible(recTabs[ti])) return recTabs[ti];
+        }
+        return null;
+    }
+    function activateRecommendationByTab(tabBtn) {
+        if (!isRecTabVisible(tabBtn)) return;
+        var recId = tabBtn.getAttribute('data-rec-id');
+        for (var ti = 0; ti < recTabs.length; ti++) {
+            recTabs[ti].classList.toggle('is-active', recTabs[ti] === tabBtn);
+        }
+        for (var dj = 0; dj < recDetails.length; dj++) {
+            recDetails[dj].classList.toggle('is-active', recDetails[dj].getAttribute('data-rec-id') === recId);
+        }
+        requestAnimationFrame(updateActiveRecommendationSelectedColumnBg);
+    }
+
+    function applyRecommendationFilter(rawKeyword) {
+        var keyword = (rawKeyword || '').trim().toLowerCase();
+        var visibleCount = 0;
+        for (var ti = 0; ti < recTabs.length; ti++) {
+            var tab = recTabs[ti];
+            var searchText = (tab.getAttribute('data-search') || tab.textContent || '').toLowerCase();
+            var matched = !keyword || searchText.indexOf(keyword) !== -1;
+            tab.style.display = matched ? '' : 'none';
+            if (matched) visibleCount += 1;
+        }
+        if (recSearchEmpty) {
+            recSearchEmpty.style.display = visibleCount > 0 ? 'none' : 'block';
+        }
+        var activeTab = getActiveVisibleRecTab();
+        if (activeTab) {
+            activateRecommendationByTab(activeTab);
+            return;
+        }
+        var firstVisible = getFirstVisibleRecTab();
+        if (firstVisible) {
+            activateRecommendationByTab(firstVisible);
+            return;
+        }
+        for (var dj = 0; dj < recDetails.length; dj++) {
+            recDetails[dj].classList.remove('is-active');
+        }
+    }
+
+    for (var k = 0; k < recTabs.length; k++) {
+        recTabs[k].addEventListener('click', function () {
+            if (!isRecTabVisible(this)) return;
+            activateRecommendationByTab(this);
+        });
+    }
+    if (recTabs.length > 0) {
+        var initTab = recTabs[0];
+        for (var m = 0; m < recTabs.length; m++) {
+            if (recTabs[m].classList.contains('is-active')) {
+                initTab = recTabs[m];
+                break;
+            }
+        }
+        activateRecommendationByTab(initTab);
+    }
+    if (recSearchInput) {
+        recSearchInput.addEventListener('input', function () {
+            applyRecommendationFilter(this.value);
+        });
+        recSearchInput.addEventListener('keydown', function (evt) {
+            if (evt.key === 'Escape') {
+                this.value = '';
+                applyRecommendationFilter('');
+            }
+        });
+        applyRecommendationFilter(recSearchInput.value || '');
+    }
+    window.addEventListener('resize', function () {
+        updateActiveRecommendationSelectedColumnBg();
+    });
+
+    function getTierOptionById(tierValue, optionIdValue) {
+        var tierNum = Number(tierValue);
+        var optionNum = Number(optionIdValue);
+        if (!tierNum || !optionNum) return null;
+        var opts = tiersData[String(tierNum)] || [];
+        for (var i = 0; i < opts.length; i++) {
+            if (Number(opts[i].id) === optionNum) return opts[i];
+        }
+        return null;
+    }
+
+    var recTooltipTargets = document.querySelectorAll('.wd-rec-tooltip-target');
+    for (var n = 0; n < recTooltipTargets.length; n++) {
+        (function (target) {
+            target.addEventListener('mouseenter', function (evt) {
+                var detail = target.closest('.wd-rec-detail');
+                if (!detail || !detail.classList.contains('is-active')) return;
+                var tier = target.getAttribute('data-tier');
+                var optionId = target.getAttribute('data-option-id');
+                var opt = getTierOptionById(tier, optionId);
+                if (!opt) return;
+                showTierTooltip(opt, evt.clientX, evt.clientY);
+            });
+            target.addEventListener('mousemove', function (evt) {
+                if (tooltipEl.style.display === 'none') return;
+                moveTooltip(evt.clientX, evt.clientY);
+            });
+            target.addEventListener('mouseleave', function () {
+                hideTooltip();
+            });
+        })(recTooltipTargets[n]);
+    }
+
+    function focusTierReason(detail, tier) {
+        if (!detail || !tier) return;
+        var blocks = detail.querySelectorAll('.wd-rec-tier-block');
+        for (var i = 0; i < blocks.length; i++) {
+            blocks[i].classList.remove('highlight');
+        }
+        var target = detail.querySelector('.wd-rec-tier-block[data-tier="' + tier + '"]');
+        if (!target) return;
+        target.classList.add('highlight');
+        var articleBody = detail.querySelector('.wd-rec-article-body');
+        if (!articleBody) return;
+        var bodyRect = articleBody.getBoundingClientRect();
+        var targetRect = target.getBoundingClientRect();
+        var nextTop = articleBody.scrollTop + (targetRect.top - bodyRect.top) - 12;
+        articleBody.scrollTo({
+            top: Math.max(nextTop, 0),
+            behavior: 'smooth'
+        });
+    }
+
+    document.addEventListener('click', function (evt) {
+        var row = evt.target.closest('.wd-rec-detail-tier-row');
+        if (!row) return;
+        var detail = row.closest('.wd-rec-detail');
+        if (!detail || !detail.classList.contains('is-active')) return;
+        var tier = row.getAttribute('data-tier');
+        if (!tier) return;
+        focusTierReason(detail, tier);
+    });
+    setMode('simulate');
+
+    buildTierGrid();
+    updateOverclockUI();
+    renderAttrs();
+}) ();
+</script>
+
+    </main>
+    <div class="site-disclaimer-modal" id="site-disclaimer-modal" hidden>
+        <div class="site-disclaimer-backdrop"></div>
+        <div class="site-disclaimer-card" role="dialog" aria-modal="true" aria-labelledby="site-disclaimer-title">
+            <h2 id="site-disclaimer-title">使用提醒与版权声明</h2>
+            <p>本页面为《深岩银河》（Deep Rock Galactic）玩家社区整理的非官方参考工具，主要用于展示武器改装与加点思路。内容仅供学习、交流与参考，不构成唯一、强制或标准玩法建议。</p>
+            <p>站点展示中涉及的游戏名称、角色设定、图片素材、图标素材、文本描述与相关数据等，其著作权及相关权利均归原权利人所有。我们仅做资料搬运与整理，不主张对原始素材拥有任何版权。</p>
+            <p>基于公开信息与玩家实践经验整理的内容可能存在时效性差异、版本偏差或理解误差，请以游戏实际版本与官方说明为准。</p>
+            <p>本服务目前为免费提供，不向玩家收取费用，也不以此限制玩家玩法选择。</p>
+            <p>《深岩银河》是一款自由度高且社区氛围友好的合作游戏。鼓励玩家按照自己喜欢的方式游玩，本页面旨在速查与灵感，而非限制玩家“只能这样玩”。</p>
+            <p>若你同意以上说明，请点击“我知道了，继续访问”；若不同意，请点击“我不同意并退出界面”。</p>
+            <div class="site-disclaimer-actions">
+                <button type="button" class="site-disclaimer-btn accept" id="site-disclaimer-accept">我知道了，继续访问</button>
+                <button type="button" class="site-disclaimer-btn decline" id="site-disclaimer-decline">我不同意并退出界面</button>
+            </div>
+        </div>
+    </div>
+    <footer>DRG Builds</footer>
+    <script>
+        (function () {
+            var modal = document.getElementById('site-disclaimer-modal');
+            var acceptBtn = document.getElementById('site-disclaimer-accept');
+            var declineBtn = document.getElementById('site-disclaimer-decline');
+            if (!modal || !acceptBtn || !declineBtn) return;
+            var KEY = 'drg_disclaimer_ack_v1';
+            var hasAccepted = false;
+            try {
+                hasAccepted = localStorage.getItem(KEY) === 'accepted';
+            } catch (e) {
+                hasAccepted = false;
+            }
+            if (hasAccepted) return;
+            modal.hidden = false;
+            document.body.classList.add('has-disclaimer-open');
+            acceptBtn.addEventListener('click', function () {
+                try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
+                modal.hidden = true;
+                document.body.classList.remove('has-disclaimer-open');
+            });
+            declineBtn.addEventListener('click', function () {
+                try { localStorage.removeItem(KEY); } catch (e) {}
+                try { window.close(); } catch (e) {}
+                window.location.replace('about:blank');
+            });
+        })();
+    </script>
+    
+</body>
+</html>

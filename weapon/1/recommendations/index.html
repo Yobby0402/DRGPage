@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深核GK突击步枪 - 加点推荐</title>
+    <style>
+        :root {
+            --bg-dark: #736951;
+            --bg-card: #252930;
+            --accent: #c9a227;
+            --text: #e8e6e3;
+            --text-muted: #9a9a9a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #736951;
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+        body.page-weapon-detail { overflow: hidden; height: 100vh; }
+        body.page-weapon-detail main { overflow: hidden; height: calc(100vh - 120px); padding: 0; max-width: none; }
+        .container { max-width: 960px; margin: 0 auto; padding: 1rem; background: transparent; }
+        header {
+            background: #736951;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .site-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 0.32rem 0.78rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .site-nav a:hover {
+            text-decoration: none;
+            background: rgba(201, 162, 39, 0.14);
+            border-color: rgba(201, 162, 39, 0.35);
+        }
+        .site-nav a.is-active {
+            background: rgba(201, 162, 39, 0.2);
+            border-color: rgba(201, 162, 39, 0.58);
+            color: #f4dca0;
+        }
+        h1, h2 { color: var(--accent); }
+        .card {
+            background: rgba(40, 42, 48, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        a.card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+        a.card-link:hover { background: rgba(201, 162, 39, 0.15); }
+        .tag { display: inline-block; background: rgba(201, 162, 39, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.25rem; font-size: 0.85rem; }
+        .weapon-tier-icon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 6px; background: rgba(40, 42, 48, 0.65); padding: 3px; }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 1rem; background: #736951; }
+        body.has-disclaimer-open { overflow: hidden; }
+        .site-disclaimer-modal[hidden] { display: none; }
+        .site-disclaimer-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .site-disclaimer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(2px);
+        }
+        .site-disclaimer-card {
+            position: relative;
+            width: min(760px, 96vw);
+            max-height: 90vh;
+            overflow: auto;
+            background: #1f2127;
+            border: 1px solid rgba(201, 162, 39, 0.45);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 1.3rem;
+        }
+        .site-disclaimer-card h2 {
+            margin: 0 0 0.7rem;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .site-disclaimer-card p {
+            margin: 0.45rem 0;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .site-disclaimer-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .site-disclaimer-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .site-disclaimer-btn.accept {
+            background: var(--accent);
+            color: #121212;
+            border-color: transparent;
+            font-weight: bold;
+        }
+        .site-disclaimer-btn.decline {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+        }
+        @media (min-width: 2560px) {
+            body { font-size: 18px; }
+            header { padding: 1rem 1.5rem; font-size: 1.1rem; }
+        }
+        @media (min-width: 3200px) {
+            body { font-size: 20px; }
+            header { padding: 1.2rem 2rem; font-size: 1.2rem; }
+        }
+        
+<style>
+    .rec-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .rec-page-title {
+        color: var(--accent);
+        margin: 0 0 0.25rem;
+    }
+
+    .rec-page-sub {
+        color: var(--text-muted);
+        margin: 0 0 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .rec-card {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        background: rgba(40, 42, 48, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0.75rem;
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .rec-card:hover {
+        background: rgba(201, 162, 39, 0.12);
+        border-color: var(--accent);
+    }
+
+    .rec-code {
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent);
+        flex-shrink: 0;
+        letter-spacing: 0.1em;
+        min-width: 5.5ch;
+        text-align: center;
+    }
+
+    .rec-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .rec-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--text);
+        margin-bottom: 0.3rem;
+    }
+
+    .rec-short-desc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .rec-oc-name {
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-align: right;
+        max-width: 140px;
+    }
+
+    .rec-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.4rem;
+    }
+
+    .rec-tag {
+        display: inline-block;
+        background: rgba(201, 162, 39, 0.25);
+        padding: 0.15rem 0.45rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        color: var(--accent);
+    }
+
+    .rec-back {
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+
+    .rec-back:hover {
+        text-decoration: underline;
+    }
+
+    .rec-empty {
+        color: var(--text-muted);
+        padding: 2rem 0;
+        text-align: center;
+    }
+</style>
+
+    </style>
+</head>
+<body class="">
+    <header>
+        <div class="container">
+            
+            <nav class="site-nav" aria-label="主导航">
+                <a href="/DRGPage/" class="is-active">武器加点</a>
+                
+                <a href="/DRGPage/task-combo/" class="">任务搭配</a>
+                <a href="/DRGPage/diy-peripherals/" class="">自制外设</a>
+                
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        
+<div class="rec-page">
+    <a class="rec-back" href="/DRGPage/weapon/1/">&larr; 返回武器详情</a>
+    <h1 class="rec-page-title">深核GK突击步枪</h1>
+    <p class="rec-page-sub">共 5 套加点推荐</p>
+
+    
+        
+        <a class="rec-card" href="/DRGPage/weapon/1/recommendation/1/">
+            <span class="rec-code">21222</span>
+            <div class="rec-info">
+                <div class="rec-title">仁慈超度</div>
+                
+                <div class="rec-short-desc">需要配合队友或者副手装备弩箭</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                    <span class="rec-tag">高难度可用</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">仁慈超度</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/DRGPage/weapon/1/recommendation/2/">
+            <span class="rec-code">21212</span>
+            <div class="rec-info">
+                <div class="rec-title">智能稳定</div>
+                
+                <div class="rec-short-desc">单体伤害较高，无需其他队友的配合</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">智能稳定</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/DRGPage/weapon/1/recommendation/3/">
+            <span class="rec-code">21222</span>
+            <div class="rec-info">
+                <div class="rec-title">超频撞针</div>
+                
+                <div class="rec-short-desc">让我用超频撞针试试你的鸿沟绝岭吧</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">超频撞针</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/DRGPage/weapon/1/recommendation/5/">
+            <span class="rec-code">32222</span>
+            <div class="rec-info">
+                <div class="rec-title">电击装填</div>
+                
+                <div class="rec-short-desc">电击装填加上爆破装填我愿称之为手忙脚乱组合。</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">电击装填</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/DRGPage/weapon/1/recommendation/4/">
+            <span class="rec-code">21222</span>
+            <div class="rec-info">
+                <div class="rec-title">点射扳机</div>
+                
+                <div class="rec-short-desc">在官方看来这玩意是独特超频</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">点射扳机</div>
+            
+        </a>
+        
+    
+</div>
+
+    </main>
+    <div class="site-disclaimer-modal" id="site-disclaimer-modal" hidden>
+        <div class="site-disclaimer-backdrop"></div>
+        <div class="site-disclaimer-card" role="dialog" aria-modal="true" aria-labelledby="site-disclaimer-title">
+            <h2 id="site-disclaimer-title">使用提醒与版权声明</h2>
+            <p>本页面为《深岩银河》（Deep Rock Galactic）玩家社区整理的非官方参考工具，主要用于展示武器改装与加点思路。内容仅供学习、交流与参考，不构成唯一、强制或标准玩法建议。</p>
+            <p>站点展示中涉及的游戏名称、角色设定、图片素材、图标素材、文本描述与相关数据等，其著作权及相关权利均归原权利人所有。我们仅做资料搬运与整理，不主张对原始素材拥有任何版权。</p>
+            <p>基于公开信息与玩家实践经验整理的内容可能存在时效性差异、版本偏差或理解误差，请以游戏实际版本与官方说明为准。</p>
+            <p>本服务目前为免费提供，不向玩家收取费用，也不以此限制玩家玩法选择。</p>
+            <p>《深岩银河》是一款自由度高且社区氛围友好的合作游戏。鼓励玩家按照自己喜欢的方式游玩，本页面旨在速查与灵感，而非限制玩家“只能这样玩”。</p>
+            <p>若你同意以上说明，请点击“我知道了，继续访问”；若不同意，请点击“我不同意并退出界面”。</p>
+            <div class="site-disclaimer-actions">
+                <button type="button" class="site-disclaimer-btn accept" id="site-disclaimer-accept">我知道了，继续访问</button>
+                <button type="button" class="site-disclaimer-btn decline" id="site-disclaimer-decline">我不同意并退出界面</button>
+            </div>
+        </div>
+    </div>
+    <footer>DRG Builds</footer>
+    <script>
+        (function () {
+            var modal = document.getElementById('site-disclaimer-modal');
+            var acceptBtn = document.getElementById('site-disclaimer-accept');
+            var declineBtn = document.getElementById('site-disclaimer-decline');
+            if (!modal || !acceptBtn || !declineBtn) return;
+            var KEY = 'drg_disclaimer_ack_v1';
+            var hasAccepted = false;
+            try {
+                hasAccepted = localStorage.getItem(KEY) === 'accepted';
+            } catch (e) {
+                hasAccepted = false;
+            }
+            if (hasAccepted) return;
+            modal.hidden = false;
+            document.body.classList.add('has-disclaimer-open');
+            acceptBtn.addEventListener('click', function () {
+                try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
+                modal.hidden = true;
+                document.body.classList.remove('has-disclaimer-open');
+            });
+            declineBtn.addEventListener('click', function () {
+                try { localStorage.removeItem(KEY); } catch (e) {}
+                try { window.close(); } catch (e) {}
+                window.location.replace('about:blank');
+            });
+        })();
+    </script>
+    
+</body>
+</html>

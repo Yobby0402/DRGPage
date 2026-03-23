@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦察兵 - 武器选择</title>
+    <style>
+        :root {
+            --bg-dark: #736951;
+            --bg-card: #252930;
+            --accent: #c9a227;
+            --text: #e8e6e3;
+            --text-muted: #9a9a9a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #736951;
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+        body.page-weapon-detail { overflow: hidden; height: 100vh; }
+        body.page-weapon-detail main { overflow: hidden; height: calc(100vh - 120px); padding: 0; max-width: none; }
+        .container { max-width: 960px; margin: 0 auto; padding: 1rem; background: transparent; }
+        header {
+            background: #736951;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .site-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 0.32rem 0.78rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .site-nav a:hover {
+            text-decoration: none;
+            background: rgba(201, 162, 39, 0.14);
+            border-color: rgba(201, 162, 39, 0.35);
+        }
+        .site-nav a.is-active {
+            background: rgba(201, 162, 39, 0.2);
+            border-color: rgba(201, 162, 39, 0.58);
+            color: #f4dca0;
+        }
+        h1, h2 { color: var(--accent); }
+        .card {
+            background: rgba(40, 42, 48, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        a.card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+        a.card-link:hover { background: rgba(201, 162, 39, 0.15); }
+        .tag { display: inline-block; background: rgba(201, 162, 39, 0.3); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.25rem; font-size: 0.85rem; }
+        .weapon-tier-icon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 6px; background: rgba(40, 42, 48, 0.65); padding: 3px; }
+        footer { text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 1rem; background: #736951; }
+        body.has-disclaimer-open { overflow: hidden; }
+        .site-disclaimer-modal[hidden] { display: none; }
+        .site-disclaimer-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .site-disclaimer-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(2px);
+        }
+        .site-disclaimer-card {
+            position: relative;
+            width: min(760px, 96vw);
+            max-height: 90vh;
+            overflow: auto;
+            background: #1f2127;
+            border: 1px solid rgba(201, 162, 39, 0.45);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem 1.3rem;
+        }
+        .site-disclaimer-card h2 {
+            margin: 0 0 0.7rem;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .site-disclaimer-card p {
+            margin: 0.45rem 0;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .site-disclaimer-actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .site-disclaimer-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .site-disclaimer-btn.accept {
+            background: var(--accent);
+            color: #121212;
+            border-color: transparent;
+            font-weight: bold;
+        }
+        .site-disclaimer-btn.decline {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+        }
+        @media (min-width: 2560px) {
+            body { font-size: 18px; }
+            header { padding: 1rem 1.5rem; font-size: 1.1rem; }
+        }
+        @media (min-width: 3200px) {
+            body { font-size: 20px; }
+            header { padding: 1.2rem 2rem; font-size: 1.2rem; }
+        }
+        
+<style>
+    body.page-class-weapons main.container {
+        max-width: 1400px;
+    }
+
+    .class-weapon-layout {
+        display: grid;
+        grid-template-columns: minmax(180px, 260px) minmax(420px, 1fr) minmax(180px, 260px);
+        gap: 1.2rem;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .weapon-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .weapon-column h2 {
+        margin: 0 0 0.85rem;
+        text-align: center;
+    }
+
+    .weapon-stack {
+        width: 100%;
+        height: clamp(460px, 72vh, 820px);
+        display: grid;
+        grid-auto-rows: 1fr;
+        gap: clamp(0.45rem, 1vh, 0.9rem);
+        justify-items: center;
+    }
+
+    .weapon-icon-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(100%, clamp(130px, 11vw, 185px));
+        height: 100%;
+        min-height: 0;
+        padding: 6px;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.15s, filter 0.15s;
+        filter: brightness(0.9);
+    }
+
+    .weapon-icon-link:hover {
+        transform: scale(1.08);
+        filter: brightness(1.12);
+    }
+
+    .weapon-icon-link img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .weapon-icon-placeholder {
+        font-size: 0.72rem;
+        text-align: center;
+        color: var(--text-muted);
+        line-height: 1.25;
+    }
+
+    .class-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .class-hero h1 {
+        margin: 0;
+        text-align: center;
+    }
+
+    .class-hero-image-wrap {
+        width: min(100%, 680px);
+        height: min(82vh, 900px);
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .class-hero-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .class-hero-placeholder {
+        color: var(--text-muted);
+        text-align: center;
+    }
+
+    .class-switcher {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .class-switch-btn {
+        min-width: 86px;
+        padding: 0.38rem 0.8rem;
+        border-radius: 999px;
+        text-decoration: none;
+        text-align: center;
+        background: rgba(70, 70, 70, 0.85);
+        color: #c8c8c8;
+        transition: transform 0.12s, filter 0.12s, background 0.12s, color 0.12s;
+    }
+
+    .class-switch-btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+    }
+
+    .class-switch-btn.is-active {
+        background: var(--accent);
+        color: #1d1d1d;
+        font-weight: 700;
+    }
+
+    .class-weapon-layout {
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        will-change: opacity, transform;
+    }
+
+    .class-weapon-layout.is-leaving-next,
+    .class-weapon-layout.is-leaving-prev,
+    .class-weapon-layout.is-entering-next,
+    .class-weapon-layout.is-entering-prev {
+        pointer-events: none;
+    }
+
+    .class-weapon-layout.is-leaving-next {
+        opacity: 0.32;
+        transform: translateX(-24px);
+    }
+
+    .class-weapon-layout.is-leaving-prev {
+        opacity: 0.32;
+        transform: translateX(24px);
+    }
+
+    .class-weapon-layout.is-entering-next {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+
+    .class-weapon-layout.is-entering-prev {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+
+    @media (max-width: 900px) {
+        .class-weapon-layout {
+            gap: 1rem;
+            grid-template-columns: minmax(120px, 180px) minmax(200px, 1fr) minmax(120px, 180px);
+        }
+
+        .weapon-stack {
+            height: clamp(330px, 58vh, 600px);
+        }
+
+        .weapon-icon-link {
+            width: min(100%, clamp(108px, 10vw, 150px));
+        }
+
+        .class-hero-image-wrap {
+            min-height: 360px;
+            height: min(64vh, 620px);
+        }
+    }
+
+    @media (max-width: 700px) {
+        .class-weapon-layout {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                "hero hero"
+                "primary secondary";
+            align-items: start;
+        }
+
+        .weapon-column-primary { grid-area: primary; }
+        .weapon-column-secondary { grid-area: secondary; }
+        .class-hero { grid-area: hero; }
+
+        .class-hero-image-wrap {
+            min-height: 300px;
+            height: min(52vh, 460px);
+            width: min(100%, 420px);
+        }
+
+        .weapon-stack {
+            height: clamp(260px, 40vh, 420px);
+        }
+
+        .weapon-icon-link {
+            width: min(100%, clamp(88px, 20vw, 125px));
+        }
+
+        .class-switch-btn {
+            min-width: 72px;
+            padding: 0.34rem 0.66rem;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+    </style>
+</head>
+<body class="page-class-weapons">
+    <header>
+        <div class="container">
+            
+            <nav class="site-nav" aria-label="主导航">
+                <a href="/DRGPage/" class="is-active">武器加点</a>
+                
+                <a href="/DRGPage/task-combo/" class="">任务搭配</a>
+                <a href="/DRGPage/diy-peripherals/" class="">自制外设</a>
+                
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        
+<section
+    id="class-weapon-layout"
+    class="class-weapon-layout"
+    data-prev-class-url="/DRGPage/weapon/class/driller/"
+    data-next-class-url="/DRGPage/weapon/class/engineer/"
+>
+    <div class="weapon-column weapon-column-primary">
+        <h2>主武器</h2>
+        <div class="weapon-stack" id="primary-weapon-stack">
+            
+            <a href="/DRGPage/weapon/1/" class="weapon-icon-link" title="深核GK突击步枪">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_02.png" alt="深核GK突击步枪">
+                
+            </a>
+            
+            <a href="/DRGPage/weapon/2/" class="weapon-icon-link" title="M1000经典型步枪">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_03.png" alt="M1000经典型步枪">
+                
+            </a>
+            
+            <a href="/DRGPage/weapon/3/" class="weapon-icon-link" title="DARK-25 电浆卡宾枪">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_01.png" alt="DARK-25 电浆卡宾枪">
+                
+            </a>
+            
+        </div>
+    </div>
+
+    <div class="class-hero">
+        <h1 id="class-hero-name">侦察兵</h1>
+        <div class="class-hero-image-wrap" id="class-hero-image-wrap">
+            
+            <img src="/DRGPage/assets/character/sccot.png" alt="侦察兵">
+            
+        </div>
+    </div>
+
+    <div class="weapon-column weapon-column-secondary">
+        <h2>副武器</h2>
+        <div class="weapon-stack" id="secondary-weapon-stack">
+            
+            <a href="/DRGPage/weapon/4/" class="weapon-icon-link" title="应急霰弹枪">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_04.png" alt="应急霰弹枪">
+                
+            </a>
+            
+            <a href="/DRGPage/weapon/5/" class="weapon-icon-link" title="朱可夫NUK17双持冲锋枪">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_05.png" alt="朱可夫NUK17双持冲锋枪">
+                
+            </a>
+            
+            <a href="/DRGPage/weapon/6/" class="weapon-icon-link" title="尼桑卡X-80“闪电鲨”战术弩">
+                
+                <img src="/DRGPage/assets/weapons/wpicon_06.png" alt="尼桑卡X-80“闪电鲨”战术弩">
+                
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+
+<nav class="class-switcher" id="class-switcher" aria-label="兵种切换">
+    
+    <a
+        href="/DRGPage/weapon/class/scout/"
+        class="class-switch-btn is-active"
+        data-class-switch
+        data-nav-dir="current"
+        aria-current="page"
+    >
+        侦察兵
+    </a>
+    
+    <a
+        href="/DRGPage/weapon/class/engineer/"
+        class="class-switch-btn"
+        data-class-switch
+        data-nav-dir="next"
+        aria-current="false"
+    >
+        工程师
+    </a>
+    
+    <a
+        href="/DRGPage/weapon/class/gunner/"
+        class="class-switch-btn"
+        data-class-switch
+        data-nav-dir="next"
+        aria-current="false"
+    >
+        枪手
+    </a>
+    
+    <a
+        href="/DRGPage/weapon/class/driller/"
+        class="class-switch-btn"
+        data-class-switch
+        data-nav-dir="prev"
+        aria-current="false"
+    >
+        钻机手
+    </a>
+    
+</nav>
+
+
+    </main>
+    <div class="site-disclaimer-modal" id="site-disclaimer-modal" hidden>
+        <div class="site-disclaimer-backdrop"></div>
+        <div class="site-disclaimer-card" role="dialog" aria-modal="true" aria-labelledby="site-disclaimer-title">
+            <h2 id="site-disclaimer-title">使用提醒与版权声明</h2>
+            <p>本页面为《深岩银河》（Deep Rock Galactic）玩家社区整理的非官方参考工具，主要用于展示武器改装与加点思路。内容仅供学习、交流与参考，不构成唯一、强制或标准玩法建议。</p>
+            <p>站点展示中涉及的游戏名称、角色设定、图片素材、图标素材、文本描述与相关数据等，其著作权及相关权利均归原权利人所有。我们仅做资料搬运与整理，不主张对原始素材拥有任何版权。</p>
+            <p>基于公开信息与玩家实践经验整理的内容可能存在时效性差异、版本偏差或理解误差，请以游戏实际版本与官方说明为准。</p>
+            <p>本服务目前为免费提供，不向玩家收取费用，也不以此限制玩家玩法选择。</p>
+            <p>《深岩银河》是一款自由度高且社区氛围友好的合作游戏。鼓励玩家按照自己喜欢的方式游玩，本页面旨在速查与灵感，而非限制玩家“只能这样玩”。</p>
+            <p>若你同意以上说明，请点击“我知道了，继续访问”；若不同意，请点击“我不同意并退出界面”。</p>
+            <div class="site-disclaimer-actions">
+                <button type="button" class="site-disclaimer-btn accept" id="site-disclaimer-accept">我知道了，继续访问</button>
+                <button type="button" class="site-disclaimer-btn decline" id="site-disclaimer-decline">我不同意并退出界面</button>
+            </div>
+        </div>
+    </div>
+    <footer>DRG Builds</footer>
+    <script>
+        (function () {
+            var modal = document.getElementById('site-disclaimer-modal');
+            var acceptBtn = document.getElementById('site-disclaimer-accept');
+            var declineBtn = document.getElementById('site-disclaimer-decline');
+            if (!modal || !acceptBtn || !declineBtn) return;
+            var KEY = 'drg_disclaimer_ack_v1';
+            var hasAccepted = false;
+            try {
+                hasAccepted = localStorage.getItem(KEY) === 'accepted';
+            } catch (e) {
+                hasAccepted = false;
+            }
+            if (hasAccepted) return;
+            modal.hidden = false;
+            document.body.classList.add('has-disclaimer-open');
+            acceptBtn.addEventListener('click', function () {
+                try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
+                modal.hidden = true;
+                document.body.classList.remove('has-disclaimer-open');
+            });
+            declineBtn.addEventListener('click', function () {
+                try { localStorage.removeItem(KEY); } catch (e) {}
+                try { window.close(); } catch (e) {}
+                window.location.replace('about:blank');
+            });
+        })();
+    </script>
+    
+<script type="application/json" id="class-page-config">{"classPayloadTemplate": "/DRGPage/data/weapon-class/__CLASS_SLUG__.json", "siteBasePath": "/DRGPage"}</script>
+<script>
+(() => {
+    const configEl = document.getElementById("class-page-config");
+    const config = configEl ? JSON.parse(configEl.textContent || "{}") : {};
+    const layout = document.getElementById("class-weapon-layout");
+    const switcher = document.getElementById("class-switcher");
+    const primaryStack = document.getElementById("primary-weapon-stack");
+    const secondaryStack = document.getElementById("secondary-weapon-stack");
+    const heroName = document.getElementById("class-hero-name");
+    const heroWrap = document.getElementById("class-hero-image-wrap");
+    if (!layout || !switcher || !primaryStack || !secondaryStack || !heroName || !heroWrap) return;
+
+    const siteBasePath = config.siteBasePath || "";
+    const classPayloadTemplate = config.classPayloadTemplate || "";
+    let navigating = false;
+    let wheelLocked = false;
+    let wheelAccumulator = 0;
+    let currentPath = normalizePath(window.location.pathname);
+    const payloadCache = new Map();
+
+    function normalizePath(url) {
+        if (!url) return "";
+        try {
+            return new URL(url, window.location.origin).pathname;
+        } catch (_err) {
+            return "";
+        }
+    }
+
+    function stripSiteBase(path) {
+        if (!path) return "";
+        if (!siteBasePath || siteBasePath === "/") return path;
+        if (path === siteBasePath) return "/";
+        if (path.startsWith(siteBasePath + "/")) {
+            return path.slice(siteBasePath.length) || "/";
+        }
+        return path;
+    }
+
+    function classSlugFromPath(path) {
+        const relativePath = stripSiteBase(path || "");
+        const match = relativePath.match(/^\/weapon\/class\/([^/?#]+)\/?$/);
+        return match ? decodeURIComponent(match[1]) : "";
+    }
+
+    function wait(ms) {
+        return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    function getPrevUrl() {
+        return layout.dataset.prevClassUrl || "";
+    }
+
+    function getNextUrl() {
+        return layout.dataset.nextClassUrl || "";
+    }
+
+    function clearTransitionClasses() {
+        layout.classList.remove("is-leaving-prev", "is-leaving-next", "is-entering-prev", "is-entering-next");
+    }
+
+    function createWeaponNode(weapon) {
+        const link = document.createElement("a");
+        link.className = "weapon-icon-link";
+        link.href = weapon.url || "#";
+        link.title = weapon.name_cn || "";
+        if (weapon.image_url) {
+            const img = document.createElement("img");
+            img.src = weapon.image_url;
+            img.alt = weapon.name_cn || "";
+            link.appendChild(img);
+        } else {
+            const placeholder = document.createElement("span");
+            placeholder.className = "weapon-icon-placeholder";
+            placeholder.textContent = weapon.name_cn || "";
+            link.appendChild(placeholder);
+        }
+        return link;
+    }
+
+    function renderWeaponStack(stackEl, weapons) {
+        stackEl.innerHTML = "";
+        (weapons || []).forEach((weapon) => {
+            stackEl.appendChild(createWeaponNode(weapon));
+        });
+    }
+
+    function renderHero(data) {
+        const name = (data.dwarf_class && data.dwarf_class.name_cn) || "";
+        heroName.textContent = name;
+        heroWrap.innerHTML = "";
+        if (data.class_character_image_url) {
+            const img = document.createElement("img");
+            img.src = data.class_character_image_url;
+            img.alt = name;
+            heroWrap.appendChild(img);
+        } else {
+            const placeholder = document.createElement("span");
+            placeholder.className = "class-hero-placeholder";
+            placeholder.textContent = name;
+            heroWrap.appendChild(placeholder);
+        }
+    }
+
+    function renderSwitcher(items) {
+        switcher.innerHTML = "";
+        (items || []).forEach((item) => {
+            const btn = document.createElement("a");
+            btn.href = item.url;
+            btn.className = "class-switch-btn" + (item.is_current ? " is-active" : "");
+            btn.dataset.classSwitch = "1";
+            btn.dataset.navDir = item.nav_dir || "next";
+            btn.setAttribute("aria-current", item.is_current ? "page" : "false");
+            btn.textContent = item.name_cn || "";
+            switcher.appendChild(btn);
+        });
+    }
+
+    function applyPayload(data) {
+        renderWeaponStack(primaryStack, data.primary_weapons);
+        renderWeaponStack(secondaryStack, data.secondary_weapons);
+        renderHero(data);
+        renderSwitcher(data.class_nav_items);
+        layout.dataset.prevClassUrl = data.prev_class_url || "";
+        layout.dataset.nextClassUrl = data.next_class_url || "";
+        const clsName = (data.dwarf_class && data.dwarf_class.name_cn) || "";
+        if (clsName) {
+            document.title = clsName + " - 武器选择";
+        }
+    }
+
+    async function fetchPayload(path) {
+        if (payloadCache.has(path)) return payloadCache.get(path);
+        const slug = classSlugFromPath(path);
+        if (!slug) throw new Error("invalid class path");
+        const payloadUrl = classPayloadTemplate.replace("__CLASS_SLUG__", encodeURIComponent(slug));
+        if (!payloadUrl) throw new Error("missing payload template");
+        const response = await fetch(payloadUrl, {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+        });
+        if (!response.ok) throw new Error("payload request failed");
+        const data = await response.json();
+        payloadCache.set(path, data);
+        return data;
+    }
+
+    function prefetchNeighbors() {
+        const neighbors = [getPrevUrl(), getNextUrl()];
+        for (let i = 0; i < neighbors.length; i++) {
+            const path = normalizePath(neighbors[i]);
+            if (!path || path === currentPath) continue;
+            fetchPayload(path).catch(() => {});
+        }
+    }
+
+    function resolveDirectionByPath(path) {
+        const links = switcher.querySelectorAll("[data-class-switch]");
+        for (let i = 0; i < links.length; i++) {
+            if (normalizePath(links[i].href) === path) {
+                return links[i].dataset.navDir === "prev" ? "prev" : "next";
+            }
+        }
+        return "next";
+    }
+
+    async function navigateTo(url, dir, options = {}) {
+        const path = normalizePath(url);
+        if (!path || path === currentPath || navigating) return;
+        const moveDir = dir === "prev" ? "prev" : "next";
+        const leaveClass = moveDir === "prev" ? "is-leaving-prev" : "is-leaving-next";
+        const enterClass = moveDir === "prev" ? "is-entering-prev" : "is-entering-next";
+        navigating = true;
+
+        let data;
+        try {
+            data = await fetchPayload(path);
+        } catch (_err) {
+            window.location.href = path;
+            return;
+        }
+
+        clearTransitionClasses();
+        layout.classList.add(leaveClass);
+        await wait(120);
+
+        clearTransitionClasses();
+        layout.classList.add(enterClass);
+        applyPayload(data);
+        currentPath = path;
+        if (!options.fromPopState) {
+            window.history.pushState({ path: path }, "", path);
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                clearTransitionClasses();
+                navigating = false;
+                prefetchNeighbors();
+            });
+        });
+    }
+
+    document.addEventListener("keydown", (event) => {
+        if (navigating) return;
+        const target = event.target;
+        const tagName = target && target.tagName ? target.tagName.toLowerCase() : "";
+        const isTyping = tagName === "input" || tagName === "textarea" || tagName === "select" || (target && target.isContentEditable);
+        if (isTyping) return;
+
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            navigateTo(getPrevUrl(), "prev");
+        } else if (event.key === "ArrowRight") {
+            event.preventDefault();
+            navigateTo(getNextUrl(), "next");
+        }
+    });
+
+    document.addEventListener("wheel", (event) => {
+        if (navigating || wheelLocked || event.ctrlKey || event.metaKey) return;
+        const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+        if (!delta) return;
+
+        event.preventDefault();
+        wheelAccumulator += delta;
+        if (Math.abs(wheelAccumulator) < 90) return;
+
+        const dir = wheelAccumulator > 0 ? "next" : "prev";
+        wheelAccumulator = 0;
+        wheelLocked = true;
+        navigateTo(dir === "next" ? getNextUrl() : getPrevUrl(), dir);
+        window.setTimeout(() => {
+            wheelLocked = false;
+            wheelAccumulator = 0;
+        }, 280);
+    }, { passive: false });
+
+    switcher.addEventListener("click", (event) => {
+        const btn = event.target.closest("[data-class-switch]");
+        if (!btn) return;
+        event.preventDefault();
+        if (btn.classList.contains("is-active")) return;
+        const url = btn.getAttribute("href");
+        const dir = btn.dataset.navDir === "prev" ? "prev" : "next";
+        navigateTo(url, dir);
+    });
+
+    window.addEventListener("popstate", () => {
+        const path = normalizePath(window.location.pathname);
+        if (!classSlugFromPath(path) || path === currentPath) return;
+        navigateTo(path, resolveDirectionByPath(path), { fromPopState: true });
+    });
+
+    prefetchNeighbors();
+})();
+</script>
+
+</body>
+</html>
