@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>朱可夫NUK17双持冲锋枪 - 加点推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -238,16 +304,33 @@
         color: var(--accent);
     }
 
-    .rec-back {
-        display: inline-block;
+    .rec-back-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1rem;
         margin-bottom: 1rem;
+    }
+
+    .rec-back {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
         color: var(--accent);
         text-decoration: none;
         font-size: 0.95rem;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .rec-back:hover {
         text-decoration: underline;
+    }
+
+    .rec-back:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+        border-radius: 4px;
     }
 
     .rec-empty {
@@ -270,24 +353,111 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
 <div class="rec-page">
-    <a class="rec-back" href="/weapon/5/">&larr; 返回武器详情</a>
+    <div class="rec-back-row">
+        <a class="rec-back" href="/weapon/class/scout/">&larr; 返回 侦察兵 武器</a>
+        <a class="rec-back" href="/weapon/5/">&larr; 武器详情</a>
+    </div>
     <h1 class="rec-page-title">朱可夫NUK17双持冲锋枪</h1>
-    <p class="rec-page-sub">共 1 套加点推荐</p>
+    <p class="rec-page-sub">共 5 套加点推荐</p>
 
     
         
         <a class="rec-card" href="/weapon/5/recommendation/17/">
-            <span class="rec-code">00000</span>
+            <span class="rec-code">12232</span>
             <div class="rec-info">
-                <div class="rec-title">新推荐</div>
+                <div class="rec-title">内置起爆</div>
+                
+                <div class="rec-short-desc">起爆螺栓 AOE：对聚怪与幼虫群效率极高，学会上螺栓节奏即可。</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                    <span class="rec-tag">高难度可用</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">内置起爆</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/5/recommendation/18/">
+            <span class="rec-code">13212</span>
+            <div class="rec-info">
+                <div class="rec-title">冰冻陷阱</div>
+                
+                <div class="rec-short-desc">螺栓变减速场：强控与生存向，团队价值高。</div>
+                
+                
+                <div class="rec-tags">
+                    
+                    <span class="rec-tag">日常通勤</span>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="rec-oc-name">冰冻陷阱</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/5/recommendation/24/">
+            <span class="rec-code">12231</span>
+            <div class="rec-info">
+                <div class="rec-title">热气回收</div>
+                
+                <div class="rec-short-desc">热管理与续航：更长火力覆盖，适合持续洒螺栓/中距交火。</div>
                 
                 
             </div>
+            
+            <div class="rec-oc-name">热气回收</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/5/recommendation/25/">
+            <span class="rec-code">21222</span>
+            <div class="rec-info">
+                <div class="rec-title">精简弹匣</div>
+                
+                <div class="rec-short-desc">弹匣与射速交换：更灵活更省弹，具体手感看个人。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">精简弹夹</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/5/recommendation/26/">
+            <span class="rec-code">22221</span>
+            <div class="rec-info">
+                <div class="rec-title">定制弹壳</div>
+                
+                <div class="rec-short-desc">特化弹药效果：更吃理解词条，偏构筑玩具向。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">定制弹壳</div>
             
         </a>
         

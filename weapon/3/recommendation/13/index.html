@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>弹跳电浆 - DARK-25 电浆卡宾枪</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -907,6 +973,32 @@
         color: var(--text-muted);
         font-size: 0.85rem;
     }
+
+    .rec-parent-back {
+        margin: 0 0 0.45rem;
+        padding-left: max(0, env(safe-area-inset-left, 0px));
+    }
+
+    .rec-parent-back a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .rec-parent-back a:hover {
+        text-decoration: underline;
+    }
+
+    .rec-parent-back a:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
 </style>
 
     </style>
@@ -922,10 +1014,23 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="rec-parent-back">
+    <a href="/weapon/class/scout/">&larr; 返回 侦察兵 武器</a>
+</div>
 <div class="rec-nav-bar">
     <a href="/weapon/3/">DARK-25 电浆卡宾枪</a>
     <span>&rsaquo;</span>
@@ -1011,7 +1116,7 @@
         <div class="rec-article" id="rec-article">
             <h1 class="rec-title">弹跳电浆</h1>
             
-            <p class="rec-subtitle">官方把这个列为特殊模组</p>
+            <p class="rec-subtitle">弹体弹跳清杂：狭窄洞道与转角极强，注意弹跳角度学习成本。</p>
             
             
             <p class="rec-subtitle">文章：弹跳电浆</p>
@@ -1063,22 +1168,42 @@
             
             
             
+            <div class="rec-tier-block" id="rec-tier-block-1" data-tier="1">
+                <strong>第 1 项：</strong>
+                <div class="markdown-body"><p><strong>大型等离子供弹阀</strong>：连续泼水触发弹跳，先保投射与弹药经济。</p></div>
+            </div>
             
             
             
             
+            <div class="rec-tier-block" id="rec-tier-block-2" data-tier="2">
+                <strong>第 2 项：</strong>
+                <div class="markdown-body"><p><strong>大型电池</strong>：续航对齐高频射击。</p></div>
+            </div>
             
+            
+            
+            
+            <div class="rec-tier-block" id="rec-tier-block-3" data-tier="3">
+                <strong>第 3 项：</strong>
+                <div class="markdown-body"><p><strong>第二代冷却装置</strong>：热管理，减少过热断节奏。</p></div>
+            </div>
             
             
             
             
             <div class="rec-tier-block" id="rec-tier-block-4" data-tier="4">
                 <strong>第 4 项：</strong>
-                <div class="markdown-body"><p>这一项要点溅射，是因为每次命中地形都会造成范围伤害。</p></div>
+                <div class="markdown-body"><p><strong>电浆溅射</strong>：和弹跳一样追求「一次出手多目标」。</p></div>
             </div>
             
             
             
+            
+            <div class="rec-tier-block" id="rec-tier-block-5" data-tier="5">
+                <strong>第 5 项：</strong>
+                <div class="markdown-body"><p><strong>热反馈循环</strong>：热侧闭环，适配长时间开火。</p></div>
+            </div>
             
             
             

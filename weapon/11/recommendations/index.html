@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>“疣猪”2I0自动霰弹枪 - 加点推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -238,16 +304,33 @@
         color: var(--accent);
     }
 
-    .rec-back {
-        display: inline-block;
+    .rec-back-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1rem;
         margin-bottom: 1rem;
+    }
+
+    .rec-back {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
         color: var(--accent);
         text-decoration: none;
         font-size: 0.95rem;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .rec-back:hover {
         text-decoration: underline;
+    }
+
+    .rec-back:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+        border-radius: 4px;
     }
 
     .rec-empty {
@@ -270,17 +353,114 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
 <div class="rec-page">
-    <a class="rec-back" href="/weapon/11/">&larr; 返回武器详情</a>
+    <div class="rec-back-row">
+        <a class="rec-back" href="/weapon/class/engineer/">&larr; 返回 工程师 武器</a>
+        <a class="rec-back" href="/weapon/11/">&larr; 武器详情</a>
+    </div>
     <h1 class="rec-page-title">“疣猪”2I0自动霰弹枪</h1>
-    <p class="rec-page-sub">共 0 套加点推荐</p>
+    <p class="rec-page-sub">共 6 套加点推荐</p>
 
     
-        <div class="rec-empty">暂无加点推荐</div>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/33/">
+            <span class="rec-code">22311</span>
+            <div class="rec-info">
+                <div class="rec-title">循环过载</div>
+                
+                <div class="rec-short-desc">Leadstorm 向：超高射速贴脸泼水，牺牲精度与换弹，适合压潮。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">循环过载</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/34/">
+            <span class="rec-code">22311</span>
+            <div class="rec-info">
+                <div class="rec-title">泵动改造</div>
+                
+                <div class="rec-short-desc">大口径泵动：穿透与单发质量极高，载弹紧凑、偏「几枪定乾坤」。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">泵动改造</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/35/">
+            <span class="rec-code">12121</span>
+            <div class="rec-info">
+                <div class="rec-title">磁力势阱</div>
+                
+                <div class="rec-short-desc">收束+弱点：射速换精度，偏中近点名与精英。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">磁力势阱</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/36/">
+            <span class="rec-code">12311</span>
+            <div class="rec-info">
+                <div class="rec-title">轻量弹匣</div>
+                
+                <div class="rec-short-desc">更多备弹更快换弹，清理长跑图更省心。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">轻量弹匣</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/37/">
+            <span class="rec-code">12311</span>
+            <div class="rec-info">
+                <div class="rec-title">眩晕打击</div>
+                
+                <div class="rec-short-desc">全身位眩晕概率+对已眩晕额外伤，控潮向。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">眩晕打击</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/11/recommendation/38/">
+            <span class="rec-code">12311</span>
+            <div class="rec-info">
+                <div class="rec-title">迷你霰弹</div>
+                
+                <div class="rec-short-desc">小弹丸：低后坐、高载弹，单发伤害换泼水续航。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">迷你霰弹</div>
+            
+        </a>
+        
     
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>深核40MM便携式榴弹发射器 - 加点与推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -382,6 +448,40 @@
         cursor: not-allowed;
     }
 
+    .wd-page-top {
+        flex-shrink: 0;
+        width: 100%;
+        padding: 0.2rem 0.65rem 0;
+        padding-left: max(0.65rem, env(safe-area-inset-left, 0px));
+        padding-right: max(0.65rem, env(safe-area-inset-right, 0px));
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .wd-back-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.25rem 0.4rem;
+        margin: 0 -0.4rem 0 0;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .wd-back-link:hover {
+        text-decoration: underline;
+    }
+
+    .wd-back-link:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
+
     .wd-mode-panels {
         flex: 1;
         height: 100%;
@@ -579,28 +679,44 @@
         flex-shrink: 0;
     }
 
+    .wd-left-stage {
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        min-height: 0;
+        min-width: 0;
+        margin: 0.1rem 0 0.55rem;
+        overflow: hidden;
+        --wd-stage-gap: 0.75rem;
+        --wd-stage-bottom-gap: 1.45rem;
+        --wd-info-size: 32px;
+        --wd-info-text-gap: 0.55rem;
+    }
+
     .wd-pic-wrap {
         position: relative;
         flex: 1 1 auto;
+        height: 100%;
         min-height: 0;
-        margin: 0.1rem 0 0.55rem;
+        min-width: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: var(--wd-stage-gap);
     }
 
     .wd-pic-wrap img {
         max-width: 100%;
-        max-height: min(58vh, 620px);
+        max-height: min(58vh, 100%);
         object-fit: contain;
     }
 
     .wd-info-btn {
         position: absolute;
-        left: 4px;
-        bottom: 4px;
-        width: 32px;
-        height: 32px;
+        left: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: var(--wd-info-size);
+        height: var(--wd-info-size);
         border-radius: 50%;
         background: var(--accent);
         color: #1a1d23;
@@ -611,6 +727,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 3;
     }
 
     .wd-info-btn:hover {
@@ -619,35 +736,53 @@
 
     .wd-desc {
         position: absolute;
-        left: 4px;
-        bottom: 40px;
-        max-width: 320px;
+        left: var(--wd-stage-gap);
+        bottom: calc(var(--wd-stage-bottom-gap) + var(--wd-info-size) + var(--wd-info-text-gap));
+        width: min(360px, calc(42% - var(--wd-stage-gap)));
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         padding: 0.6rem 0.85rem;
-        background: rgba(50, 50, 55, 0.3);
+        background: rgba(17, 18, 22, 0.88);
         border-radius: 6px;
         font-size: 1rem;
         color: var(--text);
-        display: none;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
         line-height: 1.5;
+        overflow: auto;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+        z-index: 2;
+        scrollbar-gutter: stable;
     }
 
     .wd-desc.visible {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition-delay: 0s;
     }
 
     .wd-attr {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: auto;
-        align-self: flex-end;
+        position: absolute;
+        right: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: min(420px, calc(50% - (var(--wd-stage-gap) * 1.5)));
         min-width: 280px;
-        max-width: 420px;
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+        margin: 0;
         padding: 0.6rem 0.9rem;
         background: rgba(0, 0, 0, 0.85);
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        overflow: auto;
+        scrollbar-gutter: stable;
         z-index: 10;
     }
 
@@ -1834,14 +1969,20 @@
             padding: 0.75rem;
         }
 
+        .wd-left-stage {
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.25rem;
+        }
+
         .wd-right {
             flex: 0 0 50%;
             max-width: none;
         }
 
         .wd-attr {
+            width: min(320px, calc(52% - var(--wd-stage-gap)));
             min-width: 220px;
-            max-width: 320px;
+            max-width: calc(52% - var(--wd-stage-gap));
             font-size: 0.85rem;
         }
 
@@ -1869,11 +2010,19 @@
         body.page-weapon-detail {
             overflow: auto;
             height: auto;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         body.page-weapon-detail main {
             overflow: auto;
             height: auto;
+            min-height: 0;
+        }
+
+        .wd-page-top {
+            padding-top: 0.35rem;
+            padding-bottom: 0.15rem;
         }
 
         .wd-layout {
@@ -1885,8 +2034,25 @@
         .wd-left {
             flex: 0 0 auto;
             min-width: 0;
-            min-height: 300px;
-            max-height: 45vh;
+            min-height: 0;
+            max-height: none;
+            overflow: visible;
+        }
+
+        .wd-left-stage {
+            flex: 0 0 auto;
+            min-height: clamp(320px, 56vh, 460px);
+            margin: 0.1rem 0 0.5rem;
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.15rem;
+        }
+
+        .wd-pic-wrap {
+            padding: var(--wd-stage-gap);
+        }
+
+        .wd-pic-wrap img {
+            max-height: 100%;
         }
 
         .wd-right {
@@ -1924,20 +2090,43 @@
         }
 
         .wd-attr {
-            position: relative;
-            right: auto;
-            bottom: auto;
+            width: min(280px, calc(52% - var(--wd-stage-gap)));
             min-width: 0;
-            max-width: 100%;
-            margin: 0.5rem 0;
+            max-width: calc(52% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.55rem 0.7rem;
         }
 
         .wd-desc {
-            max-width: 90%;
+            width: min(240px, calc(42% - var(--wd-stage-gap)));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         }
 
         .wd-mode-btn {
             min-width: 92px;
+        }
+
+        .wd-mode-switch {
+            width: min(100% - 1rem, 420px);
+        }
+
+        .wd-tier-section {
+            margin: 0.45rem;
+        }
+
+        .wd-tier-grid {
+            gap: 0.4rem;
+            padding: 0.25rem;
+        }
+
+        #wd-tier-grid-wrap {
+            padding: 0.25rem;
+        }
+
+        .wd-tier-row {
+            height: min(54px, 8vh);
+            gap: 1.8%;
         }
 
         .wd-rec-layout {
@@ -2003,8 +2192,12 @@
 
         .wd-left {
             padding: 0.5rem;
-            min-height: 220px;
-            max-height: 35vh;
+        }
+
+        .wd-left-stage {
+            min-height: clamp(280px, 52vh, 360px);
+            --wd-stage-gap: 0.5rem;
+            --wd-stage-bottom-gap: 1rem;
         }
 
         .wd-overclock-section {
@@ -2022,12 +2215,43 @@
             font-size: 0.85rem;
         }
 
+        .wd-info-btn {
+            left: var(--wd-stage-gap);
+            bottom: var(--wd-stage-bottom-gap);
+        }
+
         .wd-desc {
             font-size: 0.9rem;
+            width: calc(42% - var(--wd-stage-gap));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
+            padding: 0.5rem 0.6rem;
+        }
+
+        .wd-attr {
+            width: calc(58% - var(--wd-stage-gap));
+            max-width: calc(58% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.45rem 0.55rem;
         }
 
         .wd-attr table {
             font-size: 0.8rem;
+        }
+
+        .wd-mode-switch {
+            width: calc(100% - 1rem);
+            margin-bottom: 0.45rem;
+        }
+
+        .wd-mode-btn {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .wd-tier-row {
+            height: 46px;
+            gap: 1.5%;
         }
 
         .wd-rec-detail-tier-row {
@@ -2071,14 +2295,27 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="wd-page-top">
+    <a href="/weapon/class/engineer/" class="wd-back-link" id="wd-back-link">&larr; 返回 工程师 武器</a>
+</div>
 <div class="wd-mode-switch" id="wd-mode-switch">
     <span class="wd-mode-indicator" aria-hidden="true"></span>
     <button type="button" class="wd-mode-btn is-active" data-mode="simulate">模拟界面</button>
-    <button type="button" class="wd-mode-btn" data-mode="recommend" disabled>推荐界面</button>
+    <button type="button" class="wd-mode-btn" data-mode="recommend" >推荐界面</button>
 </div>
 
 <div class="wd-mode-panels" id="wd-mode-panels">
@@ -2086,17 +2323,19 @@
         <div class="wd-layout">
             <div class="wd-left">
                 <h1 class="wd-name">深核40MM便携式榴弹发射器</h1>
-                <div class="wd-pic-wrap">
-                    
-                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器" id="wd-weapon-pic">
-                    
-                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述">ℹ</button>
+                <div class="wd-left-stage">
+                    <div class="wd-pic-wrap">
+                        
+                        <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器" id="wd-weapon-pic">
+                        
+                    </div>
+                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述" aria-controls="wd-desc" aria-expanded="false">ℹ</button>
                     <div class="wd-desc" id="wd-desc">不管是谁创造了&#34;劲爆价格&#34;这个词，他的脑海中一定浮现过这个奇妙的东西:便宜、可靠，同时又具有爆炸性的杀伤力。</div>
-                </div>
-                <div class="wd-attr" id="wd-attr">
-                    <table>
-                        <tbody id="wd-attr-tbody"></tbody>
-                    </table>
+                    <div class="wd-attr" id="wd-attr">
+                        <table>
+                            <tbody id="wd-attr-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -2125,8 +2364,2152 @@
     <div class="wd-mode-panel" data-mode-panel="recommend">
         <div class="wd-rec-layout">
             
-            <section class="wd-rec-detail-wrap">
-                <div class="wd-rec-empty">该武器暂无推荐内容。</div>
+            <aside class="wd-rec-tabs" id="wd-rec-tabs">
+                <div class="wd-rec-search-wrap">
+                    <input
+                        type="search"
+                        id="wd-rec-search"
+                        class="wd-rec-search-input"
+                        placeholder="搜索推荐标题 / 加点码"
+                        aria-label="搜索推荐">
+                </div>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab is-active"
+                    data-rec-id="53"
+                    data-search="大扫除 11122 clean sweep：范围与伤害双升的无代价 oc（wiki 语）。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="大扫除">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">大扫除</span>
+                        <span class="wd-rec-tab-code">11122</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="54"
+                    data-search="rj250化合物 11122 爆炸击退自己与队友；伤害半径换位移。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E5%8F%8D%E5%86%B2.png" alt="RJ250化合物">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">RJ250化合物</span>
+                        <span class="wd-rec-tab-code">11122</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="55"
+                    data-search="超推进剂 21232 高速重弹：小区域毁灭性直击，范围大砍。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="超推进剂">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">超推进剂</span>
+                        <span class="wd-rec-tab-code">21232</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="56"
+                    data-search="压缩弹药 12122 多带小榴弹：爆炸弱化，补持续作战。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="压缩弹药">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">压缩弹药</span>
+                        <span class="wd-rec-tab-code">12122</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="57"
+                    data-search="胖男孩（你在找我吗） 21332 微型战术核：辐射区+极限载弹惩罚；友伤纪律。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="胖男孩（你在找我吗）">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">胖男孩（你在找我吗）</span>
+                        <span class="wd-rec-tab-code">21332</span>
+                    </span>
+                </button>
+                
+                <p class="wd-rec-search-empty" id="wd-rec-search-empty">没有匹配的推荐</p>
+            </aside>
+            <section class="wd-rec-detail-wrap" id="wd-rec-detail-wrap">
+                
+                <article class="wd-rec-detail is-active" data-rec-id="53">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">深核40MM便携式榴弹发射器</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">11122</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="115">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="115">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="116">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="125">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="高爆化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="117">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="117">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="118">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="119">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="119">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="120">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="126">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="122">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="121">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%9A%8F%E6%9C%BA%E4%BC%A4%E5%AE%B3.png" alt="自制炸药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="122">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="127">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="124">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="123">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="感应触发">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="124">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="128">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="禁用惯性抑制器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-clean">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="大扫除">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">大扫除</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">无暇超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">在没有任何负面影响的情况下提升爆炸范围和伤害。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">范围伤害</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">作用半径</td>
+                                            <td class="wd-rec-detail-attr-val">5.5</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大备弹量</td>
+                                            <td class="wd-rec-detail-attr-val">11</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">换弹时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">恐惧值</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">护甲破坏</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">转换为热量的伤害比例</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">直接伤害</td>
+                                            <td class="wd-rec-detail-attr-val">60</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">大扫除</h1>
+                                
+                                <p class="rec-subtitle">Clean Sweep：范围与伤害双升的无代价 OC（Wiki 语）。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="大扫除">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">大扫除</div>
+                                        
+                                        <div class="rec-oc-type">无暇超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">在没有任何负面影响的情况下提升爆炸范围和伤害。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 略微增大作用范围
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 略微提高范围伤害
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p>破片弹药：基础半径与大扫除叠乘。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p>扩容弹袋：工程榴弹永远吃备弹。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p>易燃化合物：补热与持续伤情境（按需理解地图）。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p>钉子+胶带：加半径与大扫除同向。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p>尖刺榴弹：直碰补刀精英。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>玩法概要</h2>
+<p>大扫除是最「标准答案」型榴弹加强：<strong>更大爆炸与更高伤害</strong>，/wiki 标注 <em>without any unwanted effects</em> —— 实际仍以游戏 traits 为准。</p>
+<p>与 RJ250 共用 11122 改装时，玩法从<strong>杀伤</strong>变为<strong>火箭跳与位移</strong>，阅读文章时勿混淆 OC。</p>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.fandom.com/wiki/Deep_Rock_Galactic_Wiki">Deep Rock Galactic Wiki（Fandom）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Increases the explosion radius and damage without any unwanted effects.</em></p>
+<p>—— <a href="https://deeprockgalactic.fandom.com/wiki/Deepcore_40mm_PGL">Deepcore 40mm PGL — Clean Sweep</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="54">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">深核40MM便携式榴弹发射器</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">11122</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="115">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="115">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="116">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="125">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="高爆化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="117">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="117">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="118">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="119">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="119">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="120">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="126">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="122">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="121">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%9A%8F%E6%9C%BA%E4%BC%A4%E5%AE%B3.png" alt="自制炸药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="122">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="127">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="124">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="123">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="感应触发">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="124">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="128">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="禁用惯性抑制器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-balanced">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%8F%8D%E5%86%B2.png" alt="RJ250化合物">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">RJ250化合物</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">均衡超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">利用爆炸的冲击波把你自己和队友推向空中。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">范围伤害</td>
+                                            <td class="wd-rec-detail-attr-val">75</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">作用半径</td>
+                                            <td class="wd-rec-detail-attr-val">5</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大备弹量</td>
+                                            <td class="wd-rec-detail-attr-val">17</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">换弹时间</td>
+                                            <td class="wd-rec-detail-attr-val">1.4</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">恐惧值</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">护甲破坏</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">转换为热量的伤害比例</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">直接伤害</td>
+                                            <td class="wd-rec-detail-attr-val">60</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">RJ250化合物</h1>
+                                
+                                <p class="rec-subtitle">爆炸击退自己与队友；伤害半径换位移。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%8F%8D%E5%86%B2.png" alt="RJ250化合物">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">RJ250化合物</div>
+                                        
+                                        <div class="rec-oc-type">均衡超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">利用爆炸的冲击波把你自己和队友推向空中。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 用武器造成的冲击波上升到新的境界
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 相当多的弹药
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低造成的伤害
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p>破片弹药：跳跃用榴弹，仍需最低起爆手感。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p>扩容弹袋：特技打法多带一发是一发。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p>易燃化合物：按任务决定是否补持续伤。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p>钉子+胶带：扩大可操作引爆窗。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p>尖刺榴弹：落地补刀或处理贴身虫。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>玩法概要</h2>
+<p>RJ250 把榴弹变成<strong>位移工具</strong>：Wiki 写明用爆炸把矮子抛空。需要语音沟通与雷包纪律，野队谨慎。</p>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.fandom.com/wiki/Deep_Rock_Galactic_Wiki">Deep Rock Galactic Wiki（Fandom）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Use explosions to launch yourself and your teammates into the air.</em></p>
+<p>—— <a href="https://deeprockgalactic.fandom.com/wiki/Deepcore_40mm_PGL">Deepcore 40mm PGL — RJ250 Compound</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="55">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">深核40MM便携式榴弹发射器</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">21232</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="116">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="115">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="116">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="125">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="高爆化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="117">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="117">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="118">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="120">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="119">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="120">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="126">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="127">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="121">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%9A%8F%E6%9C%BA%E4%BC%A4%E5%AE%B3.png" alt="自制炸药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="122">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="127">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="124">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="123">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="感应触发">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="124">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="128">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="禁用惯性抑制器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-unstable">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="超推进剂">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">超推进剂</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">不稳定超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">全新的超高速发射物以爆炸范围换取了小范围内直接伤害的提升。但更重的弹药质量限制了你能携带的弹药量。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">范围伤害</td>
+                                            <td class="wd-rec-detail-attr-val">110</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">作用半径</td>
+                                            <td class="wd-rec-detail-attr-val">0.9</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大备弹量</td>
+                                            <td class="wd-rec-detail-attr-val">10</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">换弹时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">恐惧值</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">护甲破坏</td>
+                                            <td class="wd-rec-detail-attr-val">600%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">击晕几率</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">击晕时长</td>
+                                            <td class="wd-rec-detail-attr-val">3</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">直接伤害</td>
+                                            <td class="wd-rec-detail-attr-val">445</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">发射物速度</td>
+                                            <td class="wd-rec-detail-attr-val">450%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">超推进剂</h1>
+                                
+                                <p class="rec-subtitle">高速重弹：小区域毁灭性直击，范围大砍。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="超推进剂">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">超推进剂</div>
+                                        
+                                        <div class="rec-oc-type">不稳定超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">全新的超高速发射物以爆炸范围换取了小范围内直接伤害的提升。但更重的弹药质量限制了你能携带的弹药量。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 可以对单个目标造成巨额伤害的超高速弹头
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 大幅减小作用范围
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低备弹量
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p>额外弹药：载弹惩罚下更要抠每一发。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p>扩容弹袋：尽可能拉回备弹。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p>压力波：破甲与精英对抗。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p>眩晕冲击：窄落点需控怪堆。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p>尖刺榴弹：直击精英补伤害。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>玩法概要</h2>
+<p>Hyper Propellant：把榴弹改成<strong>窄半径高直击/瓦解伤害</strong>（详见 Wiki 伤害类型表）。打法偏「点杀大块头」而不是洗地。</p>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.fandom.com/wiki/Deep_Rock_Galactic_Wiki">Deep Rock Galactic Wiki（Fandom）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>New super-high velocity projectiles trade explosive range for raw damage in a tight area. The increased weight of the rounds also limits how many you can carry.</em></p>
+<p>—— <a href="https://deeprockgalactic.fandom.com/wiki/Deepcore_40mm_PGL">Deepcore 40mm PGL — Hyper Propellant</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="56">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">深核40MM便携式榴弹发射器</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">12122</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="115">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="115">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="116">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="125">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="高爆化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="118">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="117">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="118">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="119">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="119">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="120">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="126">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="122">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="121">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%9A%8F%E6%9C%BA%E4%BC%A4%E5%AE%B3.png" alt="自制炸药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="122">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="127">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="124">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="123">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="感应触发">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="124">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="128">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="禁用惯性抑制器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-balanced">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="压缩弹药">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">压缩弹药</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">均衡超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">你可以在身上多揣几发这种更轻便小巧的榴弹，但其爆炸范围和伤害和普通榴弹相比显得相形见绌。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">范围伤害</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">作用半径</td>
+                                            <td class="wd-rec-detail-attr-val">4.5</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大备弹量</td>
+                                            <td class="wd-rec-detail-attr-val">14</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">换弹时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">恐惧值</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">护甲破坏</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">转换为热量的伤害比例</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">直接伤害</td>
+                                            <td class="wd-rec-detail-attr-val">60</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">压缩弹药</h1>
+                                
+                                <p class="rec-subtitle">多带小榴弹：爆炸弱化，补持续作战。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="压缩弹药">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">压缩弹药</div>
+                                        
+                                        <div class="rec-oc-type">均衡超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">你可以在身上多揣几发这种更轻便小巧的榴弹，但其爆炸范围和伤害和普通榴弹相比显得相形见绌。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 相当多的弹药
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 略微减小作用半径
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 略微减少伤害
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p>破片弹药：弥补部分半径损失。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p>更大装药：拉高单次爆炸质量。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p>易燃化合物：用持续伤害补 AOE 削弱。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p>钉子+胶带：继续买回半径。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p>尖刺榴弹：单体补偿。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>玩法概要</h2>
+<p>Compact Rounds：<strong>+max ammo</strong>，用半径与伤害交换；适合要多扔几次掩护撤退、断尾的场合。</p>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.fandom.com/wiki/Deep_Rock_Galactic_Wiki">Deep Rock Galactic Wiki（Fandom）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Smaller and lighter rounds means more rounds in the pocket at the cost of the explosion's effective radius and damage.</em></p>
+<p>—— <a href="https://deeprockgalactic.fandom.com/wiki/Deepcore_40mm_PGL">Deepcore 40mm PGL — Compact Rounds</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="57">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">深核40MM便携式榴弹发射器</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_16.png" alt="深核40MM便携式榴弹发射器">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">21332</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="116">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="115">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="破片弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="116">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="额外弹药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="125">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="高爆化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="117">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="117">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="扩容弹袋">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="118">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="更大装药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="126">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="119">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%AB%98%E6%B8%A9.png" alt="易燃化合物">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="120">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%8A%A4%E7%94%B2%E7%A0%B4%E5%9D%8F.png" alt="压力波">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="126">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="高速榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="127">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="121">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E9%9A%8F%E6%9C%BA%E4%BC%A4%E5%AE%B3.png" alt="自制炸药">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="122">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="钉子+胶带">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="127">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%BB%E6%99%95.png" alt="眩晕冲击">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="124">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="123">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="感应触发">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="124">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="尖刺榴弹">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="128">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%8F%91%E5%B0%84%E7%89%A9%E9%80%9F%E5%BA%A6.png" alt="禁用惯性抑制器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-unstable">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="胖男孩（你在找我吗）">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">胖男孩（你在找我吗）</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">不稳定超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">这玩意体积大、十分致命，且充满放射性。可惜钚元素质量过大导致你的可携带的弹药量十分有限。一定小心爆炸时产生的辐射。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">范围伤害</td>
+                                            <td class="wd-rec-detail-attr-val">440</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">作用半径</td>
+                                            <td class="wd-rec-detail-attr-val">4</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大备弹量</td>
+                                            <td class="wd-rec-detail-attr-val">6</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">换弹时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">恐惧值</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">发射物速度</td>
+                                            <td class="wd-rec-detail-attr-val">250%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">击晕几率</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">击晕时长</td>
+                                            <td class="wd-rec-detail-attr-val">3</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">直接伤害</td>
+                                            <td class="wd-rec-detail-attr-val">60</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">胖男孩（你在找我吗）</h1>
+                                
+                                <p class="rec-subtitle">微型战术核：辐射区+极限载弹惩罚；友伤纪律。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E8%8C%83%E5%9B%B4%E4%BC%A4%E5%AE%B3.png" alt="胖男孩（你在找我吗）">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">胖男孩（你在找我吗）</div>
+                                        
+                                        <div class="rec-oc-type">不稳定超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">这玩意体积大、十分致命，且充满放射性。可惜钚元素质量过大导致你的可携带的弹药量十分有限。一定小心爆炸时产生的辐射。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 发射迷你核弹头，在较大的范围内造成大量伤害
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 极低的备弹量
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低发射物飞行速度和射程
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p>额外弹药：在 OC 狠狠砍载弹时仍抠备弹。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p>扩容弹袋：每一发胖男孩都要算经济。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p>高速榴弹：弹道手感与远距离落点。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p>眩晕冲击：控场防贴脸翻车。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p>尖刺榴弹：补精英直接接触伤害。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>玩法概要</h2>
+<p>胖男孩在数据库中文描述已强调 <strong>钚弹质量大、弹药极少、辐射危险</strong>；Wiki 页混杂戏谑段落，<strong>请以游戏内 traits 与任务实战为准</strong>。投掷前务必看小地图队友位置。</p>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.fandom.com/wiki/Deep_Rock_Galactic_Wiki">Deep Rock Galactic Wiki（Fandom）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>The grenades have a below-average velocity and are affected by gravity, which limits how far they can travel (certain mods and OCs can affect the velocity).</em></p>
+<p>—— <a href="https://deeprockgalactic.fandom.com/wiki/Deepcore_40mm_PGL">Deepcore 40mm PGL (weapon page)</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
             </section>
             
         </div>
@@ -2792,7 +5175,9 @@
     if (infoBtn) {
         infoBtn.addEventListener('click', function () {
             var desc = document.getElementById('wd-desc');
-            if (desc) desc.classList.toggle('visible');
+            if (!desc) return;
+            var isVisible = desc.classList.toggle('visible');
+            infoBtn.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
         });
     }
 

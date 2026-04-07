@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>“武装核心”电磁手炮 - 加点推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -238,16 +304,33 @@
         color: var(--accent);
     }
 
-    .rec-back {
-        display: inline-block;
+    .rec-back-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1rem;
         margin-bottom: 1rem;
+    }
+
+    .rec-back {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
         color: var(--accent);
         text-decoration: none;
         font-size: 0.95rem;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .rec-back:hover {
         text-decoration: underline;
+    }
+
+    .rec-back:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+        border-radius: 4px;
     }
 
     .rec-empty {
@@ -270,17 +353,114 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
 <div class="rec-page">
-    <a class="rec-back" href="/weapon/22/">&larr; 返回武器详情</a>
+    <div class="rec-back-row">
+        <a class="rec-back" href="/weapon/class/gunner/">&larr; 返回 枪手 武器</a>
+        <a class="rec-back" href="/weapon/22/">&larr; 武器详情</a>
+    </div>
     <h1 class="rec-page-title">“武装核心”电磁手炮</h1>
-    <p class="rec-page-sub">共 0 套加点推荐</p>
+    <p class="rec-page-sub">共 6 套加点推荐</p>
 
     
-        <div class="rec-empty">暂无加点推荐</div>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/107/">
+            <span class="rec-code">22213</span>
+            <div class="rec-info">
+                <div class="rec-title">超磁线圈</div>
+                
+                <div class="rec-short-desc">轨迹半径与持续时间强化，DoT 区域封路。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">超磁线圈</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/108/">
+            <span class="rec-code">22211</span>
+            <div class="rec-info">
+                <div class="rec-title">原子重组</div>
+                
+                <div class="rec-short-desc">穿串传播异常状态，辅助与元素队核心。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">原子重组</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/109/">
+            <span class="rec-code">22213</span>
+            <div class="rec-info">
+                <div class="rec-title">返补模块</div>
+                
+                <div class="rec-short-desc">电池反接换超大总能量，轨迹持续时间缩短。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">返补模块</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/110/">
+            <span class="rec-code">11213</span>
+            <div class="rec-info">
+                <div class="rec-title">鼹鼠</div>
+                
+                <div class="rec-short-desc">穿墙越多伤害越高，矿图与深层开挖神 OC。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">鼹鼠</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/111/">
+            <span class="rec-code">22212</span>
+            <div class="rec-info">
+                <div class="rec-title">地狱烈焰</div>
+                
+                <div class="rec-short-desc">轨迹升温极快，弹容与蓄力吃惩罚。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">地狱烈焰</div>
+            
+        </a>
+        
+        <a class="rec-card" href="/weapon/22/recommendation/112/">
+            <span class="rec-code">12223</span>
+            <div class="rec-info">
+                <div class="rec-title">三重连射</div>
+                
+                <div class="rec-short-desc">主射后追加两次低耗半威穿射，队列爆发。</div>
+                
+                
+            </div>
+            
+            <div class="rec-oc-name">三重连射</div>
+            
+        </a>
+        
     
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>柯莱特微波烹调者 - 加点与推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -382,6 +448,40 @@
         cursor: not-allowed;
     }
 
+    .wd-page-top {
+        flex-shrink: 0;
+        width: 100%;
+        padding: 0.2rem 0.65rem 0;
+        padding-left: max(0.65rem, env(safe-area-inset-left, 0px));
+        padding-right: max(0.65rem, env(safe-area-inset-right, 0px));
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .wd-back-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.25rem 0.4rem;
+        margin: 0 -0.4rem 0 0;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .wd-back-link:hover {
+        text-decoration: underline;
+    }
+
+    .wd-back-link:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
+
     .wd-mode-panels {
         flex: 1;
         height: 100%;
@@ -579,28 +679,44 @@
         flex-shrink: 0;
     }
 
+    .wd-left-stage {
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        min-height: 0;
+        min-width: 0;
+        margin: 0.1rem 0 0.55rem;
+        overflow: hidden;
+        --wd-stage-gap: 0.75rem;
+        --wd-stage-bottom-gap: 1.45rem;
+        --wd-info-size: 32px;
+        --wd-info-text-gap: 0.55rem;
+    }
+
     .wd-pic-wrap {
         position: relative;
         flex: 1 1 auto;
+        height: 100%;
         min-height: 0;
-        margin: 0.1rem 0 0.55rem;
+        min-width: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: var(--wd-stage-gap);
     }
 
     .wd-pic-wrap img {
         max-width: 100%;
-        max-height: min(58vh, 620px);
+        max-height: min(58vh, 100%);
         object-fit: contain;
     }
 
     .wd-info-btn {
         position: absolute;
-        left: 4px;
-        bottom: 4px;
-        width: 32px;
-        height: 32px;
+        left: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: var(--wd-info-size);
+        height: var(--wd-info-size);
         border-radius: 50%;
         background: var(--accent);
         color: #1a1d23;
@@ -611,6 +727,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 3;
     }
 
     .wd-info-btn:hover {
@@ -619,35 +736,53 @@
 
     .wd-desc {
         position: absolute;
-        left: 4px;
-        bottom: 40px;
-        max-width: 320px;
+        left: var(--wd-stage-gap);
+        bottom: calc(var(--wd-stage-bottom-gap) + var(--wd-info-size) + var(--wd-info-text-gap));
+        width: min(360px, calc(42% - var(--wd-stage-gap)));
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         padding: 0.6rem 0.85rem;
-        background: rgba(50, 50, 55, 0.3);
+        background: rgba(17, 18, 22, 0.88);
         border-radius: 6px;
         font-size: 1rem;
         color: var(--text);
-        display: none;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
         line-height: 1.5;
+        overflow: auto;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+        z-index: 2;
+        scrollbar-gutter: stable;
     }
 
     .wd-desc.visible {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition-delay: 0s;
     }
 
     .wd-attr {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: auto;
-        align-self: flex-end;
+        position: absolute;
+        right: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: min(420px, calc(50% - (var(--wd-stage-gap) * 1.5)));
         min-width: 280px;
-        max-width: 420px;
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+        margin: 0;
         padding: 0.6rem 0.9rem;
         background: rgba(0, 0, 0, 0.85);
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        overflow: auto;
+        scrollbar-gutter: stable;
         z-index: 10;
     }
 
@@ -1834,14 +1969,20 @@
             padding: 0.75rem;
         }
 
+        .wd-left-stage {
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.25rem;
+        }
+
         .wd-right {
             flex: 0 0 50%;
             max-width: none;
         }
 
         .wd-attr {
+            width: min(320px, calc(52% - var(--wd-stage-gap)));
             min-width: 220px;
-            max-width: 320px;
+            max-width: calc(52% - var(--wd-stage-gap));
             font-size: 0.85rem;
         }
 
@@ -1869,11 +2010,19 @@
         body.page-weapon-detail {
             overflow: auto;
             height: auto;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         body.page-weapon-detail main {
             overflow: auto;
             height: auto;
+            min-height: 0;
+        }
+
+        .wd-page-top {
+            padding-top: 0.35rem;
+            padding-bottom: 0.15rem;
         }
 
         .wd-layout {
@@ -1885,8 +2034,25 @@
         .wd-left {
             flex: 0 0 auto;
             min-width: 0;
-            min-height: 300px;
-            max-height: 45vh;
+            min-height: 0;
+            max-height: none;
+            overflow: visible;
+        }
+
+        .wd-left-stage {
+            flex: 0 0 auto;
+            min-height: clamp(320px, 56vh, 460px);
+            margin: 0.1rem 0 0.5rem;
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.15rem;
+        }
+
+        .wd-pic-wrap {
+            padding: var(--wd-stage-gap);
+        }
+
+        .wd-pic-wrap img {
+            max-height: 100%;
         }
 
         .wd-right {
@@ -1924,20 +2090,43 @@
         }
 
         .wd-attr {
-            position: relative;
-            right: auto;
-            bottom: auto;
+            width: min(280px, calc(52% - var(--wd-stage-gap)));
             min-width: 0;
-            max-width: 100%;
-            margin: 0.5rem 0;
+            max-width: calc(52% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.55rem 0.7rem;
         }
 
         .wd-desc {
-            max-width: 90%;
+            width: min(240px, calc(42% - var(--wd-stage-gap)));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         }
 
         .wd-mode-btn {
             min-width: 92px;
+        }
+
+        .wd-mode-switch {
+            width: min(100% - 1rem, 420px);
+        }
+
+        .wd-tier-section {
+            margin: 0.45rem;
+        }
+
+        .wd-tier-grid {
+            gap: 0.4rem;
+            padding: 0.25rem;
+        }
+
+        #wd-tier-grid-wrap {
+            padding: 0.25rem;
+        }
+
+        .wd-tier-row {
+            height: min(54px, 8vh);
+            gap: 1.8%;
         }
 
         .wd-rec-layout {
@@ -2003,8 +2192,12 @@
 
         .wd-left {
             padding: 0.5rem;
-            min-height: 220px;
-            max-height: 35vh;
+        }
+
+        .wd-left-stage {
+            min-height: clamp(280px, 52vh, 360px);
+            --wd-stage-gap: 0.5rem;
+            --wd-stage-bottom-gap: 1rem;
         }
 
         .wd-overclock-section {
@@ -2022,12 +2215,43 @@
             font-size: 0.85rem;
         }
 
+        .wd-info-btn {
+            left: var(--wd-stage-gap);
+            bottom: var(--wd-stage-bottom-gap);
+        }
+
         .wd-desc {
             font-size: 0.9rem;
+            width: calc(42% - var(--wd-stage-gap));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
+            padding: 0.5rem 0.6rem;
+        }
+
+        .wd-attr {
+            width: calc(58% - var(--wd-stage-gap));
+            max-width: calc(58% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.45rem 0.55rem;
         }
 
         .wd-attr table {
             font-size: 0.8rem;
+        }
+
+        .wd-mode-switch {
+            width: calc(100% - 1rem);
+            margin-bottom: 0.45rem;
+        }
+
+        .wd-mode-btn {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .wd-tier-row {
+            height: 46px;
+            gap: 1.5%;
         }
 
         .wd-rec-detail-tier-row {
@@ -2071,14 +2295,27 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="wd-page-top">
+    <a href="/weapon/class/driller/" class="wd-back-link" id="wd-back-link">&larr; 返回 钻机手 武器</a>
+</div>
 <div class="wd-mode-switch" id="wd-mode-switch">
     <span class="wd-mode-indicator" aria-hidden="true"></span>
     <button type="button" class="wd-mode-btn is-active" data-mode="simulate">模拟界面</button>
-    <button type="button" class="wd-mode-btn" data-mode="recommend" disabled>推荐界面</button>
+    <button type="button" class="wd-mode-btn" data-mode="recommend" >推荐界面</button>
 </div>
 
 <div class="wd-mode-panels" id="wd-mode-panels">
@@ -2086,17 +2323,19 @@
         <div class="wd-layout">
             <div class="wd-left">
                 <h1 class="wd-name">柯莱特微波烹调者</h1>
-                <div class="wd-pic-wrap">
-                    
-                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者" id="wd-weapon-pic">
-                    
-                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述">ℹ</button>
+                <div class="wd-left-stage">
+                    <div class="wd-pic-wrap">
+                        
+                        <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者" id="wd-weapon-pic">
+                        
+                    </div>
+                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述" aria-controls="wd-desc" aria-expanded="false">ℹ</button>
                     <div class="wd-desc" id="wd-desc">微波烹调者巧妙地将实验室设备和厨房用具结合到了一起。正如它的名字所暗示的那样:将它指向有机物，观察它从内到外被烹煮，直至进发出粘稠的液体。武器本体不附带食谱。</div>
-                </div>
-                <div class="wd-attr" id="wd-attr">
-                    <table>
-                        <tbody id="wd-attr-tbody"></tbody>
-                    </table>
+                    <div class="wd-attr" id="wd-attr">
+                        <table>
+                            <tbody id="wd-attr-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -2125,8 +2364,2820 @@
     <div class="wd-mode-panel" data-mode-panel="recommend">
         <div class="wd-rec-layout">
             
-            <section class="wd-rec-detail-wrap">
-                <div class="wd-rec-empty">该武器暂无推荐内容。</div>
+            <aside class="wd-rec-tabs" id="wd-rec-tabs">
+                <div class="wd-rec-search-wrap">
+                    <input
+                        type="search"
+                        id="wd-rec-search"
+                        class="wd-rec-search-input"
+                        placeholder="搜索推荐标题 / 加点码"
+                        aria-label="搜索推荐">
+                </div>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab is-active"
+                    data-rec-id="146"
+                    data-search="液冷系统 22113 产热更低、散热更快，微波灶通勤基石。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="液冷系统">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">液冷系统</span>
+                        <span class="wd-rec-tab-code">22113</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="147"
+                    data-search="超聚镜头 21113 4m 内巨幅增伤，偏向贴脸焊枪。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E7%B2%BE%E5%87%86%E5%BA%A6.png" alt="超聚镜头">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">超聚镜头</span>
+                        <span class="wd-rec-tab-code">21113</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="148"
+                    data-search="扩散射线 23113 穿透+减速，虫道扫线。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E7%A9%BF%E9%80%8F.png" alt="扩散射线">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">扩散射线</span>
+                        <span class="wd-rec-tab-code">23113</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="149"
+                    data-search="超级电容 11113 弹容与射速暴涨，散热暴跌、过热更久。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="超级电容">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">超级电容</span>
+                        <span class="wd-rec-tab-code">11113</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="150"
+                    data-search="伽马污染 21113 铀玻璃 lens：辐射 dot 与半影场。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="伽马污染">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">伽马污染</span>
+                        <span class="wd-rec-tab-code">21113</span>
+                    </span>
+                </button>
+                
+                <button
+                    type="button"
+                    class="wd-rec-tab "
+                    data-rec-id="151"
+                    data-search="脓包坏死 21113 脓包增伤链，武器更热、更难冷却。">
+                    <span class="wd-rec-tab-icon-wrap">
+                        
+                        
+                        <img src="/assets/icons-mod/%E5%BC%B1%E7%82%B9%E4%BC%A4%E5%AE%B3%E5%8A%A0%E6%88%90.png" alt="脓包坏死">
+                        
+                        
+                    </span>
+                    <span class="wd-rec-tab-meta">
+                        <span class="wd-rec-tab-title">脓包坏死</span>
+                        <span class="wd-rec-tab-code">21113</span>
+                    </span>
+                </button>
+                
+                <p class="wd-rec-search-empty" id="wd-rec-search-empty">没有匹配的推荐</p>
+            </aside>
+            <section class="wd-rec-detail-wrap" id="wd-rec-detail-wrap">
+                
+                <article class="wd-rec-detail is-active" data-rec-id="146">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">22113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="297">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="300">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-clean">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="液冷系统">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">液冷系统</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">无暇超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">加装极致高效的冷却系统，略微减少武器产生的热量，能够加快武器的冷却速度并缩短过热持续时间。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">400</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">9</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">90%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">117%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">1.8</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">液冷系统</h1>
+                                
+                                <p class="rec-subtitle">产热更低、散热更快，微波灶通勤基石。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="液冷系统">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">液冷系统</div>
+                                        
+                                        <div class="rec-oc-type">无暇超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">加装极致高效的冷却系统，略微减少武器产生的热量，能够加快武器的冷却速度并缩短过热持续时间。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 加快冷却速率
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 过热后更快恢复
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 每次射击产生更少热量
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>磁控管</strong>：凸镜伤害或磁控管弹药或凹镜宽束。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>大号供电装置</strong>：散热器或电源或大冷机。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：致密射线或温放器。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：宽镜或过热推进或传染。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器：抓住燃烧/冻结窗口打温度冲击；与主武元素链配套。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>宽束烤线</strong> 与主武的面伤互补；换冰泥请看下表改码。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Extremely efficient cooling system that helps the weapon generate slightly less heat, makes it cool faster and will spend less time jammed.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="147">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">21113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="297">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="299">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-clean">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%B2%BE%E5%87%86%E5%BA%A6.png" alt="超聚镜头">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">超聚镜头</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">无暇超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">一种可大幅聚焦微波的镜头附件，能够提升武器在4米距离内的伤害。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">400</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">80%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">超聚镜头</h1>
+                                
+                                <p class="rec-subtitle">4m 内巨幅增伤，偏向贴脸焊枪。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%B2%BE%E5%87%86%E5%BA%A6.png" alt="超聚镜头">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">超聚镜头</div>
+                                        
+                                        <div class="rec-oc-type">无暇超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">一种可大幅聚焦微波的镜头附件，能够提升武器在4米距离内的伤害。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 增加近距离伤害
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>磁控管</strong>：磁控管或凸透镜由码；21113 抬近距聚焦伤害。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>散热管</strong>：散热管稳住更高热负荷。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：致密射线补软控。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：广角镜附件与供电超频按任务切换 beam。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器承接主武火/冰状态打震荡。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>钻机本体距离</strong>；主武若为黏液减速，你收割很舒服。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>A lens add-on that focuses the microwaves significantly, enhancing their damage output for up to 4 meters.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="148">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">23113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="297">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="301">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-balanced">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%A9%BF%E9%80%8F.png" alt="扩散射线">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">扩散射线</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">均衡超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">对加热器施加一些机械压力后可使微波穿透到更深处，使其可以一次性穿过多名敌人并降低它们的移动速度。但这种压力会对加热器造成影响并略微降低武器伤害</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">6</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">400</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">150%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">1.5</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">最大穿透数</td>
+                                            <td class="wd-rec-detail-attr-val">3</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">扩散射线</h1>
+                                
+                                <p class="rec-subtitle">穿透+减速，虫道扫线。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%A9%BF%E9%80%8F.png" alt="扩散射线">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">扩散射线</div>
+                                        
+                                        <div class="rec-oc-type">均衡超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">对加热器施加一些机械压力后可使微波穿透到更深处，使其可以一次性穿过多名敌人并降低它们的移动速度。但这种压力会对加热器造成影响并略微降低武器伤害</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 微波可贯穿更多敌人
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 命中敌人时使其减速
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低造成的伤害
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>磁控管</strong>：凹镜阔束配合穿透。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>热电制冷器</strong>：大电源或散热。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：温放器放大温度震荡。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：传染或推进。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器：穿透束挂上冻结/燃烧后补温度震荡。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>与泥毒 Contagion</strong> 叠层极快；记得下表冰泥码。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>With some mechanical stress to the heat generator the microwaves can penetrate deeper, being able to go through several enemies at once and slows them down.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="149">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">11113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="296">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="299">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-balanced">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="超级电容">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">超级电容</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">均衡超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">在经过一系列改造后，武器现在可以兼容研发部从黑市里淘来的最强劲的供电装置了(虽说大了点)。装置额外提供的能量在提高总载弹量的同时也提高了射速，但会降低冷却速度并延长过热后冷却时间。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">9</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">400</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">10</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">80%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">50%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">3</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">超级电容</h1>
+                                
+                                <p class="rec-subtitle">弹容与射速暴涨，散热暴跌、过热更久。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="超级电容">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">超级电容</div>
+                                        
+                                        <div class="rec-oc-type">均衡超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">在经过一系列改造后，武器现在可以兼容研发部从黑市里淘来的最强劲的供电装置了(虽说大了点)。装置额外提供的能量在提高总载弹量的同时也提高了射速，但会降低冷却速度并延长过热后冷却时间。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 提高射速
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 相当多的弹药
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低冷却速率
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 更慢的过热后恢复时间
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>凸透镜</strong>：磁控管弹药撑总池。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>散热管</strong>：大电源与超级电容同向。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：<strong>大冷机</strong> 略救散热窟窿。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：推进或宽镜。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器补元素爆发； mega 电容高 RoF 须盯热量。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>按住不松手</strong> 前要算 heat bar；主武最好能帮你控距离。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>A bit on the larger side, but with a few modifications to the weapon you can now use the most powerful power source R&amp;D could smuggle back from the black market.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="150">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">21113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="297">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="299">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-unstable">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="伽马污染">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">伽马污染</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">不稳定超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">将透镜改换为铀玻璃材质可以让微波的放射性更上一层楼，被命中的目标有概率沾染辐射污染，承受放射性伤害的同时向周围的敌人释放有害的辐射。但透镜的较小尺寸限制了微波的作用半径和伤害，额外所需的耗能也降低了其续航。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">6</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">70</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">350</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">80%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">100%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">放射性污染概率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">伽马污染</h1>
+                                
+                                <p class="rec-subtitle">铀玻璃 lens：辐射 DoT 与半影场。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="伽马污染">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">伽马污染</div>
+                                        
+                                        <div class="rec-oc-type">不稳定超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">将透镜改换为铀玻璃材质可以让微波的放射性更上一层楼，被命中的目标有概率沾染辐射污染，承受放射性伤害的同时向周围的敌人释放有害的辐射。但透镜的较小尺寸限制了微波的作用半径和伤害，额外所需的耗能也降低了其续航。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 有几率对敌人造成放射性污染
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 备弹量和伤害减少
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 大幅减小作用范围
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>磁控管</strong>：磁控管或凸透镜支援助伤。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>散热管</strong>：散热管抵消热惩罚。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：温放器放大辐射与温度互动。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：广角镜或供电超频调节束宽与 RoF。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器与辐射场叠窗口爆发。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>与虫潮密度正相关</strong>；冰图记得换表至冰列。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Installing a lens of uranium glass cranks the radioactivity of your microwaves to 11.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="wd-rec-detail " data-rec-id="151">
+                    <div class="wd-rec-detail-layout">
+                        <div class="wd-rec-detail-left">
+                            <h3 class="wd-rec-detail-weapon-name">柯莱特微波烹调者</h3>
+                            <div class="wd-rec-detail-weapon-row">
+                                <div class="wd-rec-detail-pic">
+                                    
+                                    <img src="/assets/weapons/wpimg_12.png" alt="柯莱特微波烹调者">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-tier-section">
+                                <div class="wd-rec-detail-tier-header">
+                                    <span>改装项目</span>
+                                    <span class="wd-rec-detail-build-code">21113</span>
+                                </div>
+                                <div class="wd-rec-detail-tier-grid">
+                                    <div class="wd-rec-detail-selected-col-bg" aria-hidden="true"></div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="1">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="1" data-option-id="297">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="296">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3.png" alt="凸透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="1" data-option-id="297">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%80%BB%E5%BC%B9%E8%8D%AF%E9%87%8F.png" alt="磁控管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="1" data-option-id="298">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="凹透镜">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="2">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="2" data-option-id="299">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="2" data-option-id="299">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%86%B7%E5%8D%B4.png" alt="散热管">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="300">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="大号供电装置">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="2" data-option-id="301">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="3">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="3" data-option-id="302">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="3" data-option-id="302">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%87%8F%E9%80%9F.png" alt="致密射线">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="3" data-option-id="303">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E6%95%A3%E7%83%AD.png" alt="温度增幅器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="4">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="4" data-option-id="304">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="4" data-option-id="304">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E4%BC%A4%E5%AE%B3%E5%8D%8A%E5%BE%84.png" alt="广角镜附件">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="4" data-option-id="305">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E5%B0%84%E9%80%9F.png" alt="供电装置过载">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-tier-row" data-tier="5">
+                                        <div class="wd-rec-detail-selected-col">
+                                            <div class="wd-rec-detail-hex-wrap selected-main wd-rec-tooltip-target" data-tier="5" data-option-id="308">
+                                                <div class="wd-rec-detail-hex">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="306">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%A5%9E%E7%BB%8F%E6%AF%92%E7%B4%A0.png" alt="瘟疫散播器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target " data-tier="5" data-option-id="307">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%88%86%E7%82%B8.png" alt="沸腾光束">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="wd-rec-detail-hex-wrap wd-rec-tooltip-target is-selected" data-tier="5" data-option-id="308">
+                                            <div class="wd-rec-detail-hex">
+                                                
+                                                <img src="/assets/icons-mod/%E7%89%B9%E6%AE%8A.png" alt="放热式反应器">
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-overclock">
+                                <div class="wd-rec-detail-overclock-hex-wrap oc-type-unstable">
+                                    <div class="wd-rec-detail-overclock-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%BC%B1%E7%82%B9%E4%BC%A4%E5%AE%B3%E5%8A%A0%E6%88%90.png" alt="脓包坏死">
+                                        
+                                    </div>
+                                </div>
+                                <div class="wd-rec-detail-overclock-desc">
+                                    
+                                    <div class="wd-rec-detail-overclock-name">脓包坏死</div>
+                                    
+                                    <div class="wd-rec-detail-overclock-type">不稳定超频模组</div>
+                                    
+                                    
+                                    <div class="wd-rec-detail-overclock-text">加装一根实验性真空管之后会使微波产生更多热量，在敌人的表皮上烧出一大块脓包，这些脓包会无视护甲，提高目标受到的直击伤害并在破裂时对目标造成伤害。它所产生出的大量热量会导致武器冷却速率降低。</div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="wd-rec-detail-attrs">
+                                <table>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">伤害</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">光束宽度</td>
+                                            <td class="wd-rec-detail-attr-val">120</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">弹匣容量</td>
+                                            <td class="wd-rec-detail-attr-val">400</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">射速</td>
+                                            <td class="wd-rec-detail-attr-val">7</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">热量累积速率</td>
+                                            <td class="wd-rec-detail-attr-val">105%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">冷却速率</td>
+                                            <td class="wd-rec-detail-attr-val">75%</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">过热持续时间</td>
+                                            <td class="wd-rec-detail-attr-val">2</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="wd-rec-detail-attr-name">温度骤变几率</td>
+                                            <td class="wd-rec-detail-attr-val">25%</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="wd-rec-detail-right">
+                            <div class="wd-rec-article-body">
+                                <h1 class="rec-title">脓包坏死</h1>
+                                
+                                <p class="rec-subtitle">脓包增伤链，武器更热、更难冷却。</p>
+                                
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-overclock-detail">
+                                    <div class="rec-oc-hex">
+                                        
+                                        <img src="/assets/icons-mod/%E5%BC%B1%E7%82%B9%E4%BC%A4%E5%AE%B3%E5%8A%A0%E6%88%90.png" alt="脓包坏死">
+                                        
+                                    </div>
+                                    <div class="rec-oc-text">
+                                        <div class="rec-oc-name">脓包坏死</div>
+                                        
+                                        <div class="rec-oc-type">不稳定超频模组</div>
+                                        
+                                        
+                                        <div class="rec-oc-desc">加装一根实验性真空管之后会使微波产生更多热量，在敌人的表皮上烧出一大块脓包，这些脓包会无视护甲，提高目标受到的直击伤害并在破裂时对目标造成伤害。它所产生出的大量热量会导致武器冷却速率降低。</div>
+                                        
+                                        
+                                        <div class="rec-oc-traits">
+                                            
+                                            <div class="rec-oc-trait trait-positive">
+                                                ▲ 有几率在敌人身上熔出弱点
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 每次射击产生更多热量
+                                            </div>
+                                            
+                                            <div class="rec-oc-trait trait-negative">
+                                                ▼ 降低冷却速率
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="rec-section-title">各加点选择原因</div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
+                                    <strong>第 1 项：</strong>
+                                    <div class="markdown-body"><p><strong>磁控管</strong>：磁控管抬弹药池养脓包链。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
+                                    <strong>第 2 项：</strong>
+                                    <div class="markdown-body"><p><strong>散热管</strong>：散热管减轻 OC 热惩罚。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
+                                    <strong>第 3 项：</strong>
+                                    <div class="markdown-body"><p><strong>致密射线</strong>：致密射线叠加软控。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>广角镜附件</strong>：广角镜与超频切换管束宽与输出节奏。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
+                                    <strong>第 5 项：</strong>
+                                    <div class="markdown-body"><p><strong>放热式反应器</strong>：放热式反应器补温度冲击斩杀。</p></div>
+                                </div>
+                                
+                                
+
+                                
+                                <hr class="rec-divider">
+                                <div class="markdown-body"><h2>钻机手的角色</h2>
+<p>钻机负责 <strong>掘进、改地形、近距离面控制</strong>：火焰铺sticky、急冻锁精英、黏液减速破甲。队伍里你往往是把虫潮<strong>钉在不利位置</strong>的人。</p>
+<p><strong>副武器应补足主武盲区</strong>（点杀、远程、爆发或特殊 interaction），而不是重复同一种输出；下文主武器条目也会点到与副手的分工。## 玩法概要</p>
+<p><strong>与副手搭配</strong>：副手负责点杀/破甲/远程时，主手继续管掘进与场面；泥泵 <strong>易燃 mixture</strong> 与火/EPC 点燃有联动，配装前先和队友对表。</p>
+<p><strong>挂脓→点爆</strong> 需要稳定 beam；泥主武毒触媒是天作之合。</p>
+<h2>随主武器切换（柯莱特微波烹调者）</h2>
+<p>微波灶与 <strong>温度、毒/虫蚀状态</strong> 互动极强：火主武易叠「烫」，冰主武易「冻」，泥主武常带 <strong>毒/蚀</strong> 与 <strong>Contagion</strong> 协同。<strong>换主武时请使用对应整码</strong>，以匹配《武器加点》里火/冰/泥三列。</p>
+<p><strong>数据库默认写入「火」列</strong>；冰/泥玩家请按表整体改配。</p>
+<table>
+<thead>
+<tr>
+<th>超频</th>
+<th>火（CRSPR）</th>
+<th>冰（急冻）</th>
+<th>泥（蚀泥泵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扩散射线</td>
+<td><code>23113</code></td>
+<td><code>23113</code></td>
+<td><code>23111</code></td>
+</tr>
+<tr>
+<td>超聚镜头</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>伽马污染</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+<tr>
+<td>液冷系统</td>
+<td><code>22113</code></td>
+<td><code>22212</code></td>
+<td><code>22111</code></td>
+</tr>
+<tr>
+<td>超级电容</td>
+<td><code>11113</code></td>
+<td><code>11212</code></td>
+<td><code>11111</code></td>
+</tr>
+<tr>
+<td>脓包坏死</td>
+<td><code>21113</code></td>
+<td><code>21212</code></td>
+<td><code>21111</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Wiki 参考</h2>
+<p>以下引自 <a href="https://deeprockgalactic.wiki.gg/wiki/">Deep Rock Galactic Wiki（wiki.gg）</a> 对应武器页 <strong>Overclocks</strong> 一栏中的英文说明；与中文客户端用词可能不同，且页面常标注 <em>possibly not up to date</em>，<strong>请以游戏内为准</strong>。</p>
+<blockquote>
+<p><em>Adding an experimental electron tube makes the microwaves generate more heat, boiling the skin of enemies in the shape of large blisters.</em></p>
+<p>—— <a href="https://deeprockgalactic.wiki.gg/wiki/Colette_Wave_Cooker">Colette Wave Cooker</a></p>
+</blockquote></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
             </section>
             
         </div>
@@ -2792,7 +5843,9 @@
     if (infoBtn) {
         infoBtn.addEventListener('click', function () {
             var desc = document.getElementById('wd-desc');
-            if (desc) desc.classList.toggle('visible');
+            if (!desc) return;
+            var isVisible = desc.classList.toggle('visible');
+            infoBtn.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
         });
     }
 

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>
   
   日常通勤
@@ -33,17 +33,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -143,6 +175,40 @@
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
         }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
+        }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
             header { padding: 1rem 1.5rem; font-size: 1.1rem; }
@@ -165,6 +231,16 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
@@ -199,19 +275,19 @@
             
             <li>
                 <a href="/weapon/1/recommendation/3/">超频撞针</a>
-                — 让我用超频撞针试试你的鸿沟绝岭吧
+                — 稳定增伤向均衡超频：射速与弹容兼得，日常清图手感顺。
                 <span class="tag">日常通勤</span>
             </li>
             
             <li>
                 <a href="/weapon/1/recommendation/5/">电击装填</a>
-                — 电击装填加上爆破装填我愿称之为手忙脚乱组合。
+                — 电链扩散向：靠装填触发的连锁电击处理密集虫群。
                 <span class="tag">日常通勤</span>
             </li>
             
             <li>
                 <a href="/weapon/1/recommendation/4/">点射扳机</a>
-                — 在官方看来这玩意是独特超频
+                — 三连发点射超频：中远距离省弹、可控，适合有节奏地点名。
                 <span class="tag">日常通勤</span>
             </li>
             
@@ -224,19 +300,19 @@
             
             <li>
                 <a href="/weapon/2/recommendation/6/">腰射潮人</a>
-                — 我管你这那的，跟我的鼠标宏说去吧
+                — 腰射准星强化：跑打、落点、钻洞清理都非常舒服。
                 <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
             </li>
             
             <li>
                 <a href="/weapon/2/recommendation/7/">过冷枪膛</a>
-                — 当你看到致命弱点的时候，你就知道该拿这个模组了
+                — 单发后坐与冷却特化：高单发质量，偏「狙味儿」的保守打法。
                 <span class="tag">日常通勤</span>
             </li>
             
             <li>
                 <a href="/weapon/2/recommendation/8/">专注悬停</a>
-                — 建议在队友很菜的时候玩这个💩
+                — 开镜稳定：中远距离点名精英更舒服，偏团队辅助输出位。
                 <span class="tag">日常通勤</span>
             </li>
             
@@ -249,13 +325,13 @@
             
             <li>
                 <a href="/weapon/3/recommendation/10/">废热回导</a>
-                — 侦察最强的模组
+                — 上限极高的主输出向：吃准热管理与走位，熟练后强度顶尖。
                 <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
             </li>
             
             <li>
                 <a href="/weapon/3/recommendation/11/">护盾协能</a>
-                — 高玩必备
+                — 护盾联动：适合站位激进、护盾常破的侦察，偏生存向。
                 <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
             </li>
             
@@ -268,13 +344,32 @@
             
             <li>
                 <a href="/weapon/4/recommendation/14/">特殊火药</a>
-                — 喷子跳
+                — 移动与位移核心：喷子跳、续航与自动换弹三位一体。
                 <span class="tag">日常通勤</span><span class="tag">高难度可用</span><span class="tag">娱乐玩法</span>
             </li>
             
             <li>
                 <a href="/weapon/4/recommendation/15/">双管齐下</a>
-                — 真~应急霰弹枪
+                — 机动与爆发：喷子跳与双管齐射结合，特技向但上限高。
+                <span class="tag">日常通勤</span>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+        <strong>朱可夫NUK17双持冲锋枪</strong>
+        <ul style="margin: 0.25rem 0 0 1rem;">
+            
+            <li>
+                <a href="/weapon/5/recommendation/17/">内置起爆</a>
+                — 起爆螺栓 AOE：对聚怪与幼虫群效率极高，学会上螺栓节奏即可。
+                <span class="tag">日常通勤</span><span class="tag">高难度可用</span>
+            </li>
+            
+            <li>
+                <a href="/weapon/5/recommendation/18/">冰冻陷阱</a>
+                — 螺栓变减速场：强控与生存向，团队价值高。
                 <span class="tag">日常通勤</span>
             </li>
             

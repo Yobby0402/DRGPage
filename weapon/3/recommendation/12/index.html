@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>恒温电导 - DARK-25 电浆卡宾枪</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -907,6 +973,32 @@
         color: var(--text-muted);
         font-size: 0.85rem;
     }
+
+    .rec-parent-back {
+        margin: 0 0 0.45rem;
+        padding-left: max(0, env(safe-area-inset-left, 0px));
+    }
+
+    .rec-parent-back a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .rec-parent-back a:hover {
+        text-decoration: underline;
+    }
+
+    .rec-parent-back a:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
 </style>
 
     </style>
@@ -922,10 +1014,23 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="rec-parent-back">
+    <a href="/weapon/class/scout/">&larr; 返回 侦察兵 武器</a>
+</div>
 <div class="rec-nav-bar">
     <a href="/weapon/3/">DARK-25 电浆卡宾枪</a>
     <span>&rsaquo;</span>
@@ -1031,7 +1136,7 @@
         <div class="rec-article" id="rec-article">
             <h1 class="rec-title">恒温电导</h1>
             
-            <p class="rec-subtitle">旗舰电动加热杯为你恒温电导</p>
+            <p class="rec-subtitle">团队辅助电击：控场与集火辅助强，适合有协同的队伍。</p>
             
             
             <p class="rec-subtitle">文章：恒温电导</p>
@@ -1093,7 +1198,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-1" data-tier="1">
                 <strong>第 1 项：</strong>
-                <div class="markdown-body"><p>可以选择第一个加点快速叠状态，也可以选择第二控温达到更多层数。</p></div>
+                <div class="markdown-body"><p><strong>散热优化</strong>：恒温偏团队持续输出，先稳住热曲线。</p></div>
             </div>
             
             
@@ -1101,7 +1206,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-2" data-tier="2">
                 <strong>第 2 项：</strong>
-                <div class="markdown-body"><p>这个模组纯辅助所以不用加点伤害。</p></div>
+                <div class="markdown-body"><p><strong>大型电池</strong>：电击辅助需要续航，别半路没电。</p></div>
             </div>
             
             
@@ -1109,7 +1214,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-3" data-tier="3">
                 <strong>第 3 项：</strong>
-                <div class="markdown-body"><p>点降温可以更好控温。</p></div>
+                <div class="markdown-body"><p><strong>第二代冷却装置</strong>：继续压低过热风险，保证场面不断电。</p></div>
             </div>
             
             
@@ -1117,7 +1222,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-4" data-tier="4">
                 <strong>第 4 项：</strong>
-                <div class="markdown-body"><p>这一项一定要点第二个，这可以使你几乎只需要把子弹打到无畏异虫身上就可以了，不需要在意是不是重甲单位。此外也可以给多个目标同时施加效果，且可以给直接攻击命中的目标一次叠加两层。</p></div>
+                <div class="markdown-body"><p><strong>电浆溅射</strong>：对群覆盖面与恒温「场面控制」一致。</p></div>
             </div>
             
             
@@ -1125,7 +1230,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-5" data-tier="5">
                 <strong>第 5 项：</strong>
-                <div class="markdown-body"><p>加攻速更快叠层。</p></div>
+                <div class="markdown-body"><p><strong>热反馈循环</strong>：多数电浆构筑的常用终端，恒温也不例外。</p></div>
             </div>
             
             

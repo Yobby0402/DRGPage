@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>死亡标记 - M1000经典型步枪</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -907,6 +973,32 @@
         color: var(--text-muted);
         font-size: 0.85rem;
     }
+
+    .rec-parent-back {
+        margin: 0 0 0.45rem;
+        padding-left: max(0, env(safe-area-inset-left, 0px));
+    }
+
+    .rec-parent-back a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .rec-parent-back a:hover {
+        text-decoration: underline;
+    }
+
+    .rec-parent-back a:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
 </style>
 
     </style>
@@ -922,10 +1014,23 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="rec-parent-back">
+    <a href="/weapon/class/scout/">&larr; 返回 侦察兵 武器</a>
+</div>
 <div class="rec-nav-bar">
     <a href="/weapon/2/">M1000经典型步枪</a>
     <span>&rsaquo;</span>
@@ -1036,7 +1141,7 @@
         <div class="rec-article" id="rec-article">
             <h1 class="rec-title">死亡标记</h1>
             
-            <p class="rec-subtitle">T1辅助模组，为什么是T1，因为不是T0</p>
+            <p class="rec-subtitle">标记增伤辅助：己方集火效率上升，也适合开黑语音配合。</p>
             
             
             <p class="rec-subtitle">文章：死亡标记</p>
@@ -1098,7 +1203,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-1" data-tier="1">
                 <strong>第 1 项：</strong>
-                <div class="markdown-body"><p>加伤害，以便自己出伤。</p></div>
+                <div class="markdown-body"><p><strong>大口径弹药</strong>：标记后仍需本体跟伤害，先保证单发质量。</p></div>
             </div>
             
             
@@ -1106,7 +1211,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-2" data-tier="2">
                 <strong>第 2 项：</strong>
-                <div class="markdown-body"><p>也可以加瞄准速度，因为即便击中护甲也可以触发加成（未验证）。</p></div>
+                <div class="markdown-body"><p><strong>硬质子弹</strong>：对甲精英不翻车。</p></div>
             </div>
             
             
@@ -1114,18 +1219,23 @@
             
             <div class="rec-tier-block" id="rec-tier-block-3" data-tier="3">
                 <strong>第 3 项：</strong>
-                <div class="markdown-body"><p>因为瞄准伤害已经降低所以点弹匣加成。</p></div>
+                <div class="markdown-body"><p><strong>扩容弹夹</strong>：持续跟枪与补标记时减少换弹。</p></div>
             </div>
             
             
             
+            
+            <div class="rec-tier-block" id="rec-tier-block-4" data-tier="4">
+                <strong>第 4 项：</strong>
+                <div class="markdown-body"><p><strong>超强贯通弹</strong>：虫潮线穿透容错高。</p></div>
+            </div>
             
             
             
             
             <div class="rec-tier-block" id="rec-tier-block-5" data-tier="5">
                 <strong>第 5 项：</strong>
-                <div class="markdown-body"><p>加击晕可以方便后续输出。</p></div>
+                <div class="markdown-body"><p><strong>钻心之痛</strong>：把「易伤窗口」里能打出的爆发拉满。</p></div>
             </div>
             
             

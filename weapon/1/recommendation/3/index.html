@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>超频撞针 - 深核GK突击步枪</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -907,6 +973,32 @@
         color: var(--text-muted);
         font-size: 0.85rem;
     }
+
+    .rec-parent-back {
+        margin: 0 0 0.45rem;
+        padding-left: max(0, env(safe-area-inset-left, 0px));
+    }
+
+    .rec-parent-back a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .rec-parent-back a:hover {
+        text-decoration: underline;
+    }
+
+    .rec-parent-back a:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
 </style>
 
     </style>
@@ -922,10 +1014,23 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="rec-parent-back">
+    <a href="/weapon/class/scout/">&larr; 返回 侦察兵 武器</a>
+</div>
 <div class="rec-nav-bar">
     <a href="/weapon/1/">深核GK突击步枪</a>
     <span>&rsaquo;</span>
@@ -1021,7 +1126,7 @@
         <div class="rec-article" id="rec-article">
             <h1 class="rec-title">超频撞针</h1>
             
-            <p class="rec-subtitle">让我用超频撞针试试你的鸿沟绝岭吧</p>
+            <p class="rec-subtitle">稳定增伤向均衡超频：射速与弹容兼得，日常清图手感顺。</p>
             
             
             <p class="rec-subtitle">文章：超频撞针</p>
@@ -1075,7 +1180,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-1" data-tier="1">
                 <strong>第 1 项：</strong>
-                <div class="markdown-body"><p>无脑点射速就行了。既然做不到均衡，那就把一项数据加到顶尖。</p></div>
+                <div class="markdown-body"><p><strong>超载供弹结构</strong>：与整套「快打快收」的节奏一致，射速提升能放大撞针模组的持续输出。</p></div>
             </div>
             
             
@@ -1083,10 +1188,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-2" data-tier="2">
                 <strong>第 2 项：</strong>
-                <div class="markdown-body"><p>光快还不行，还得要输出。把虫子杀完，嘎巴躺地上就行了。接下来就是按X鼓励队友。</p>
-<blockquote>
-<p>你问我够不够持久？没关系我一个人吃两份补给怎么了？这都是我亲手挖的硝石！</p>
-</blockquote></div>
+                <div class="markdown-body"><p><strong>大口径弹药</strong>：直伤基础越高，射速放大后的有效 DPS 越扎实。</p></div>
             </div>
             
             
@@ -1094,7 +1196,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-3" data-tier="3">
                 <strong>第 3 项：</strong>
-                <div class="markdown-body"><p>什么是后坐力？压枪是不存在的，把枪管子伸虫子屁股里就行了。</p></div>
+                <div class="markdown-body"><p><strong>大容量弹匣</strong>：对冲射速带来的弹药消耗，减少频繁换弹断节奏。</p></div>
             </div>
             
             
@@ -1102,7 +1204,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-4" data-tier="4">
                 <strong>第 4 项：</strong>
-                <div class="markdown-body"><p>这层加点感觉要看个人，打得准或者打固定单位就点弱点加成，不然就点破甲，因为没有控制的情况下打弱点还是比较困难的。</p></div>
+                <div class="markdown-body"><p><strong>硬质子弹</strong>：多目标场景下更好处理装甲虫、战士等常见杂兵。</p></div>
             </div>
             
             
@@ -1110,7 +1212,7 @@
             
             <div class="rec-tier-block" id="rec-tier-block-5" data-tier="5">
                 <strong>第 5 项：</strong>
-                <div class="markdown-body"><p>只管加射速就OK了。</p></div>
+                <div class="markdown-body"><p><strong>改良导气系统</strong>：继续抬射速，与模组方向一致；击晕与战斗狂潮在此套里收益不如纯射速稳定。</p></div>
             </div>
             
             

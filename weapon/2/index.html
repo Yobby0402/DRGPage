@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>M1000经典型步枪 - 加点与推荐</title>
     <style>
         :root {
@@ -29,17 +29,49 @@
             border-bottom: 2px solid var(--accent);
         }
         header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
         }
         .site-nav {
+            grid-column: 2;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
+        }
+        .site-feedback {
+            grid-column: 3;
+            justify-self: end;
+            align-self: start;
+        }
+        .site-feedback-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            color: #1a1d23;
+            background: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 999px;
+            padding: 0.32rem 0.92rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+        }
+        .site-feedback-link:hover {
+            text-decoration: none;
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+        }
+        .site-feedback-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
         }
         .site-nav a {
             color: var(--accent);
@@ -138,6 +170,40 @@
         .site-disclaimer-btn.decline {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text);
+        }
+        @media (max-width: 720px) {
+            header {
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+            }
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1rem, env(safe-area-inset-right, 0px));
+            }
+            header .container {
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+                row-gap: 0.5rem;
+            }
+            .site-feedback {
+                grid-column: 1;
+                justify-self: end;
+            }
+            .site-nav {
+                grid-column: 1;
+                justify-self: center;
+            }
+            .site-nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .site-feedback-link {
+                min-height: 44px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.86rem;
+            }
         }
         @media (min-width: 2560px) {
             body { font-size: 18px; }
@@ -382,6 +448,40 @@
         cursor: not-allowed;
     }
 
+    .wd-page-top {
+        flex-shrink: 0;
+        width: 100%;
+        padding: 0.2rem 0.65rem 0;
+        padding-left: max(0.65rem, env(safe-area-inset-left, 0px));
+        padding-right: max(0.65rem, env(safe-area-inset-right, 0px));
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .wd-back-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.25rem 0.4rem;
+        margin: 0 -0.4rem 0 0;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .wd-back-link:hover {
+        text-decoration: underline;
+    }
+
+    .wd-back-link:focus-visible {
+        outline: 2px solid #f4dca0;
+        outline-offset: 2px;
+    }
+
     .wd-mode-panels {
         flex: 1;
         height: 100%;
@@ -579,28 +679,44 @@
         flex-shrink: 0;
     }
 
+    .wd-left-stage {
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        min-height: 0;
+        min-width: 0;
+        margin: 0.1rem 0 0.55rem;
+        overflow: hidden;
+        --wd-stage-gap: 0.75rem;
+        --wd-stage-bottom-gap: 1.45rem;
+        --wd-info-size: 32px;
+        --wd-info-text-gap: 0.55rem;
+    }
+
     .wd-pic-wrap {
         position: relative;
         flex: 1 1 auto;
+        height: 100%;
         min-height: 0;
-        margin: 0.1rem 0 0.55rem;
+        min-width: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: var(--wd-stage-gap);
     }
 
     .wd-pic-wrap img {
         max-width: 100%;
-        max-height: min(58vh, 620px);
+        max-height: min(58vh, 100%);
         object-fit: contain;
     }
 
     .wd-info-btn {
         position: absolute;
-        left: 4px;
-        bottom: 4px;
-        width: 32px;
-        height: 32px;
+        left: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: var(--wd-info-size);
+        height: var(--wd-info-size);
         border-radius: 50%;
         background: var(--accent);
         color: #1a1d23;
@@ -611,6 +727,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 3;
     }
 
     .wd-info-btn:hover {
@@ -619,35 +736,53 @@
 
     .wd-desc {
         position: absolute;
-        left: 4px;
-        bottom: 40px;
-        max-width: 320px;
+        left: var(--wd-stage-gap);
+        bottom: calc(var(--wd-stage-bottom-gap) + var(--wd-info-size) + var(--wd-info-text-gap));
+        width: min(360px, calc(42% - var(--wd-stage-gap)));
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         padding: 0.6rem 0.85rem;
-        background: rgba(50, 50, 55, 0.3);
+        background: rgba(17, 18, 22, 0.88);
         border-radius: 6px;
         font-size: 1rem;
         color: var(--text);
-        display: none;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
         line-height: 1.5;
+        overflow: auto;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+        z-index: 2;
+        scrollbar-gutter: stable;
     }
 
     .wd-desc.visible {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition-delay: 0s;
     }
 
     .wd-attr {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: auto;
-        align-self: flex-end;
+        position: absolute;
+        right: var(--wd-stage-gap);
+        bottom: var(--wd-stage-bottom-gap);
+        width: min(420px, calc(50% - (var(--wd-stage-gap) * 1.5)));
         min-width: 280px;
-        max-width: 420px;
+        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+        margin: 0;
         padding: 0.6rem 0.9rem;
         background: rgba(0, 0, 0, 0.85);
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        overflow: auto;
+        scrollbar-gutter: stable;
         z-index: 10;
     }
 
@@ -1834,14 +1969,20 @@
             padding: 0.75rem;
         }
 
+        .wd-left-stage {
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.25rem;
+        }
+
         .wd-right {
             flex: 0 0 50%;
             max-width: none;
         }
 
         .wd-attr {
+            width: min(320px, calc(52% - var(--wd-stage-gap)));
             min-width: 220px;
-            max-width: 320px;
+            max-width: calc(52% - var(--wd-stage-gap));
             font-size: 0.85rem;
         }
 
@@ -1869,11 +2010,19 @@
         body.page-weapon-detail {
             overflow: auto;
             height: auto;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         body.page-weapon-detail main {
             overflow: auto;
             height: auto;
+            min-height: 0;
+        }
+
+        .wd-page-top {
+            padding-top: 0.35rem;
+            padding-bottom: 0.15rem;
         }
 
         .wd-layout {
@@ -1885,8 +2034,25 @@
         .wd-left {
             flex: 0 0 auto;
             min-width: 0;
-            min-height: 300px;
-            max-height: 45vh;
+            min-height: 0;
+            max-height: none;
+            overflow: visible;
+        }
+
+        .wd-left-stage {
+            flex: 0 0 auto;
+            min-height: clamp(320px, 56vh, 460px);
+            margin: 0.1rem 0 0.5rem;
+            --wd-stage-gap: 0.6rem;
+            --wd-stage-bottom-gap: 1.15rem;
+        }
+
+        .wd-pic-wrap {
+            padding: var(--wd-stage-gap);
+        }
+
+        .wd-pic-wrap img {
+            max-height: 100%;
         }
 
         .wd-right {
@@ -1924,20 +2090,43 @@
         }
 
         .wd-attr {
-            position: relative;
-            right: auto;
-            bottom: auto;
+            width: min(280px, calc(52% - var(--wd-stage-gap)));
             min-width: 0;
-            max-width: 100%;
-            margin: 0.5rem 0;
+            max-width: calc(52% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.55rem 0.7rem;
         }
 
         .wd-desc {
-            max-width: 90%;
+            width: min(240px, calc(42% - var(--wd-stage-gap)));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         }
 
         .wd-mode-btn {
             min-width: 92px;
+        }
+
+        .wd-mode-switch {
+            width: min(100% - 1rem, 420px);
+        }
+
+        .wd-tier-section {
+            margin: 0.45rem;
+        }
+
+        .wd-tier-grid {
+            gap: 0.4rem;
+            padding: 0.25rem;
+        }
+
+        #wd-tier-grid-wrap {
+            padding: 0.25rem;
+        }
+
+        .wd-tier-row {
+            height: min(54px, 8vh);
+            gap: 1.8%;
         }
 
         .wd-rec-layout {
@@ -2003,8 +2192,12 @@
 
         .wd-left {
             padding: 0.5rem;
-            min-height: 220px;
-            max-height: 35vh;
+        }
+
+        .wd-left-stage {
+            min-height: clamp(280px, 52vh, 360px);
+            --wd-stage-gap: 0.5rem;
+            --wd-stage-bottom-gap: 1rem;
         }
 
         .wd-overclock-section {
@@ -2022,12 +2215,43 @@
             font-size: 0.85rem;
         }
 
+        .wd-info-btn {
+            left: var(--wd-stage-gap);
+            bottom: var(--wd-stage-bottom-gap);
+        }
+
         .wd-desc {
             font-size: 0.9rem;
+            width: calc(42% - var(--wd-stage-gap));
+            max-width: calc(42% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
+            padding: 0.5rem 0.6rem;
+        }
+
+        .wd-attr {
+            width: calc(58% - var(--wd-stage-gap));
+            max-width: calc(58% - var(--wd-stage-gap));
+            max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
+            padding: 0.45rem 0.55rem;
         }
 
         .wd-attr table {
             font-size: 0.8rem;
+        }
+
+        .wd-mode-switch {
+            width: calc(100% - 1rem);
+            margin-bottom: 0.45rem;
+        }
+
+        .wd-mode-btn {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .wd-tier-row {
+            height: 46px;
+            gap: 1.5%;
         }
 
         .wd-rec-detail-tier-row {
@@ -2071,10 +2295,23 @@
                 <a href="/diy-peripherals/" class="">自制外设</a>
                 
             </nav>
+            <div class="site-feedback">
+                <a
+                    href="https://github.com/Yobby0402/DRGPage/issues"
+                    class="site-feedback-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往 GitHub Issues 提交问题反馈">
+                    问题反馈
+                </a>
+            </div>
         </div>
     </header>
     <main class="container">
         
+<div class="wd-page-top">
+    <a href="/weapon/class/scout/" class="wd-back-link" id="wd-back-link">&larr; 返回 侦察兵 武器</a>
+</div>
 <div class="wd-mode-switch" id="wd-mode-switch">
     <span class="wd-mode-indicator" aria-hidden="true"></span>
     <button type="button" class="wd-mode-btn is-active" data-mode="simulate">模拟界面</button>
@@ -2086,17 +2323,19 @@
         <div class="wd-layout">
             <div class="wd-left">
                 <h1 class="wd-name">M1000经典型步枪</h1>
-                <div class="wd-pic-wrap">
-                    
-                    <img src="/assets/weapons/wpimg_03.png" alt="M1000经典型步枪" id="wd-weapon-pic">
-                    
-                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述">ℹ</button>
+                <div class="wd-left-stage">
+                    <div class="wd-pic-wrap">
+                        
+                        <img src="/assets/weapons/wpimg_03.png" alt="M1000经典型步枪" id="wd-weapon-pic">
+                        
+                    </div>
+                    <button type="button" class="wd-info-btn" id="wd-info-btn" aria-label="描述" aria-controls="wd-desc" aria-expanded="false">ℹ</button>
                     <div class="wd-desc" id="wd-desc">深岩银河集团的制式精密步枪M1000的原型可以追溯到数百年前，且整体改动不大，仍保有高伤害，可观的射速.....和清脆的那声&#34;叮”。属于&#34;没有实质问题不要画蛇添足”的典型范例。</div>
-                </div>
-                <div class="wd-attr" id="wd-attr">
-                    <table>
-                        <tbody id="wd-attr-tbody"></tbody>
-                    </table>
+                    <div class="wd-attr" id="wd-attr">
+                        <table>
+                            <tbody id="wd-attr-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -2139,7 +2378,7 @@
                     type="button"
                     class="wd-rec-tab is-active"
                     data-rec-id="6"
-                    data-search="腰射潮人 23213 我管你这那的，跟我的鼠标宏说去吧">
+                    data-search="腰射潮人 23213 腰射准星强化：跑打、落点、钻洞清理都非常舒服。">
                     <span class="wd-rec-tab-icon-wrap">
                         
                         
@@ -2157,7 +2396,7 @@
                     type="button"
                     class="wd-rec-tab "
                     data-rec-id="7"
-                    data-search="过冷枪膛 21121 当你看到致命弱点的时候，你就知道该拿这个模组了">
+                    data-search="过冷枪膛 21121 单发后坐与冷却特化：高单发质量，偏「狙味儿」的保守打法。">
                     <span class="wd-rec-tab-icon-wrap">
                         
                         
@@ -2175,7 +2414,7 @@
                     type="button"
                     class="wd-rec-tab "
                     data-rec-id="9"
-                    data-search="死亡标记 23211 t1辅助模组，为什么是t1，因为不是t0">
+                    data-search="死亡标记 23211 标记增伤辅助：己方集火效率上升，也适合开黑语音配合。">
                     <span class="wd-rec-tab-icon-wrap">
                         
                         
@@ -2193,7 +2432,7 @@
                     type="button"
                     class="wd-rec-tab "
                     data-rec-id="8"
-                    data-search="专注悬停 23121 建议在队友很菜的时候玩这个💩">
+                    data-search="专注悬停 23121 开镜稳定：中远距离点名精英更舒服，偏团队辅助输出位。">
                     <span class="wd-rec-tab-icon-wrap">
                         
                         
@@ -2523,7 +2762,7 @@
                             <div class="wd-rec-article-body">
                                 <h1 class="rec-title">腰射潮人</h1>
                                 
-                                <p class="rec-subtitle">我管你这那的，跟我的鼠标宏说去吧</p>
+                                <p class="rec-subtitle">腰射准星强化：跑打、落点、钻洞清理都非常舒服。</p>
                                 
                                 
                                 <div class="rec-tags"><span class="tag">日常通勤</span><span class="tag">高难度可用</span>
@@ -2576,28 +2815,27 @@
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
                                     <strong>第 1 项：</strong>
-                                    <div class="markdown-body"><p>侦察一般不点备弹。增加伤害可以更快清理固定单位。</p></div>
+                                    <div class="markdown-body"><p><strong>大口径弹药</strong>：M1000 每一枪都要「够疼」，先拉基础伤害。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
                                     <strong>第 2 项：</strong>
-                                    <div class="markdown-body"><p>感觉这种半自动枪，也没什么必要降低后坐力，且只要不是高难，一般虫子都是一枪一个，特殊虫子可以直接贴脸输出。</p></div>
+                                    <div class="markdown-body"><p><strong>硬质子弹</strong>：补齐对甲与精英的击穿能力，避免腰射泼水刮痧。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
                                     <strong>第 3 项：</strong>
-                                    <div class="markdown-body"><p>既然是腰射潮人，就没有必要加瞄准伤害了。</p></div>
+                                    <div class="markdown-body"><p><strong>扩容弹夹</strong>：连点与追枪会快速烧弹，续航决定你能压多久。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
                                     <strong>第 4 项：</strong>
-                                    <div class="markdown-body"><p>这一行一般点第一项贯穿，在面对虫群时有更高的收益。</p>
-<p>我也推荐第二项，因为你可以配合冰弩或者冰雷快速清理固定单位。固定单位的弱点一般比较容易命中。</p></div>
+                                    <div class="markdown-body"><p><strong>超强贯通弹</strong>：洞道里穿虫效率高，也能处理排成一列的虫潮。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
                                     <strong>第 5 项：</strong>
-                                    <div class="markdown-body"><p>这一项点第一项或者第三项都可以。</p></div>
+                                    <div class="markdown-body"><p><strong>杀戮机器</strong>：爆发窗口内把精英按死；若更想要单体上限也可比较钻心之痛。</p></div>
                                 </div>
                                 
                                 
@@ -2931,7 +3169,7 @@
                             <div class="wd-rec-article-body">
                                 <h1 class="rec-title">过冷枪膛</h1>
                                 
-                                <p class="rec-subtitle">当你看到致命弱点的时候，你就知道该拿这个模组了</p>
+                                <p class="rec-subtitle">单发后坐与冷却特化：高单发质量，偏「狙味儿」的保守打法。</p>
                                 
                                 
                                 <div class="rec-tags"><span class="tag">日常通勤</span>
@@ -2988,27 +3226,27 @@
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
                                     <strong>第 1 项：</strong>
-                                    <div class="markdown-body"><p>一般人我会推荐他点备弹，但你，我的朋友，我觉得你不是一般人。</p></div>
+                                    <div class="markdown-body"><p><strong>大口径弹药</strong>：单发质量是过冷构筑的核心。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
                                     <strong>第 2 项：</strong>
-                                    <div class="markdown-body"><p>更少等待，更多爽快。</p></div>
+                                    <div class="markdown-body"><p><strong>快充线圈</strong>：更快装好下一发，减少精英逃窗。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
                                     <strong>第 3 项：</strong>
-                                    <div class="markdown-body"><p>继续加伤害，马上就会引起质变了。</p></div>
+                                    <div class="markdown-body"><p><strong>杀手专注</strong>：稳定开镜收益，偏「看准再扣」的打法。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
                                     <strong>第 4 项：</strong>
-                                    <div class="markdown-body"><p>要出极高的单体伤害，当然是加弱点加成了。</p></div>
+                                    <div class="markdown-body"><p><strong>空尖弹</strong>：精英单体补伤常用选项。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
                                     <strong>第 5 项：</strong>
-                                    <div class="markdown-body"><p>建议增加击晕，对于一枪伤害不到位的，后续更容易瞄准。</p></div>
+                                    <div class="markdown-body"><p><strong>钻心之痛</strong>：进一步抬高暴击/弱点一侧的收益（以游戏内实际词条为准）。</p></div>
                                 </div>
                                 
                                 
@@ -3344,7 +3582,7 @@
                             <div class="wd-rec-article-body">
                                 <h1 class="rec-title">死亡标记</h1>
                                 
-                                <p class="rec-subtitle">T1辅助模组，为什么是T1，因为不是T0</p>
+                                <p class="rec-subtitle">标记增伤辅助：己方集火效率上升，也适合开黑语音配合。</p>
                                 
                                 
                                 <div class="rec-tags"><span class="tag">辅助</span>
@@ -3401,22 +3639,27 @@
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
                                     <strong>第 1 项：</strong>
-                                    <div class="markdown-body"><p>加伤害，以便自己出伤。</p></div>
+                                    <div class="markdown-body"><p><strong>大口径弹药</strong>：标记后仍需本体跟伤害，先保证单发质量。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
                                     <strong>第 2 项：</strong>
-                                    <div class="markdown-body"><p>也可以加瞄准速度，因为即便击中护甲也可以触发加成（未验证）。</p></div>
+                                    <div class="markdown-body"><p><strong>硬质子弹</strong>：对甲精英不翻车。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
                                     <strong>第 3 项：</strong>
-                                    <div class="markdown-body"><p>因为瞄准伤害已经降低所以点弹匣加成。</p></div>
+                                    <div class="markdown-body"><p><strong>扩容弹夹</strong>：持续跟枪与补标记时减少换弹。</p></div>
+                                </div>
+                                
+                                <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
+                                    <strong>第 4 项：</strong>
+                                    <div class="markdown-body"><p><strong>超强贯通弹</strong>：虫潮线穿透容错高。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
                                     <strong>第 5 项：</strong>
-                                    <div class="markdown-body"><p>加击晕可以方便后续输出。</p></div>
+                                    <div class="markdown-body"><p><strong>钻心之痛</strong>：把「易伤窗口」里能打出的爆发拉满。</p></div>
                                 </div>
                                 
                                 
@@ -3742,7 +3985,7 @@
                             <div class="wd-rec-article-body">
                                 <h1 class="rec-title">专注悬停</h1>
                                 
-                                <p class="rec-subtitle">建议在队友很菜的时候玩这个💩</p>
+                                <p class="rec-subtitle">开镜稳定：中远距离点名精英更舒服，偏团队辅助输出位。</p>
                                 
                                 
                                 <div class="rec-tags"><span class="tag">日常通勤</span>
@@ -3787,27 +4030,27 @@
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="1">
                                     <strong>第 1 项：</strong>
-                                    <div class="markdown-body"><p>加伤害可以增加击杀怪物的概率，为什么呢？因为击杀怪物可以刷新悬停。</p></div>
+                                    <div class="markdown-body"><p><strong>大口径弹药</strong>：开镜点射仍需要基础伤害。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="2">
                                     <strong>第 2 项：</strong>
-                                    <div class="markdown-body"><p>不要加瞄准速度，这个加点会减少悬停时间。一般也不会连射所以不点后坐力。</p></div>
+                                    <div class="markdown-body"><p><strong>硬质子弹</strong>：处理装甲单位时不至于被单发伤害拖慢。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="3">
                                     <strong>第 3 项：</strong>
-                                    <div class="markdown-body"><p>加瞄准伤害便于刷新悬停。</p></div>
+                                    <div class="markdown-body"><p><strong>杀手专注</strong>：与专注悬停「稳定开镜」同方向。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="4">
                                     <strong>第 4 项：</strong>
-                                    <div class="markdown-body"><p>加弱点伤害更有普适性。</p></div>
+                                    <div class="markdown-body"><p><strong>空尖弹</strong>：常见的单体强化第四行。</p></div>
                                 </div>
                                 
                                 <div class="rec-tier-block wd-rec-tier-block" data-tier="5">
                                     <strong>第 5 项：</strong>
-                                    <div class="markdown-body"><p>这一项完全看心情了。</p></div>
+                                    <div class="markdown-body"><p><strong>钻心之痛</strong>：爆发点名；也可按手感换精准恐惧等。</p></div>
                                 </div>
                                 
                                 
@@ -4499,7 +4742,9 @@
     if (infoBtn) {
         infoBtn.addEventListener('click', function () {
             var desc = document.getElementById('wd-desc');
-            if (desc) desc.classList.toggle('visible');
+            if (!desc) return;
+            var isVisible = desc.classList.toggle('visible');
+            infoBtn.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
         });
     }
 
