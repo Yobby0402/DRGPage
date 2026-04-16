@@ -46,6 +46,49 @@
             grid-column: 3;
             justify-self: end;
             align-self: start;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.45rem 0.75rem;
+            max-width: 100%;
+        }
+        .site-friendly-links {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.3rem 0.45rem;
+            row-gap: 0.25rem;
+        }
+        .site-friendly-links-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        .site-friendly-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 0.2rem 0.05rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .site-friendly-link:hover {
+            text-decoration: underline;
+            color: #f4dca0;
+        }
+        .site-friendly-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
+        }
+        .site-friendly-sep {
+            color: rgba(232, 230, 227, 0.35);
+            font-size: 0.75rem;
+            user-select: none;
         }
         .site-feedback-link {
             display: inline-flex;
@@ -188,6 +231,8 @@
             .site-feedback {
                 grid-column: 1;
                 justify-self: end;
+                flex-direction: column;
+                align-items: flex-end;
             }
             .site-nav {
                 grid-column: 1;
@@ -228,6 +273,20 @@
                 
             </nav>
             <div class="site-feedback">
+                <div class="site-friendly-links" aria-label="友情链接">
+                    <span class="site-friendly-links-label">友情链接</span>
+                    <a
+                        href="https://www.xiaoheihe.cn/app/user/profile/50851304"
+                        class="site-friendly-link"
+                        target="_blank"
+                        rel="noopener noreferrer">攻略参考</a>
+                    <span class="site-friendly-sep" aria-hidden="true">·</span>
+                    <a
+                        href="https://deeprockgalactic.wiki.gg/"
+                        class="site-friendly-link"
+                        target="_blank"
+                        rel="noopener noreferrer">官方Wiki</a>
+                </div>
                 <a
                     href="https://github.com/Yobby0402/DRGPage/issues"
                     class="site-feedback-link"

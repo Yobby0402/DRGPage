@@ -46,6 +46,49 @@
             grid-column: 3;
             justify-self: end;
             align-self: start;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.45rem 0.75rem;
+            max-width: 100%;
+        }
+        .site-friendly-links {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.3rem 0.45rem;
+            row-gap: 0.25rem;
+        }
+        .site-friendly-links-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        .site-friendly-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 0.2rem 0.05rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .site-friendly-link:hover {
+            text-decoration: underline;
+            color: #f4dca0;
+        }
+        .site-friendly-link:focus-visible {
+            outline: 2px solid #f4dca0;
+            outline-offset: 2px;
+        }
+        .site-friendly-sep {
+            color: rgba(232, 230, 227, 0.35);
+            font-size: 0.75rem;
+            user-select: none;
         }
         .site-feedback-link {
             display: inline-flex;
@@ -188,6 +231,8 @@
             .site-feedback {
                 grid-column: 1;
                 justify-self: end;
+                flex-direction: column;
+                align-items: flex-end;
             }
             .site-nav {
                 grid-column: 1;
@@ -238,7 +283,7 @@
     .wd-left {
         position: relative;
         flex: 0 0 50%;
-        min-width: 280px;
+        min-width: 0;
         display: flex;
         flex-direction: column;
         padding: 1rem;
@@ -248,7 +293,7 @@
 
     .wd-right {
         flex: 0 0 50%;
-        min-width: 200px;
+        min-width: 0;
         padding: 0;
         overflow-x: hidden;
         overflow-y: auto;
@@ -738,8 +783,15 @@
         position: absolute;
         left: var(--wd-stage-gap);
         bottom: calc(var(--wd-stage-bottom-gap) + var(--wd-info-size) + var(--wd-info-text-gap));
-        width: min(360px, calc(42% - var(--wd-stage-gap)));
-        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        width: min(
+            360px,
+            calc(42% - var(--wd-stage-gap)),
+            calc(100% - var(--wd-stage-gap) * 2)
+        );
+        max-width: min(
+            calc(50% - (var(--wd-stage-gap) * 1.5)),
+            calc(100% - var(--wd-stage-gap) * 2)
+        );
         max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         padding: 0.6rem 0.85rem;
         background: rgba(17, 18, 22, 0.88);
@@ -771,9 +823,16 @@
         position: absolute;
         right: var(--wd-stage-gap);
         bottom: var(--wd-stage-bottom-gap);
-        width: min(420px, calc(50% - (var(--wd-stage-gap) * 1.5)));
-        min-width: 280px;
-        max-width: calc(50% - (var(--wd-stage-gap) * 1.5));
+        width: min(
+            420px,
+            calc(50% - (var(--wd-stage-gap) * 1.5)),
+            calc(100% - var(--wd-stage-gap) * 2)
+        );
+        min-width: min(280px, 100%);
+        max-width: min(
+            calc(50% - (var(--wd-stage-gap) * 1.5)),
+            calc(100% - var(--wd-stage-gap) * 2)
+        );
         max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
         margin: 0;
         padding: 0.6rem 0.9rem;
@@ -1876,8 +1935,13 @@
         }
 
         .wd-attr {
-            min-width: 380px;
-            max-width: 560px;
+            width: min(
+                560px,
+                calc(50% - (var(--wd-stage-gap) * 1.5)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            min-width: min(380px, 100%);
+            max-width: min(560px, calc(100% - var(--wd-stage-gap) * 2));
         }
 
         .wd-attr table {
@@ -1943,8 +2007,13 @@
         }
 
         .wd-attr {
-            min-width: 440px;
-            max-width: 660px;
+            width: min(
+                660px,
+                calc(50% - (var(--wd-stage-gap) * 1.5)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            min-width: min(440px, 100%);
+            max-width: min(660px, calc(100% - var(--wd-stage-gap) * 2));
         }
 
         .wd-attr table {
@@ -1965,7 +2034,7 @@
     @media (max-width: 1024px) {
         .wd-left {
             flex: 1 1 50%;
-            min-width: 260px;
+            min-width: 0;
             padding: 0.75rem;
         }
 
@@ -1980,9 +2049,16 @@
         }
 
         .wd-attr {
-            width: min(320px, calc(52% - var(--wd-stage-gap)));
-            min-width: 220px;
-            max-width: calc(52% - var(--wd-stage-gap));
+            width: min(
+                320px,
+                calc(52% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            min-width: min(220px, 100%);
+            max-width: min(
+                calc(52% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             font-size: 0.85rem;
         }
 
@@ -2090,16 +2166,30 @@
         }
 
         .wd-attr {
-            width: min(280px, calc(52% - var(--wd-stage-gap)));
+            width: min(
+                280px,
+                calc(52% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             min-width: 0;
-            max-width: calc(52% - var(--wd-stage-gap));
+            max-width: min(
+                calc(52% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
             padding: 0.55rem 0.7rem;
         }
 
         .wd-desc {
-            width: min(240px, calc(42% - var(--wd-stage-gap)));
-            max-width: calc(42% - var(--wd-stage-gap));
+            width: min(
+                240px,
+                calc(42% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            max-width: min(
+                calc(42% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
         }
 
@@ -2222,15 +2312,27 @@
 
         .wd-desc {
             font-size: 0.9rem;
-            width: calc(42% - var(--wd-stage-gap));
-            max-width: calc(42% - var(--wd-stage-gap));
+            width: min(
+                calc(42% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            max-width: min(
+                calc(42% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-info-size) - var(--wd-info-text-gap) - var(--wd-stage-gap));
             padding: 0.5rem 0.6rem;
         }
 
         .wd-attr {
-            width: calc(58% - var(--wd-stage-gap));
-            max-width: calc(58% - var(--wd-stage-gap));
+            width: min(
+                calc(58% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
+            max-width: min(
+                calc(58% - var(--wd-stage-gap)),
+                calc(100% - var(--wd-stage-gap) * 2)
+            );
             max-height: calc(100% - var(--wd-stage-bottom-gap) - var(--wd-stage-gap));
             padding: 0.45rem 0.55rem;
         }
@@ -2296,6 +2398,20 @@
                 
             </nav>
             <div class="site-feedback">
+                <div class="site-friendly-links" aria-label="友情链接">
+                    <span class="site-friendly-links-label">友情链接</span>
+                    <a
+                        href="https://www.xiaoheihe.cn/app/user/profile/50851304"
+                        class="site-friendly-link"
+                        target="_blank"
+                        rel="noopener noreferrer">攻略参考</a>
+                    <span class="site-friendly-sep" aria-hidden="true">·</span>
+                    <a
+                        href="https://deeprockgalactic.wiki.gg/"
+                        class="site-friendly-link"
+                        target="_blank"
+                        rel="noopener noreferrer">官方Wiki</a>
+                </div>
                 <a
                     href="https://github.com/Yobby0402/DRGPage/issues"
                     class="site-feedback-link"
