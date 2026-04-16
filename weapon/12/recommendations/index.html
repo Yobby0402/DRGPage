@@ -20,8 +20,32 @@
             margin: 0;
             min-height: 100vh;
         }
-        body.page-weapon-detail { overflow: hidden; height: 100vh; }
-        body.page-weapon-detail main { overflow: hidden; height: calc(100vh - 120px); padding: 0; max-width: none; }
+        html:has(body.page-weapon-detail) {
+            height: 100%;
+        }
+        body.page-weapon-detail {
+            overflow: hidden;
+            height: 100vh;
+            height: 100dvh;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+        body.page-weapon-detail > header {
+            flex-shrink: 0;
+        }
+        body.page-weapon-detail main {
+            overflow: hidden;
+            flex: 1 1 auto;
+            min-height: 0;
+            height: auto;
+            padding: 0;
+            max-width: none;
+        }
+        body.page-weapon-detail > footer {
+            display: none;
+        }
         .container { max-width: 960px; margin: 0 auto; padding: 1rem; background: transparent; }
         header {
             background: #736951;
